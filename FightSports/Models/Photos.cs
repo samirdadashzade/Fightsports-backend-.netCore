@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FightSports.Models
 {
@@ -13,6 +15,8 @@ namespace FightSports.Models
         public DateTime? PhotoAddedData { get; set; }
         public int NewsId { get; set; }
 
+        [NotMapped]
+        public IFormFile FormFile { get; set; }
         public News News { get; set; }
     }
 }

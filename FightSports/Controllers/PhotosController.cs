@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace FightSports.Controllers
 {
     public class PhotosController : Controller
     {
         private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        IHostingEnvironment _appEnvironment;
 
-        public PhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
+        public PhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: Photos
@@ -56,10 +60,18 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PhotoId,PhotoName,PhotoPath,PhotoTitle,PhotoViews,PhotoAddedData,NewsId")] Photos photos)
+        public async Task<IActionResult> Create(Photos photos)
         {
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_appEnvironment.ContentRootPath,"Uploads", photos.FormFile.FileName);
+                photos.PhotoPath = filePath;
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await photos.FormFile.CopyToAsync(stream);
+                }
+
                 _context.Add(photos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

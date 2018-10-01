@@ -5,7 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="admin_panel_files\**" />
+    <Content Remove="admin_panel_files\**" />
+    <EmbeddedResource Remove="admin_panel_files\**" />
+    <None Remove="admin_panel_files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\demoImages\" />
   </ItemGroup>
 
 </Project>

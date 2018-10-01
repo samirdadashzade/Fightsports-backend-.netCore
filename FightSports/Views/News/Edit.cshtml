@@ -1,0 +1,81 @@
+﻿@model FightSports.Models.News
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>News</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NewsId" />
+            <div class="form-group">
+                <label asp-for="NewsName" class="control-label"></label>
+                <input asp-for="NewsName" class="form-control" />
+                <span asp-validation-for="NewsName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsTitle" class="control-label"></label>
+                <input asp-for="NewsTitle" class="form-control" />
+                <span asp-validation-for="NewsTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsBigTitle" class="control-label"></label>
+                <input asp-for="NewsBigTitle" class="form-control" />
+                <span asp-validation-for="NewsBigTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsUpperTxt" class="control-label"></label>
+                <input asp-for="NewsUpperTxt" class="form-control" />
+                <span asp-validation-for="NewsUpperTxt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsDownTxt" class="control-label"></label>
+                <input asp-for="NewsDownTxt" class="form-control" />
+                <span asp-validation-for="NewsDownTxt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsViews" class="control-label"></label>
+                <input asp-for="NewsViews" class="form-control" />
+                <span asp-validation-for="NewsViews" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsAddedDate" class="control-label"></label>
+                <input asp-for="NewsAddedDate" class="form-control" />
+                <span asp-validation-for="NewsAddedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Longitude" class="control-label"></label>
+                <input asp-for="Longitude" class="form-control" />
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Latitude" class="control-label"></label>
+                <input asp-for="Latitude" class="form-control" />
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsTypeId" class="control-label"></label>
+                <select asp-for="NewsTypeId" class="form-control" asp-items="ViewBag.NewsTypeId"></select>
+                <span asp-validation-for="NewsTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SportCategoryId" class="control-label"></label>
+                <select asp-for="SportCategoryId" class="form-control" asp-items="ViewBag.SportCategoryId"></select>
+                <span asp-validation-for="SportCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

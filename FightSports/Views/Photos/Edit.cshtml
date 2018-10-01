@@ -1,0 +1,56 @@
+﻿@model FightSports.Models.Photos
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Photos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PhotoId" />
+            <div class="form-group">
+                <label asp-for="PhotoName" class="control-label"></label>
+                <input asp-for="PhotoName" class="form-control" />
+                <span asp-validation-for="PhotoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoPath" class="control-label"></label>
+                <input asp-for="PhotoPath" class="form-control" />
+                <span asp-validation-for="PhotoPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoTitle" class="control-label"></label>
+                <input asp-for="PhotoTitle" class="form-control" />
+                <span asp-validation-for="PhotoTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoViews" class="control-label"></label>
+                <input asp-for="PhotoViews" class="form-control" />
+                <span asp-validation-for="PhotoViews" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoAddedData" class="control-label"></label>
+                <input asp-for="PhotoAddedData" class="form-control" />
+                <span asp-validation-for="PhotoAddedData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsId" class="control-label"></label>
+                <select asp-for="NewsId" class="form-control" asp-items="ViewBag.NewsId"></select>
+                <span asp-validation-for="NewsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

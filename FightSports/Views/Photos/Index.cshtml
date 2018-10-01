@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FightSports.Models.Photos>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoViews)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoAddedData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.News)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoPath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoViews)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoAddedData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.News.NewsBigTitle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PhotoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PhotoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PhotoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,85 @@
+﻿@model FightSports.Models.News
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsBigTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsBigTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsUpperTxt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsUpperTxt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsDownTxt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsDownTxt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsViews)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsViews)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsAddedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsAddedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsType.NewsTypeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SportCategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SportCategory.SportCategoryName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NewsId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

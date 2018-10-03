@@ -9,6 +9,6 @@ namespace FightSports
     public class ViewModel
     {
         public string PhotoName{ get; set; }
-        public string CustumerName { get; set; }
+        public string BannerPath { get; set; }
     }
 }

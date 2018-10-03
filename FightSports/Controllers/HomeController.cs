@@ -5,27 +5,38 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FightSports.Models;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace FightSports.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+
+        public HomeController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
+        {
+            _context = context;
+        }
 
         public IActionResult Index()
-        {          
-            ViewModel viewModel = new ViewModel();
+        {
+            List<ViewModel> viewModelList = new List<ViewModel>();
+
             foreach (var item in _context.Photos)
             {
+                ViewModel viewModel = new ViewModel();
                 viewModel.PhotoName = item.PhotoName;
+                viewModelList.Add(viewModel);
             }
 
             foreach (var item in _context.Banners)
             {
-                viewModel.CustumerName = item.CustumerName;
+                ViewModel viewModel = new ViewModel();
+                viewModel.BannerPath = item.BannerPath;
+                viewModelList.Add(viewModel);
             }
 
-            return View(viewModel);
+            return View(viewModelList);
         }
 
         public IActionResult About()

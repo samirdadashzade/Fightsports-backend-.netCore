@@ -64,8 +64,8 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filePath = Path.Combine(_appEnvironment.ContentRootPath,"Uploads", photos.FormFile.FileName);
-                photos.PhotoPath = filePath;
+                var filePath = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {

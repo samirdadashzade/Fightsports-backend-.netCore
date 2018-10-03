@@ -10,9 +10,22 @@ namespace FightSports.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+
         public IActionResult Index()
-        {
-            return View();
+        {          
+            ViewModel viewModel = new ViewModel();
+            foreach (var item in _context.Photos)
+            {
+                viewModel.PhotoName = item.PhotoName;
+            }
+
+            foreach (var item in _context.Banners)
+            {
+                viewModel.CustumerName = item.CustumerName;
+            }
+
+            return View(viewModel);
         }
 
         public IActionResult About()

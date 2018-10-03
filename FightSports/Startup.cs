@@ -61,13 +61,7 @@ namespace FightSports
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
-
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Uploads")),
-            //    RequestPath = new PathString("/Uploads")
-            //});
+            app.UseCookiePolicy(); 
 
             app.UseMvc(routes =>
             {

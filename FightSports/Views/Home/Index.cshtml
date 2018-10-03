@@ -1,5 +1,14 @@
-﻿@{
+﻿@model IList<FightSports.ViewModel>;
+
+@{
     ViewData["Title"] = "Home Page";
+}
+
+@foreach (var item in Model)
+{
+    @item.PhotoName
+    @item.CustumerName
+
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">

@@ -1,11 +1,10 @@
-﻿@model IEnumerable<FightSports.ViewModel>;
+﻿@model FightSports.ViewModel;
 
-
-@foreach (var item in Model)
+@foreach (var item in Model.Banners)
 {
 
-    <div>@item.BannerPath</div>
-    <span>@item.PhotoName</span>
+    <div>@item.CustumerName</div>
+    @*<span>@item.PhotoName</span>*@
 
 }
 

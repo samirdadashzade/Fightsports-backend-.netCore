@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
-using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace FightSports.Controllers
 {
@@ -51,7 +51,7 @@ namespace FightSports.Controllers
         // GET: Photos/Create
         public IActionResult Create()
         {
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle");
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle");
             return View();
         }
 
@@ -64,12 +64,12 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filePath = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
-                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+                var filePath = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(photos.formFile.FileName));
+                photos.PhotoPath = "/" + Path.GetFileName(photos.formFile.FileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await photos.FormFile.CopyToAsync(stream);
+                    await photos.formFile.CopyToAsync(stream);
                 }
 
                 _context.Add(photos);
@@ -93,7 +93,7 @@ namespace FightSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", photos.NewsId);
             return View(photos);
         }
 
@@ -129,7 +129,7 @@ namespace FightSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", photos.NewsId);
             return View(photos);
         }
 

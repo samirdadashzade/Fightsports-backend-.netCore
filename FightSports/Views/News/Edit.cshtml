@@ -30,14 +30,9 @@
                 <span asp-validation-for="NewsBigTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NewsUpperTxt" class="control-label"></label>
-                <input asp-for="NewsUpperTxt" class="form-control" />
-                <span asp-validation-for="NewsUpperTxt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NewsDownTxt" class="control-label"></label>
-                <input asp-for="NewsDownTxt" class="form-control" />
-                <span asp-validation-for="NewsDownTxt" class="text-danger"></span>
+                <label asp-for="NewsTxt" class="control-label"></label>
+                <input asp-for="NewsTxt" class="form-control" />
+                <span asp-validation-for="NewsTxt" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NewsViews" class="control-label"></label>
@@ -50,14 +45,14 @@
                 <span asp-validation-for="NewsAddedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Longitude" class="control-label"></label>
-                <input asp-for="Longitude" class="form-control" />
-                <span asp-validation-for="Longitude" class="text-danger"></span>
+                <label asp-for="OptionalLongitude" class="control-label"></label>
+                <input asp-for="OptionalLongitude" class="form-control" />
+                <span asp-validation-for="OptionalLongitude" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Latitude" class="control-label"></label>
-                <input asp-for="Latitude" class="form-control" />
-                <span asp-validation-for="Latitude" class="text-danger"></span>
+                <label asp-for="OptionalLatitude" class="control-label"></label>
+                <input asp-for="OptionalLatitude" class="form-control" />
+                <span asp-validation-for="OptionalLatitude" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NewsTypeId" class="control-label"></label>
@@ -70,6 +65,11 @@
                 <span asp-validation-for="SportCategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="OptionalAdress" class="control-label"></label>
+                <input asp-for="OptionalAdress" class="form-control" />
+                <span asp-validation-for="OptionalAdress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
@@ -79,3 +79,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+

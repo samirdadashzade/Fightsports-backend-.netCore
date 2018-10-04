@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
-@{ IgnoreBody(); }
+
 <h2>Index</h2>
 
 <p>
@@ -23,21 +23,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustumerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BannerPath)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.BannerId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.BannerId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.BannerId">Delete</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustumerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BannerPath)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BannerId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BannerId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BannerId">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>

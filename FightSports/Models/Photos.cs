@@ -16,7 +16,7 @@ namespace FightSports.Models
         public int NewsId { get; set; }
 
         [NotMapped]
-        public IFormFile FormFile { get; set; }
+        public IFormFile formFile { get; set; }
         public News News { get; set; }
     }
 }

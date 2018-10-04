@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FightSports.Models.LiveTv>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LivePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LiveTitle)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LivePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LiveTitle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LiveTvId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LiveTvId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LiveTvId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

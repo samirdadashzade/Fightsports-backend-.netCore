@@ -23,10 +23,7 @@
                 @Html.DisplayNameFor(model => model.NewsBigTitle)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NewsUpperTxt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsDownTxt)
+                @Html.DisplayNameFor(model => model.NewsTxt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NewsViews)
@@ -35,10 +32,13 @@
                 @Html.DisplayNameFor(model => model.NewsAddedDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Longitude)
+                @Html.DisplayNameFor(model => model.OptionalLongitude)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Latitude)
+                @Html.DisplayNameFor(model => model.OptionalLatitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OptionalAdress)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NewsType)
@@ -62,10 +62,7 @@
                 @Html.DisplayFor(modelItem => item.NewsBigTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NewsUpperTxt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsDownTxt)
+                @Html.DisplayFor(modelItem => item.NewsTxt)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NewsViews)
@@ -74,10 +71,13 @@
                 @Html.DisplayFor(modelItem => item.NewsAddedDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
+                @Html.DisplayFor(modelItem => item.OptionalLongitude)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
+                @Html.DisplayFor(modelItem => item.OptionalLatitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OptionalAdress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NewsType.NewsTypeName)

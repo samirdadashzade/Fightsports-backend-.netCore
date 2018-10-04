@@ -47,7 +47,7 @@ namespace FightSports.Controllers
         // GET: Videos/Create
         public IActionResult Create()
         {
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle");
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace FightSports.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle", videos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", videos.NewsId);
             return View(videos);
         }
 
@@ -81,7 +81,7 @@ namespace FightSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle", videos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", videos.NewsId);
             return View(videos);
         }
 
@@ -117,7 +117,7 @@ namespace FightSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle", videos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", videos.NewsId);
             return View(videos);
         }
 

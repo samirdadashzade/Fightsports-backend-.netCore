@@ -58,7 +58,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsUpperTxt,NewsDownTxt,NewsViews,NewsAddedDate,Longitude,Latitude,NewsTypeId,SportCategoryId")] News news)
+        public async Task<IActionResult> Create([Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsTxt,NewsViews,NewsAddedDate,OptionalLongitude,OptionalLatitude,NewsTypeId,SportCategoryId,OptionalAdress")] News news)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsUpperTxt,NewsDownTxt,NewsViews,NewsAddedDate,Longitude,Latitude,NewsTypeId,SportCategoryId")] News news)
+        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsTxt,NewsViews,NewsAddedDate,OptionalLongitude,OptionalLatitude,NewsTypeId,SportCategoryId,OptionalAdress")] News news)
         {
             if (id != news.NewsId)
             {

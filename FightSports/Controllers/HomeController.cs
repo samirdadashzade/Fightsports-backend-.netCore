@@ -11,32 +11,32 @@ namespace FightSports.Controllers
 {
     public class HomeController : Controller
     {
-        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
-
-        public HomeController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
-        {
-            _context = context;
-        }
+        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;        
 
         public IActionResult Index()
         {
-            List<ViewModel> viewModelList = new List<ViewModel>();
+            ViewModel viewModel = new ViewModel();
 
-            foreach (var item in _context.Photos)
-            {
-                ViewModel viewModel = new ViewModel();
-                viewModel.PhotoName = item.PhotoName;
-                viewModelList.Add(viewModel);
-            }
+            viewModel.Photos = _context.Photos;
+            viewModel.Banners = _context.Banners;
 
-            foreach (var item in _context.Banners)
-            {
-                ViewModel viewModel = new ViewModel();
-                viewModel.BannerPath = item.BannerPath;
-                viewModelList.Add(viewModel);
-            }
+            //List<ViewModel> viewModelList = new List<ViewModel>();
 
-            return View(viewModelList);
+            //foreach (var item in _context.Photos)
+            //{
+            //    ViewModel viewModel = new ViewModel();
+            //    viewModel.PhotoName = item.PhotoName;
+            //    viewModelList.Add(viewModel);
+            //}
+
+            //foreach (var item in _context.Banners)
+            //{
+            //    ViewModel viewModel = new ViewModel();
+            //    viewModel.BannerPath = item.BannerPath;
+            //    viewModelList.Add(viewModel);
+            //}
+
+            return View();
         }
 
         public IActionResult About()

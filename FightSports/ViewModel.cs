@@ -1,4 +1,5 @@
 ﻿using FightSports.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace FightSports
 {
     public class ViewModel
     {
-        public string PhotoName{ get; set; }
-        public string BannerPath { get; set; }
+        public DbSet<Photos> Photos { get; set; }
+        public DbSet<Banners> Banners { get; set; }
     }
 }

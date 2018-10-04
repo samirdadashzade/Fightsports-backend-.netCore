@@ -18,6 +18,7 @@ namespace FightSports.Models
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Banners> Banners { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
+        public virtual DbSet<LiveTv> LiveTv { get; set; }
         public virtual DbSet<Magazine> Magazine { get; set; }
         public virtual DbSet<MagazinePhotos> MagazinePhotos { get; set; }
         public virtual DbSet<News> News { get; set; }
@@ -96,6 +97,19 @@ namespace FightSports.Models
                     .HasConstraintName("FK_comments_ToTablenews");
             });
 
+            modelBuilder.Entity<LiveTv>(entity =>
+            {
+                entity.ToTable("live_tv");
+
+                entity.Property(e => e.LiveTvId).HasColumnName("live_tv_id");
+
+                entity.Property(e => e.LivePath).HasColumnName("live_path");
+
+                entity.Property(e => e.LiveTitle)
+                    .HasColumnName("live_title")
+                    .HasMaxLength(50);
+            });
+
             modelBuilder.Entity<Magazine>(entity =>
             {
                 entity.ToTable("magazine");
@@ -162,22 +176,13 @@ namespace FightSports.Models
 
                 entity.Property(e => e.NewsId).HasColumnName("news_id");
 
-                entity.Property(e => e.Latitude).HasColumnName("latitude");
-
-                entity.Property(e => e.Longitude).HasColumnName("longitude");
-
                 entity.Property(e => e.NewsAddedDate)
                     .HasColumnName("news_added_date")
-                    .HasColumnType("date");
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.NewsBigTitle)
-                    .IsRequired()
-                    .HasColumnName("news_big_title");
-
-                entity.Property(e => e.NewsDownTxt).HasColumnName("news_down_txt");
+                entity.Property(e => e.NewsBigTitle).HasColumnName("news_big_title");
 
                 entity.Property(e => e.NewsName)
-                    .IsRequired()
                     .HasColumnName("news_name")
                     .HasMaxLength(50);
 
@@ -185,11 +190,21 @@ namespace FightSports.Models
                     .IsRequired()
                     .HasColumnName("news_title");
 
+                entity.Property(e => e.NewsTxt)
+                    .IsRequired()
+                    .HasColumnName("news_txt");
+
                 entity.Property(e => e.NewsTypeId).HasColumnName("news_type_id");
 
-                entity.Property(e => e.NewsUpperTxt).HasColumnName("news_upper_txt");
-
                 entity.Property(e => e.NewsViews).HasColumnName("news_views");
+
+                entity.Property(e => e.OptionalAdress)
+                    .HasColumnName("optional_adress")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.OptionalLatitude).HasColumnName("optional_latitude");
+
+                entity.Property(e => e.OptionalLongitude).HasColumnName("optional_longitude");
 
                 entity.Property(e => e.SportCategoryId).HasColumnName("sport_category_id");
 

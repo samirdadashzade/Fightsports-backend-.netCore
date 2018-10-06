@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace FightSports.Controllers
 {
     public class MagazinePhotosController : Controller
     {
         private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        IHostingEnvironment _appEnvironment;
 
-        public MagazinePhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
+        public MagazinePhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: MagazinePhotos
@@ -56,10 +60,18 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MagazinePhotoId,MagazinePhotoPath,MagazinePhotoName,MagazineId")] MagazinePhotos magazinePhotos)
+        public async Task<IActionResult> Create(MagazinePhotos magazinePhotos)
         {
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(magazinePhotos.MagazineFormFile.FileName));
+                magazinePhotos.MagazinePhotoPath = "/" + Path.GetFileName(magazinePhotos.MagazineFormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await magazinePhotos.MagazineFormFile.CopyToAsync(stream);
+                }
+
                 _context.Add(magazinePhotos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

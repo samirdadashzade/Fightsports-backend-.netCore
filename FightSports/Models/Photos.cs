@@ -12,7 +12,7 @@ namespace FightSports.Models
         public string PhotoPath { get; set; }
         public string PhotoTitle { get; set; }
         public int? PhotoViews { get; set; }
-        public DateTime? PhotoAddedData { get; set; }
+        public string PhotoAddedData { get; set; }
         public int NewsId { get; set; }
 
         [NotMapped]

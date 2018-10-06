@@ -82,7 +82,7 @@ namespace FightSports.Models
 
                 entity.Property(e => e.CommentDate)
                     .HasColumnName("comment_date")
-                    .HasColumnType("date");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CommentTxt)
                     .IsRequired()
@@ -245,7 +245,7 @@ namespace FightSports.Models
 
                 entity.Property(e => e.PhotoAddedData)
                     .HasColumnName("photo_added_data")
-                    .HasColumnType("date");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PhotoName)
                     .IsRequired()
@@ -296,7 +296,7 @@ namespace FightSports.Models
 
                 entity.Property(e => e.VideoAddedDate)
                     .HasColumnName("video_added_date")
-                    .HasColumnType("date");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.VideoName)
                     .IsRequired()

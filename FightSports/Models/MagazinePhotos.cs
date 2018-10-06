@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FightSports.Models
 {
@@ -10,6 +12,8 @@ namespace FightSports.Models
         public string MagazinePhotoName { get; set; }
         public int MagazineId { get; set; }
 
+        [NotMapped]
+        public IFormFile MagazineFormFile { get; set; }
         public Magazine Magazine { get; set; }
     }
 }

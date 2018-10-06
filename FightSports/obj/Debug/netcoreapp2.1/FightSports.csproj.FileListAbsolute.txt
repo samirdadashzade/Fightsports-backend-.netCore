@@ -5,11 +5,9 @@ C:\Users\rustam\Desktop\FightSports-backend\FightSports\bin\Debug\netcoreapp2.1\
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\bin\Debug\netcoreapp2.1\FightSports.runtimeconfig.dev.json
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\bin\Debug\netcoreapp2.1\FightSports.pdb
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\bin\Debug\netcoreapp2.1\FightSports.Views.pdb
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csprojAssemblyReference.cache
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csproj.CoreCompileInputs.cache
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.RazorAssemblyInfo.cache
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.RazorAssemblyInfo.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.AssemblyInfoInputs.cache
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.AssemblyInfo.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.TagHelpers.input.cache
@@ -87,3 +85,6 @@ C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Details.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Edit.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Index.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csprojAssemblyReference.cache
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\SportsPage.g.cshtml.cs

@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.PhotoName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhotoPath)
+                <img width="300px" height="300px" src="@Url.Content(item.PhotoPath)" alt="Alternate Text" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PhotoTitle)

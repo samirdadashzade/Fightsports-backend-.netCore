@@ -20,6 +20,5 @@ namespace FightSports
         public List<Photos> Photos { get; set; }
         public List<SportCategories> SportCategories { get; set; }
         public List<Videos> Videos { get; set; }
-
     }
 }

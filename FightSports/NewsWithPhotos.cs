@@ -7,6 +7,7 @@ namespace FightSports
 {
     public class NewsWithPhotos
     {
+        public int NewsId { get; set; }
         public string NewsTitle { get; set; }
         public string NewsName { get; set; }
         public string NewsTxt { get; set; }

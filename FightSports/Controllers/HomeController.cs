@@ -32,29 +32,44 @@ namespace FightSports.Controllers
             viewModel.Photos = _context.Photos.ToList();
             viewModel.SportCategories = _context.SportCategories.ToList();
 
+            var NewsWithPhotosList = (from news in _context.News
+                                      join photos in _context.Photos
+                                      on news.NewsId equals photos.NewsId
+                                      select new NewsWithPhotos
+                                      {
+                                          NewsId = news.NewsId,
+                                          NewsTitle = news.NewsTitle,
+                                          NewsName = news.NewsName,
+                                          NewsTxt = news.NewsTxt,
+                                          PhotoPath = photos.PhotoPath
+                                      }).ToList();
+
+            ViewBag.forNews = NewsWithPhotosList;
+
             return viewModel;
         }
 
         public IActionResult Index()
+        {
+            return View(Vm());
+        }
+
+        public IActionResult SportsPage(int? id)
         {
             var NewsWithPhotosList = (from news in _context.News
                                       join photos in _context.Photos
                                       on news.NewsId equals photos.NewsId
                                       select new NewsWithPhotos
                                       {
+                                          NewsId = news.NewsId,
                                           NewsTitle = news.NewsTitle,
                                           NewsName = news.NewsName,
                                           NewsTxt = news.NewsTxt,
                                           PhotoPath = photos.PhotoPath
-                                      });
+                                      }).ToList();
 
-            ViewBag.forNews = NewsWithPhotosList.ToList();
+            ViewBag.NewsById = NewsWithPhotosList.FindAll(x=>x.NewsId == id);
 
-            return View(Vm());
-        }
-
-        public IActionResult SportsPage()
-        {
             return View(Vm());
         }
 

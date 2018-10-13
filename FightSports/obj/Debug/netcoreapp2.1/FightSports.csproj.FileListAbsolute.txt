@@ -15,7 +15,6 @@ C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.RazorCoreGenerate.cache
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\admin_panel.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.RazorTargetAssemblyInfo.cache
@@ -24,6 +23,14 @@ C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.dll
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.pdb
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csproj.CopyComplete
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\ClubAndFederation.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csprojAssemblyReference.cache
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Admins\Create.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Admins\Delete.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Admins\Details.g.cshtml.cs
@@ -79,13 +86,5 @@ C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Details.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Edit.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Index.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csprojAssemblyReference.cache
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\SportsPage.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\News.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\ClubAndFederation.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
-C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs

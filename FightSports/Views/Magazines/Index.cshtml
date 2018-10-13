@@ -35,6 +35,9 @@
                 @Html.DisplayNameFor(model => model.ProductTitle)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.MagazineFirstPhotoPath)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.SportCategory)
             </th>
             <th></th>
@@ -63,6 +66,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MagazineFirstPhotoPath)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)

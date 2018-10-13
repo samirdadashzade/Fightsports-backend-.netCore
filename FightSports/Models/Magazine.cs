@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FightSports.Models
 {
@@ -19,7 +20,10 @@ namespace FightSports.Models
         public int? ProductPrice { get; set; }
         public string ProductTitle { get; set; }
         public int SportCategoryId { get; set; }
+        public string MagazineFirstPhotoPath { get; set; }
 
+        [NotMapped]
+        public string FormFile { get; set; }
         public SportCategories SportCategory { get; set; }
         public ICollection<MagazinePhotos> MagazinePhotos { get; set; }
     }

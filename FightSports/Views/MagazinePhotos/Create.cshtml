@@ -13,18 +13,13 @@
     <div class="col-md-4">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="MagazinePhotoPath" class="control-label"></label>
-                <input asp-for="MagazinePhotoPath" class="form-control" />
-                <span asp-validation-for="MagazinePhotoPath" class="text-danger"></span>
-            </div>*@
             <div class="form-group">
-                <input asp-for="MagazineFormFile" class="form-control" type="file" />
-                <span asp-validation-for="MagazineFormFile" class="text-danger"></span>
+                <input asp-for="FormFile" class="form-control" type="file"/>
+                <span asp-validation-for="FormFile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MagazineFormFile" class="control-label"></label>
-                <label class="btn btn-default" for="MagazineFormFile">Choose File</label>
+                <label asp-for="FormFile" class="control-label"></label>
+                <label class="btn btn-default" for="FormFile">Choose File</label>
             </div>
             <div class="form-group">
                 <label asp-for="MagazinePhotoName" class="control-label"></label>

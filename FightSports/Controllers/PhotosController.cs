@@ -6,20 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
-using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace FightSports.Controllers
 {
     public class PhotosController : Controller
     {
-        private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
-        IHostingEnvironment _appEnvironment;
+        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public IHostingEnvironment _hostingEnvironment;
 
-        public PhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment appEnvironment)
+        public PhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
-            _appEnvironment = appEnvironment;
         }
 
         // GET: Photos
@@ -51,7 +51,7 @@ namespace FightSports.Controllers
         // GET: Photos/Create
         public IActionResult Create()
         {
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle");
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath");
             return View();
         }
 
@@ -64,19 +64,19 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filePath = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(photos.formFile.FileName));
-                photos.PhotoPath = "/" + Path.GetFileName(photos.formFile.FileName);
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await photos.formFile.CopyToAsync(stream);
+                    await photos.FormFile.CopyToAsync(stream);
                 }
 
                 _context.Add(photos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsBigTitle", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
             return View(photos);
         }
 
@@ -93,7 +93,7 @@ namespace FightSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
             return View(photos);
         }
 
@@ -129,7 +129,7 @@ namespace FightSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsTitle", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
             return View(photos);
         }
 

@@ -13,7 +13,7 @@ namespace FightSports.Models
         public int MagazineId { get; set; }
 
         [NotMapped]
-        public IFormFile MagazineFormFile { get; set; }
+        public IFormFile FormFile { get; set; }
         public Magazine Magazine { get; set; }
     }
 }

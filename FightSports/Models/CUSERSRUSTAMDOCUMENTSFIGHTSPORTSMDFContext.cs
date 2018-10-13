@@ -14,7 +14,7 @@ namespace FightSports.Models
             : base(options)
         {
         }
-
+        
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Banners> Banners { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
@@ -31,7 +31,7 @@ namespace FightSports.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\rustam\\Documents\\fightSports.mdf;Integrated Security=True;Connect Timeout=30");
+                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\rustam\\Documents\\fightSports.mdf;Integrated Security=True;Connect Timeout=30;");
             }
         }
 
@@ -72,6 +72,8 @@ namespace FightSports.Models
                 entity.HasKey(e => e.CommentId);
 
                 entity.ToTable("comments");
+
+                entity.HasIndex(e => e.NewsId);
 
                 entity.Property(e => e.CommentId).HasColumnName("comment_id");
 
@@ -114,11 +116,17 @@ namespace FightSports.Models
             {
                 entity.ToTable("magazine");
 
+                entity.HasIndex(e => e.SportCategoryId);
+
                 entity.Property(e => e.MagazineId).HasColumnName("magazine_id");
 
                 entity.Property(e => e.MagazineAdress)
                     .HasColumnName("magazine_adress")
                     .HasMaxLength(50);
+
+                entity.Property(e => e.MagazineFirstPhotoPath)
+                    .IsRequired()
+                    .HasColumnName("magazine_first_photo_path");
 
                 entity.Property(e => e.MagazineLatitude).HasColumnName("magazine_latitude");
 
@@ -153,6 +161,8 @@ namespace FightSports.Models
 
                 entity.ToTable("magazine_photos");
 
+                entity.HasIndex(e => e.MagazineId);
+
                 entity.Property(e => e.MagazinePhotoId).HasColumnName("magazine_photo_id");
 
                 entity.Property(e => e.MagazineId).HasColumnName("magazine_id");
@@ -174,6 +184,10 @@ namespace FightSports.Models
             {
                 entity.ToTable("news");
 
+                entity.HasIndex(e => e.NewsTypeId);
+
+                entity.HasIndex(e => e.SportCategoryId);
+
                 entity.Property(e => e.NewsId).HasColumnName("news_id");
 
                 entity.Property(e => e.NewsAddedDate)
@@ -181,6 +195,10 @@ namespace FightSports.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.NewsBigTitle).HasColumnName("news_big_title");
+
+                entity.Property(e => e.NewsFirstPhotoPath)
+                    .IsRequired()
+                    .HasColumnName("news_first_photo_path");
 
                 entity.Property(e => e.NewsName)
                     .HasColumnName("news_name")
@@ -239,6 +257,8 @@ namespace FightSports.Models
 
                 entity.ToTable("photos");
 
+                entity.HasIndex(e => e.NewsId);
+
                 entity.Property(e => e.PhotoId).HasColumnName("photo_id");
 
                 entity.Property(e => e.NewsId).HasColumnName("news_id");
@@ -266,7 +286,6 @@ namespace FightSports.Models
                 entity.HasOne(d => d.News)
                     .WithMany(p => p.Photos)
                     .HasForeignKey(d => d.NewsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_photos_ToTable_news");
             });
 
@@ -289,6 +308,8 @@ namespace FightSports.Models
                 entity.HasKey(e => e.VideoId);
 
                 entity.ToTable("videos");
+
+                entity.HasIndex(e => e.NewsId);
 
                 entity.Property(e => e.VideoId).HasColumnName("video_id");
 
@@ -317,7 +338,6 @@ namespace FightSports.Models
                 entity.HasOne(d => d.News)
                     .WithMany(p => p.Videos)
                     .HasForeignKey(d => d.NewsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_videos_ToTable_news");
             });
         }

@@ -11,7 +11,7 @@ namespace FightSports.Models
         public int? VideoViews { get; set; }
         public string VideoPath { get; set; }
         public string VideoAddedDate { get; set; }
-        public int NewsId { get; set; }
+        public int? NewsId { get; set; }
 
         public News News { get; set; }
     }

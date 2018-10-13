@@ -6,15 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace FightSports.Controllers
 {
     public class NewsController : Controller
     {
-        private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public IHostingEnvironment _hostingEnvironment;
 
-        public NewsController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
+        public NewsController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
 
@@ -58,10 +62,18 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsTxt,NewsViews,NewsAddedDate,OptionalLongitude,OptionalLatitude,NewsTypeId,SportCategoryId,OptionalAdress")] News news)
+        public async Task<IActionResult> Create(News news)
         {
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));
+                news.NewsFirstPhotoPath = "/" + Path.GetFileName(news.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await news.FormFile.CopyToAsync(stream);
+                }
+
                 _context.Add(news);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -94,7 +106,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsTxt,NewsViews,NewsAddedDate,OptionalLongitude,OptionalLatitude,NewsTypeId,SportCategoryId,OptionalAdress")] News news)
+        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsTxt,NewsViews,NewsAddedDate,OptionalLongitude,OptionalLatitude,NewsTypeId,SportCategoryId,OptionalAdress,NewsFirstPhotoPath")] News news)
         {
             if (id != news.NewsId)
             {

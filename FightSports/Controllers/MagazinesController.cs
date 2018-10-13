@@ -56,7 +56,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MagazineId,ProductName,MagazineAdress,MagazineLongitude,MagazineLatitude,ProductTxt,ProductPrice,ProductTitle,SportCategoryId")] Magazine magazine)
+        public async Task<IActionResult> Create([Bind("MagazineId,ProductName,MagazineAdress,MagazineLongitude,MagazineLatitude,ProductTxt,ProductPrice,ProductTitle,SportCategoryId,MagazineFirstPhotoPath")] Magazine magazine)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MagazineId,ProductName,MagazineAdress,MagazineLongitude,MagazineLatitude,ProductTxt,ProductPrice,ProductTitle,SportCategoryId")] Magazine magazine)
+        public async Task<IActionResult> Edit(int id, [Bind("MagazineId,ProductName,MagazineAdress,MagazineLongitude,MagazineLatitude,ProductTxt,ProductPrice,ProductTitle,SportCategoryId,MagazineFirstPhotoPath")] Magazine magazine)
         {
             if (id != magazine.MagazineId)
             {

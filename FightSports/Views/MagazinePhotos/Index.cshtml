@@ -29,13 +29,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <img width="300px" height="300px" src="@Url.Content(item.MagazinePhotoPath)" alt="Alternate Text" />
+                @Html.DisplayFor(modelItem => item.MagazinePhotoPath)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MagazinePhotoName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Magazine.MagazineId)
+                @Html.DisplayFor(modelItem => item.Magazine.MagazineFirstPhotoPath)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MagazinePhotoId">Edit</a> |

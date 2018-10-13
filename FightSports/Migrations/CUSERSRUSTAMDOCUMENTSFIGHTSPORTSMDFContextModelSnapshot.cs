@@ -118,6 +118,10 @@ namespace FightSports.Migrations
                         .HasColumnName("magazine_adress")
                         .HasMaxLength(50);
 
+                    b.Property<string>("MagazineFirstPhotoPath")
+                        .IsRequired()
+                        .HasColumnName("magazine_first_photo_path");
+
                     b.Property<int?>("MagazineLatitude")
                         .HasColumnName("magazine_latitude");
 
@@ -187,6 +191,10 @@ namespace FightSports.Migrations
                     b.Property<string>("NewsBigTitle")
                         .HasColumnName("news_big_title");
 
+                    b.Property<string>("NewsFirstPhotoPath")
+                        .IsRequired()
+                        .HasColumnName("news_first_photo_path");
+
                     b.Property<string>("NewsName")
                         .HasColumnName("news_name")
                         .HasMaxLength(50);
@@ -251,7 +259,7 @@ namespace FightSports.Migrations
                         .HasColumnName("photo_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("NewsId")
+                    b.Property<int?>("NewsId")
                         .HasColumnName("news_id");
 
                     b.Property<string>("PhotoAddedData")
@@ -306,7 +314,7 @@ namespace FightSports.Migrations
                         .HasColumnName("video_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("NewsId")
+                    b.Property<int?>("NewsId")
                         .HasColumnName("news_id");
 
                     b.Property<string>("VideoAddedDate")

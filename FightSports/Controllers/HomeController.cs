@@ -20,7 +20,7 @@ namespace FightSports.Controllers
 
         public ViewModel Vm()
         {
-            ViewModel viewModel = new ViewModel();
+            var viewModel = new ViewModel();
             viewModel.Banners = _context.Banners.ToList();
             viewModel.Admins = _context.Admin.ToList();
             viewModel.Comments = _context.Comments.ToList();
@@ -32,20 +32,6 @@ namespace FightSports.Controllers
             viewModel.Photos = _context.Photos.ToList();
             viewModel.SportCategories = _context.SportCategories.ToList();
 
-            var NewsWithPhotosList = (from news in _context.News
-                                      join photos in _context.Photos
-                                      on news.NewsId equals photos.NewsId
-                                      select new NewsWithPhotos
-                                      {
-                                          NewsId = news.NewsId,
-                                          NewsTitle = news.NewsTitle,
-                                          NewsName = news.NewsName,
-                                          NewsTxt = news.NewsTxt,
-                                          PhotoPath = photos.PhotoPath
-                                      }).ToList();
-
-            ViewBag.forNews = NewsWithPhotosList;
-
             return viewModel;
         }
 
@@ -56,28 +42,30 @@ namespace FightSports.Controllers
 
         public IActionResult SportsPage(int? id)
         {
-            var NewsWithPhotosList = (from news in _context.News
-                                      join photos in _context.Photos
-                                      on news.NewsId equals photos.NewsId
-                                      select new NewsWithPhotos
-                                      {
-                                          NewsId = news.NewsId,
-                                          NewsTitle = news.NewsTitle,
-                                          NewsName = news.NewsName,
-                                          NewsTxt = news.NewsTxt,
-                                          PhotoPath = photos.PhotoPath
-                                      }).ToList();
+            //var NewsWithPhotosList = (from news in _context.News
+            //                          select new NewsWithPhotos
+            //                          {
+            //                              NewsId = news.NewsId,
+            //                              NewsTitle = news.NewsTitle,
+            //                              NewsName = news.NewsName,
+            //                              NewsTxt = news.NewsTxt,
+            //                              SportCategoryId = news.SportCategoryId,
+            //                              NewsAddedDate = news.NewsAddedDate,
+            //                              NewsBigTitle = news.NewsBigTitle,
+            //                              NewsFirstPhotoPath = news.NewsFirstPhotoPath,
+            //                              NewsViews = news.NewsViews
 
-            ViewBag.NewsById = NewsWithPhotosList.FindAll(x=>x.NewsId == id);
+            //                          }).ToList();
+            ViewBag.SportCategories = _context.SportCategories.ToList();
 
-            return View(Vm());
+            return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
         }
 
         public IActionResult News()
         {
             return View(Vm());
         }
-        
+
         public IActionResult ClubAndFederation()
         {
             return View(Vm());

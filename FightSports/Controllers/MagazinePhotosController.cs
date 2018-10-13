@@ -13,13 +13,13 @@ namespace FightSports.Controllers
 {
     public class MagazinePhotosController : Controller
     {
-        private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
-        IHostingEnvironment _appEnvironment;
+        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public IHostingEnvironment _hostingEnvironment;
 
-        public MagazinePhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment appEnvironment)
+        public MagazinePhotosController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
-            _appEnvironment = appEnvironment;
         }
 
         // GET: MagazinePhotos
@@ -51,7 +51,7 @@ namespace FightSports.Controllers
         // GET: MagazinePhotos/Create
         public IActionResult Create()
         {
-            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineId");
+            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineFirstPhotoPath");
             return View();
         }
 
@@ -64,19 +64,19 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filePath = Path.Combine(_appEnvironment.WebRootPath, Path.GetFileName(magazinePhotos.MagazineFormFile.FileName));
-                magazinePhotos.MagazinePhotoPath = "/" + Path.GetFileName(magazinePhotos.MagazineFormFile.FileName);
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazinePhotos.FormFile.FileName));
+                magazinePhotos.MagazinePhotoPath = "/" + Path.GetFileName(magazinePhotos.FormFile.FileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await magazinePhotos.MagazineFormFile.CopyToAsync(stream);
+                    await magazinePhotos.FormFile.CopyToAsync(stream);
                 }
 
                 _context.Add(magazinePhotos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineId", magazinePhotos.MagazineId);
+            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineFirstPhotoPath", magazinePhotos.MagazineId);
             return View(magazinePhotos);
         }
 
@@ -93,7 +93,7 @@ namespace FightSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineId", magazinePhotos.MagazineId);
+            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineFirstPhotoPath", magazinePhotos.MagazineId);
             return View(magazinePhotos);
         }
 
@@ -129,7 +129,7 @@ namespace FightSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineId", magazinePhotos.MagazineId);
+            ViewData["MagazineId"] = new SelectList(_context.Magazine, "MagazineId", "MagazineFirstPhotoPath", magazinePhotos.MagazineId);
             return View(magazinePhotos);
         }
 

@@ -13,10 +13,10 @@ namespace FightSports.Models
         public string PhotoTitle { get; set; }
         public int? PhotoViews { get; set; }
         public string PhotoAddedData { get; set; }
-        public int NewsId { get; set; }
+        public int? NewsId { get; set; }
 
         [NotMapped]
-        public IFormFile formFile { get; set; }
+        public IFormFile FormFile { get; set; }
         public News News { get; set; }
     }
 }

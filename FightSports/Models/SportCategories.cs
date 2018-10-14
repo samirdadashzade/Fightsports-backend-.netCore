@@ -8,6 +8,7 @@ namespace FightSports.Models
         public SportCategories()
         {
             Magazine = new HashSet<Magazine>();
+            Melumat = new HashSet<Melumat>();
             News = new HashSet<News>();
         }
 
@@ -15,6 +16,7 @@ namespace FightSports.Models
         public string SportCategoryName { get; set; }
 
         public ICollection<Magazine> Magazine { get; set; }
+        public ICollection<Melumat> Melumat { get; set; }
         public ICollection<News> News { get; set; }
     }
 }

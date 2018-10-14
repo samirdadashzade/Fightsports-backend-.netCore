@@ -20,5 +20,6 @@ namespace FightSports
         public int SportCategoryId { get; set; }
         public string OptionalAdress { get; set; }
         public string NewsFirstPhotoPath { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

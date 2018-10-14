@@ -14,13 +14,14 @@ namespace FightSports.Models
             : base(options)
         {
         }
-        
+
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Banners> Banners { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<LiveTv> LiveTv { get; set; }
         public virtual DbSet<Magazine> Magazine { get; set; }
         public virtual DbSet<MagazinePhotos> MagazinePhotos { get; set; }
+        public virtual DbSet<Melumat> Melumat { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsType> NewsType { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
@@ -178,6 +179,26 @@ namespace FightSports.Models
                     .HasForeignKey(d => d.MagazineId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_magazine_photos_ToTablemagazine");
+            });
+
+            modelBuilder.Entity<Melumat>(entity =>
+            {
+                entity.Property(e => e.MelumatId).HasColumnName("melumat_id");
+
+                entity.Property(e => e.MelumatAdress)
+                    .HasColumnName("melumat_adress")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.MelumatPhotoPath).HasColumnName("melumat_photo_path");
+
+                entity.Property(e => e.MelumatTxt).HasColumnName("melumat_txt");
+
+                entity.Property(e => e.SportCategoryId).HasColumnName("sport_category_id");
+
+                entity.HasOne(d => d.SportCategory)
+                    .WithMany(p => p.Melumat)
+                    .HasForeignKey(d => d.SportCategoryId)
+                    .HasConstraintName("FK_Melumat_ToTable_sport_categories");
             });
 
             modelBuilder.Entity<News>(entity =>

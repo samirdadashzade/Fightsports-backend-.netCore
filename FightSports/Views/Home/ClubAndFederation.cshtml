@@ -1,18 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@model List<FightSports.Models.News>;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32"> -->
     <title>FightSports</title>
-    <link href="https://fonts.googleapis.com/css?family=Cabin:500" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:500" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
     <link href="~/css/style.css" rel="stylesheet" />
     <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/css/owl.theme.default.min.css" rel="stylesheet" />
     <link href="~/css/slider-pro.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 </head>
 <body class="animated fadeIn">
     <div class="page_background_img"></div>
@@ -28,11 +30,11 @@
             <div class="up_thin_footer_container">
                 <div class="logo_container">
                     <a href="">
-                        <img class="img-fluid" src="images/ufc_logo.png">
+                        <img class="img-fluid" src="images/ufc_logo.png" />
                     </a>
                 </div>
                 <div class="search_container_main">
-                    <input class="search_area" type="text">
+                    <input class="search_area" type="text" />
                     <a class="search_button" href="">
                         <div>go</div>
                     </a>
@@ -42,42 +44,12 @@
         <div class="container">
             <div class="full_nav_bar_container">
                 <div class="nav_bar_container">
-                    <span class="nav_bar_items">
-                        <a href="">karate</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">karate</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">karate</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">karate</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">karate</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">box</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">karate</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">takevando</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">takevando</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">takevando</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">takevando</a>
-                    </span>
-                    <span class="nav_bar_items">
-                        <a href="">takevando</a>
-                    </span>
+                    @foreach (var item in ViewBag.SportCategories)
+                    {
+                        <span class="nav_bar_items">
+                            <a href="">@item.SportCategoryName</a>
+                        </span>
+                    }
                 </div>
                 <div class="dropdown show">
                     <a class="btn btn-secondary dropdown-toggle" href="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,9 +70,12 @@
                 </div>
                 <div class="news_txt_container container">
                     <div class="for_border">
-                        <div class="news_container_title">
-                            <span>Muay Thai, MMA & Fitness at Tiger Muay Thai Training Camp in Phuket, Thailand</span>
-                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="news_container_title">
+                                <span>@item.NewsTitle</span>
+                            </div>
+                        }
                         <div class="main_news_container">
                             <div class="quote_svg">
                                 <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -110,6 +85,230 @@
                                 <g>
                                 <g>
                                 <path d="M164.45,219.27h-63.954c-7.614,0-14.087-2.664-19.417-7.994c-5.327-5.33-7.994-11.801-7.994-19.417v-9.132    c0-20.177,7.139-37.401,21.416-51.678c14.276-14.272,31.503-21.411,51.678-21.411h18.271c4.948,0,9.229-1.809,12.847-5.424    c3.616-3.617,5.424-7.898,5.424-12.847V54.819c0-4.948-1.809-9.233-5.424-12.85c-3.617-3.612-7.898-5.424-12.847-5.424h-18.271    c-19.797,0-38.684,3.858-56.673,11.563c-17.987,7.71-33.545,18.132-46.68,31.267c-13.134,13.129-23.553,28.688-31.262,46.677    C3.855,144.039,0,162.931,0,182.726v200.991c0,15.235,5.327,28.171,15.986,38.834c10.66,10.657,23.606,15.985,38.832,15.985    h109.639c15.225,0,28.167-5.328,38.828-15.985c10.657-10.663,15.987-23.599,15.987-38.834V274.088    c0-15.232-5.33-28.168-15.994-38.832C192.622,224.6,179.675,219.27,164.45,219.27z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,31 +372,252 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             </g>
                                         </g>
                                         </svg>
                             </div>
-                            <div class="quick_news_review_con">
-                                Located on “The Soi” in the Chalong area, Phuket, Thailand lies the world-renowned Tiger Muay Thai & MMA with currently no officially affiliated gyms or second locations. The globe’s biggest and most recognized Muay Thai, MMA & Fitness Training Camp and Destination Gym
-                            </div>
+                            @foreach (var item in Model)
+                            {
+                                <div class="quick_news_review_con">
+                                    @item.NewsBigTitle
+                                </div>
+                            }
                         </div>
                     </div>
                     <div class="big_main_news_con">
                         <div class="first_part_of_big_con">
-                            <div class="main_news_txt01_con">
-                                <p class="main_news_txt01">
-                                    Tiger Muay Thai strives to keep the Muay Thai training we offer 100% authentic. We respect Thai tradition and that reverence runs deeply throughout our classes and around our camp. You won’t find a watered down version of the “Art of Eight Limbs” here.
-                                    Visit the source of this deadly martial art and see it in all of its glory.
-                                    Tiger Muay Thai strives to keep the Muay Thai training we offer 100% authentic. We respect Thai tradition and that reverence runs deeply throughout our classes and around our camp. You won’t find a watered down version of the “Art of Eight Limbs” here.
-                                    Visit the source of this deadly martial art and see it in all of its glory.
-                                    Our BJJ classes are run by Christopher Vamos, Black Belt in 2010 under Professor Joe D’Arce (3rd Degree Black Belt under Renzo Gracie and famous for the famous D’Arce Choke). Chris believes that BJJ is for everyone and is dedicated to helping people achieve their goals through Martial Arts training. He is on the mat training and rolling with his students everyday, and is fully dedicated to teach everyone willing to learn.
-                                    Tiger Muay Thai strives to keep the Muay Thai training we offer 100% authentic. We respect Thai tradition and that reverence runs deeply throughout our classes and around our camp. You won’t find a watered down version of the “Art of Eight Limbs” here.
-                                    Visit the source of this deadly martial art and see it in all of its glory.
-                                    Tiger Muay Thai strives to keep the Muay Thai training we offer 100% authentic. We respect Thai tradition and that reverence runs deeply throughout our classes and around our camp. You won’t find a watered down version of the “Art of Eight Limbs” here.
-                                    Visit the source of this deadly martial art and see it in all of its glory.
-                                    Our BJJ classes are run by Christopher Vamos, Black Belt in 2010 under Professor Joe D’Arce (3rd Degree Black Belt under Renzo Gracie and famous for the famous D’Arce Choke). Chris believes that BJJ is for everyone and is dedicated to helping people achieve their goals through Martial Arts training. He is on the mat training and rolling with his students everyday, and is fully dedicated to teach everyone willing to learn.
-                                </p>
-                            </div>
+                            @foreach (var item in Model)
+                            {
+                                <div class="main_news_txt01_con">
+                                    <p class="main_news_txt01">
+                                        @item.NewsTxt
+                                    </p>
+                                </div>
+                            }
                             <div class="first_img_con myBtn01">
                                 <div class="video_svg">
                                     <!--?xml version="1.0" encoding="iso-8859-1"?-->
@@ -287,6 +707,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                 </g>
                                             </g>
                                             </svg>
@@ -297,6 +749,38 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 14.171 14.171" style="enable-background:new 0 0 14.171 14.171;" xml:space="preserve" width="512px" height="512px">
                                         <g>
                                         <path d="M13.268,0H0.905C0.405,0,0,0.405,0,0.904v12.363c0,0.499,0.405,0.904,0.905,0.904h12.362   c0.499,0,0.904-0.405,0.904-0.904V0.904C14.172,0.404,13.767,0,13.268,0z M11.755,8.635c0.259,0.264,0.821,0.707,0.719,1.158   c-0.094,0.414-0.712,0.263-1.312,0.287c-0.685,0.029-1.091,0.044-1.503-0.287C9.465,9.636,9.351,9.45,9.165,9.242   C8.996,9.054,8.783,8.717,8.493,8.73C7.972,8.756,8.135,9.482,7.95,9.977c-2.896,0.456-4.059-1.333-5.085-3.069   C2.368,6.067,1.65,4.261,1.65,4.261l2.048-0.007c0,0,0.657,1.195,0.831,1.503c0.148,0.262,0.311,0.47,0.479,0.704   c0.141,0.194,0.364,0.574,0.608,0.543c0.397-0.051,0.469-1.591,0.223-2.107C5.741,4.688,5.506,4.615,5.263,4.544   C5.345,4.026,7.56,3.918,7.918,4.32c0.52,0.584-0.36,2.21,0.352,2.684c1-0.524,1.854-2.718,1.854-2.718l2.398,0.015   c0,0-0.375,1.186-0.768,1.712c-0.229,0.308-0.989,0.994-0.959,1.503C10.819,7.919,11.437,8.311,11.755,8.635z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -370,6 +854,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                 </g>
                                             </g>
                                             </svg>
@@ -386,13 +902,13 @@
                 <div class="col-md-8">
                     <div class="comments_main_container wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
                         <div class="name_area">
-                            <input type="text" name="" class="name_input" placeholder="name*">
+                            <input type="text" name="" class="name_input" placeholder="name*" />
                         </div>
                         <div class="comment_area">
                             <textarea class="comment_input" placeholder="comment*"></textarea>
                         </div>
                         <div class="post_comment">
-                            <input type="submit" name="" placeholder="post" class="post_input">
+                            <input type="submit" name="" placeholder="post" class="post_input" />
                         </div>
                         <div class="posted_comments_container">
                             <div class="comment_item_container">
@@ -453,96 +969,12 @@
                             <div class="footer_container_main row">
                                 <div class="col-md-6 col-12">
                                     <div class="footer_nav_bar_container">
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">box</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">box</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">box</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">box</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">karate</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
-                                        <span class="footer_nav_bar_items">
-                                            <a href="">takevando</a>
-                                        </span>
+                                        @foreach (var item in ViewBag.SportCategories)
+                                        {
+                                            <span class="nav_bar_items">
+                                                <a href="">@item.SportCategoryName</a>
+                                            </span>
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -565,6 +997,38 @@
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
                                                     <g>
                                                     <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -636,6 +1100,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                             </g>
                                                             </svg>
                                                 </a>
@@ -647,6 +1143,38 @@
                                                     <g>
                                                     <g id="post-instagram">
                                                     <path d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z     M255,153c56.1,0,102,45.9,102,102c0,56.1-45.9,102-102,102c-56.1,0-102-45.9-102-102C153,198.9,198.9,153,255,153z M63.75,459    C56.1,459,51,453.9,51,446.25V229.5h53.55C102,237.15,102,247.35,102,255c0,84.15,68.85,153,153,153c84.15,0,153-68.85,153-153    c0-7.65,0-17.85-2.55-25.5H459v216.75c0,7.65-5.1,12.75-12.75,12.75H63.75z M459,114.75c0,7.65-5.1,12.75-12.75,12.75h-51    c-7.65,0-12.75-5.1-12.75-12.75v-51c0-7.65,5.1-12.75,12.75-12.75h51C453.9,51,459,56.1,459,63.75V114.75z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -727,18 +1255,7 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
 
 
 
@@ -813,18 +1330,7 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
 
 
 
@@ -868,6 +1374,188 @@
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
                                                             <g>
                                                             <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -944,18 +1632,7 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
 
 
 
@@ -1030,18 +1707,7 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
 
 
 
@@ -1085,6 +1751,188 @@
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
                                                             <g>
                                                             <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1141,106 +1989,113 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/wow.min.js"></script>
-    <script src="~/js/jquery.sliderPro.min.js"></script>
-    <script src="~/js/federation.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiE26jGeBafh8JelcM8cKZfpYqMtAuJU&language=en&region=us&callback=initMap">
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <script src="~/js/owl.carousel.min.js">
+    </script>
+    <script src="~/js/wow.min.js">
+    </script>
+    <script src="~/js/jquery.sliderPro.min.js">
+    </script>
+    <script src="~/js/federation.js">
+    </script>
+    <script async=async defer=defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiE26jGeBafh8JelcM8cKZfpYqMtAuJU&language=en&region=us&callback=initMap">
     </script>
     <script type="text/javascript">
         function initMap() {
-            var cords = { lat: 47.435203, lng: -122.247089 };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
-                center: cords,
-                styles: [
-                    { elementType: 'geometry', stylers: [{ color: '#000000' }] },
-                    { elementType: 'labels.text.stroke', stylers: [{ color: '#000000' }] },
-                    { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
-                    {
-                        featureType: 'administrative.locality',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#d59563' }]
-                    },
-                    {
-                        featureType: 'poi',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#d59563' }]
-                    },
-                    {
-                        featureType: 'poi.park',
-                        elementType: 'geometry',
-                        stylers: [{ color: '#263c3f' }]
-                    },
-                    {
-                        featureType: 'poi.park',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#6b9a76' }]
-                    },
-                    {
-                        featureType: 'road',
-                        elementType: 'geometry',
-                        stylers: [{ color: '#38414e' }]
-                    },
-                    {
-                        featureType: 'road',
-                        elementType: 'geometry.stroke',
-                        stylers: [{ color: '#212a37' }]
-                    },
-                    {
-                        featureType: 'road',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#9ca5b3' }]
-                    },
-                    {
-                        featureType: 'road.highway',
-                        elementType: 'geometry',
-                        stylers: [{ color: '#746855' }]
-                    },
-                    {
-                        featureType: 'road.highway',
-                        elementType: 'geometry.stroke',
-                        stylers: [{ color: '#1f2835' }]
-                    },
-                    {
-                        featureType: 'road.highway',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#f3d19c' }]
-                    },
-                    {
-                        featureType: 'transit',
-                        elementType: 'geometry',
-                        stylers: [{ color: '#2f3948' }]
-                    },
-                    {
-                        featureType: 'transit.station',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#d59563' }]
-                    },
-                    {
-                        featureType: 'water',
-                        elementType: 'geometry',
-                        stylers: [{ color: '#blue' }]
-                    },
-                    {
-                        featureType: 'water',
-                        elementType: 'labels.text.fill',
-                        stylers: [{ color: '#515c6d' }]
-                    },
-                    {
-                        featureType: 'water',
-                        elementType: 'labels.text.stroke',
-                        stylers: [{ color: '#17263c' }]
-                    }
-                ]
-            })
-            var marker = new google.maps.Marker({
-                position: cords,
-                map: map
-            })
+        var cords = { lat: 47.435203, lng: -122.247089 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: cords,
+        styles: [
+        { elementType: 'geometry', stylers: [{ color: '#000000' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#000000' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+        {
+        featureType: 'administrative.locality',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#d59563' }]
+        },
+        {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#d59563' }]
+        },
+        {
+        featureType: 'poi.park',
+        elementType: 'geometry',
+        stylers: [{ color: '#263c3f' }]
+        },
+        {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#6b9a76' }]
+        },
+        {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [{ color: '#38414e' }]
+        },
+        {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [{ color: '#212a37' }]
+        },
+        {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#9ca5b3' }]
+        },
+        {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [{ color: '#746855' }]
+        },
+        {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [{ color: '#1f2835' }]
+        },
+        {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#f3d19c' }]
+        },
+        {
+        featureType: 'transit',
+        elementType: 'geometry',
+        stylers: [{ color: '#2f3948' }]
+        },
+        {
+        featureType: 'transit.station',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#d59563' }]
+        },
+        {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [{ color: '#blue' }]
+        },
+        {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [{ color: '#515c6d' }]
+        },
+        {
+        featureType: 'water',
+        elementType: 'labels.text.stroke',
+        stylers: [{ color: '#17263c' }]
+        }
+        ]
+        })
+        var marker = new google.maps.Marker({
+        position: cords,
+        map: map
+        })
         }
     </script>
 </body>

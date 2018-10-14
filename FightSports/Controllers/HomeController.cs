@@ -31,6 +31,7 @@ namespace FightSports.Controllers
             viewModel.NewsTypes = _context.NewsType.ToList();
             viewModel.Photos = _context.Photos.ToList();
             viewModel.SportCategories = _context.SportCategories.ToList();
+            viewModel.Melumats = _context.Melumat.ToList();
 
             return viewModel;
         }
@@ -41,34 +42,39 @@ namespace FightSports.Controllers
         }
 
         public IActionResult SportsPage(int? id)
-        {
-            //var NewsWithPhotosList = (from news in _context.News
-            //                          select new NewsWithPhotos
-            //                          {
-            //                              NewsId = news.NewsId,
-            //                              NewsTitle = news.NewsTitle,
-            //                              NewsName = news.NewsName,
-            //                              NewsTxt = news.NewsTxt,
-            //                              SportCategoryId = news.SportCategoryId,
-            //                              NewsAddedDate = news.NewsAddedDate,
-            //                              NewsBigTitle = news.NewsBigTitle,
-            //                              NewsFirstPhotoPath = news.NewsFirstPhotoPath,
-            //                              NewsViews = news.NewsViews
-
-            //                          }).ToList();
+        {            
             ViewBag.SportCategories = _context.SportCategories.ToList();
+            ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
+            ViewBag.Magazine = _context.Magazine.ToList();
+            ViewBag.MagazinePhotos = _context.MagazinePhotos;
+        
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
         }
 
-        public IActionResult News()
+        public IActionResult News(int? id)
         {
+            var newsWithPhotos = (from news in _context.News
+                                  join photos in _context.Photos
+                                  on news.NewsId equals photos.NewsId
+                                  select new NewsWithPhotos
+                                  {
+                                      NewsBigTitle = news.NewsBigTitle,
+                                      NewsId = news.NewsId,
+                                      NewsName = news.NewsName,
+                                      NewsTitle = news.NewsTitle,
+                                      NewsTxt = news.NewsTxt,
+                                      PhotoPath = photos.PhotoPath,
+                                  }).ToList();
+
+            ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
             return View(Vm());
         }
 
-        public IActionResult ClubAndFederation()
+        public IActionResult ClubAndFederation(int? id)
         {
-            return View(Vm());
+            ViewBag.SportCategories = _context.SportCategories.ToList();
+            return View(_context.News.Where(x=>x.NewsId == id).ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

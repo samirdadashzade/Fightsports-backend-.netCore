@@ -56,16 +56,16 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentId,AuthorName,CommentTxt,CommentDate,NewsId")] Comments comments)
+        public async Task<IActionResult> Create([FromBody] Comments comments)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(comments);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
             }
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", comments.NewsId);
-            return View(comments);
+            return new JsonResult("added");
         }
 
         // GET: Comments/Edit/5

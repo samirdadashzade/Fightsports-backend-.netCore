@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,7 +24,7 @@ namespace FightSports.Models
         public string MagazineFirstPhotoPath { get; set; }
 
         [NotMapped]
-        public string FormFile { get; set; }
+        public IFormFile FormFile { get; set; }
         public SportCategories SportCategory { get; set; }
         public ICollection<MagazinePhotos> MagazinePhotos { get; set; }
     }

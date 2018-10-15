@@ -42,8 +42,6 @@ namespace FightSports
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddAntiforgery(options => options.HeaderName = "MY-XSRF-TOKEN");
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

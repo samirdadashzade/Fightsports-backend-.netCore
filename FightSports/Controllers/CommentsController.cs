@@ -9,6 +9,7 @@ using FightSports.Models;
 
 namespace FightSports.Controllers
 {
+    [IgnoreAntiforgeryToken(Order = 1001)]
     public class CommentsController : Controller
     {
         private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
@@ -16,6 +17,12 @@ namespace FightSports.Controllers
         public CommentsController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
         {
             _context = context;
+        }
+
+        public IActionResult GetCommentsById(int? id)
+        {
+            var comms = _context.Comments.Where(x => x.NewsId == id);
+            return Json(comms);
         }
 
         // GET: Comments
@@ -62,10 +69,11 @@ namespace FightSports.Controllers
             {
                 _context.Add(comments);
                 await _context.SaveChangesAsync();
-                
+                //return RedirectToAction(nameof(Index));
+
             }
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", comments.NewsId);
-            return new JsonResult("added");
+            return Json(comments);
         }
 
         // GET: Comments/Edit/5

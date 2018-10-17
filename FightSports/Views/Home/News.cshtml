@@ -239,18 +239,21 @@
                             <input type="submit" name="" id="insert" value="post comment" class="post_input" />
                         </div>
                         <div class="posted_comments_container">
-                            <div class="comment_item_container">
-                                <div class="comment_author_pic">
-                                    
-                                </div>
-                                <div class="comment_sets">
-                                    <div class="comment_date">22.08.2018</div>
-                                    <div class="cooment_author_name">rustam</div>
-                                    <div class="comment_txt">
-                                        Brian Gerson is a sports journalist based out of Boston, Massachusetts, specializing in Mixed Martial Arts. In covering regional as well as global MMA, he has met and spoken to some of the best, young fighters the New England region has to offer.
+                            @*@foreach (var item in ViewBag.Comments)
+                            {
+                                <div class="comment_item_container">
+                                    <div class="comment_author_pic">
+
+                                    </div>
+                                    <div class="comment_sets">
+                                        <div class="comment_date">@item.CommentDate</div>
+                                        <div class="cooment_author_name">@item.AuthorName</div>
+                                        <div class="comment_txt">
+                                            @item.CommentTxt
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }*@
                         </div>
                     </div>
                 </div>
@@ -575,7 +578,7 @@
                     contentType: "application/json;charset=utf-8"
                 })
                 
-                 var commenCon = $('.comment_sets');
+                 var commenCon = $('.posted_comments_container');
 
                 $.ajax({
                     url: "/Comments/GetCommentsById/" + id,
@@ -584,14 +587,23 @@
                     success: function(data) {
                         console.log(data);
 
-                        @*$.each(data, function (index,val){
-                            var result = 
-                                + val.AuthorName 
-                               
-                                                        
-                                commenCon.append('<div class="cooment_author_name">' + result + '</div>')
+                        $.each(data, function (index,val){
+                            var AuthorName = val.AuthorName
+                            var CommentTxt = val.CommentTxt
+                            var CommentDate = val.CommentDate
+                                                     
+                            commenCon.append('<div class="comment_item_container">'
+                                    '<div class="comment_author_pic">'
+
+                                    '</div>'
+                                    '<div class="comment_sets">'
+                                        '<div class="comment_date">' + CommentDate + '</div>'
+                                        '<div class="cooment_author_name">' + AuthotName + '</div>'
+                                        '<div class="comment_txt">' + CommentTxt +  '</div>'
+                                    '</div>'
+                                '</div>')
                             
-                        })*@
+                        })
                     }
                 })
             })

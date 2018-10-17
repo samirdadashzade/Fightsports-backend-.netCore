@@ -67,6 +67,7 @@ namespace FightSports.Controllers
                                       PhotoPath = photos.PhotoPath,
                                   }).ToList();
 
+            ViewBag.Comments = _context.Comments.Where(x => x.NewsId == id).ToList();
             ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
             return View(Vm());
         }

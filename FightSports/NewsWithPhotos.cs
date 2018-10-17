@@ -21,5 +21,9 @@ namespace FightSports
         public string OptionalAdress { get; set; }
         public string NewsFirstPhotoPath { get; set; }
         public string PhotoPath { get; set; }
+        public int CommentId { get; set; }
+        public string AuthorName { get; set; }
+        public string CommentTxt { get; set; }
+        public string CommentDate { get; set; }
     }
 }

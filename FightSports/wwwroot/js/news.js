@@ -144,3 +144,4 @@ const upperAreaSets = () => {
 upperAreaSets()
 
 window.onresize = upperAreaSets
+

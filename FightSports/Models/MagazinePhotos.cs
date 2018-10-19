@@ -11,7 +11,6 @@ namespace FightSports.Models
         public string MagazinePhotoPath { get; set; }
         public string MagazinePhotoName { get; set; }
         public int MagazineId { get; set; }
-
         [NotMapped]
         public IFormFile FormFile { get; set; }
         public Magazine Magazine { get; set; }

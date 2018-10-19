@@ -53,7 +53,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AdminId,AdminName,AdminPassword")] Admin admin)
+        public async Task<IActionResult> Create([Bind("AdminId,AdminName,AdminPassword,AdminEmail")] Admin admin)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AdminId,AdminName,AdminPassword")] Admin admin)
+        public async Task<IActionResult> Edit(int id, [Bind("AdminId,AdminName,AdminPassword,AdminEmail")] Admin admin)
         {
             if (id != admin.AdminId)
             {

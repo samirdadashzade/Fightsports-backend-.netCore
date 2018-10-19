@@ -22,6 +22,7 @@ namespace FightSports.Models
         public virtual DbSet<Magazine> Magazine { get; set; }
         public virtual DbSet<MagazinePhotos> MagazinePhotos { get; set; }
         public virtual DbSet<Melumat> Melumat { get; set; }
+        public virtual DbSet<MelumatComments> MelumatComments { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsType> NewsType { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
@@ -32,6 +33,7 @@ namespace FightSports.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\rustam\\Documents\\fightSports.mdf;Integrated Security=True;Connect Timeout=30;");
             }
         }
@@ -43,6 +45,10 @@ namespace FightSports.Models
                 entity.ToTable("admin");
 
                 entity.Property(e => e.AdminId).HasColumnName("admin_id");
+
+                entity.Property(e => e.AdminEmail)
+                    .HasColumnName("admin_email")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.AdminName)
                     .HasColumnName("admin_name")
@@ -121,9 +127,7 @@ namespace FightSports.Models
 
                 entity.Property(e => e.MagazineId).HasColumnName("magazine_id");
 
-                entity.Property(e => e.MagazineAdress)
-                    .HasColumnName("magazine_adress")
-                    .HasMaxLength(50);
+                entity.Property(e => e.MagazineAdress).HasColumnName("magazine_adress");
 
                 entity.Property(e => e.MagazineFirstPhotoPath)
                     .IsRequired()
@@ -143,9 +147,7 @@ namespace FightSports.Models
                     .HasColumnName("product_title")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.ProductTxt)
-                    .HasColumnName("product_txt")
-                    .HasMaxLength(50);
+                entity.Property(e => e.ProductTxt).HasColumnName("product_txt");
 
                 entity.Property(e => e.SportCategoryId).HasColumnName("sport_category_id");
 
@@ -199,6 +201,32 @@ namespace FightSports.Models
                     .WithMany(p => p.Melumat)
                     .HasForeignKey(d => d.SportCategoryId)
                     .HasConstraintName("FK_Melumat_ToTable_sport_categories");
+            });
+
+            modelBuilder.Entity<MelumatComments>(entity =>
+            {
+                entity.HasKey(e => e.MelumatCommentId);
+
+                entity.ToTable("melumat_comments");
+
+                entity.Property(e => e.MelumatCommentId).HasColumnName("melumat_comment_id");
+
+                entity.Property(e => e.MelumatCommentAuthorName)
+                    .HasColumnName("melumat_comment_author_name")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.MelumatCommentDate)
+                    .HasColumnName("melumat_comment_date")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.MelumatCommentTxt).HasColumnName("melumat_comment_txt");
+
+                entity.Property(e => e.MelumatId).HasColumnName("melumat_id");
+
+                entity.HasOne(d => d.Melumat)
+                    .WithMany(p => p.MelumatComments)
+                    .HasForeignKey(d => d.MelumatId)
+                    .HasConstraintName("FK_melumat_comments_ToTablemelumat_id");
             });
 
             modelBuilder.Entity<News>(entity =>

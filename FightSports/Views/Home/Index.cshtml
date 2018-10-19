@@ -61,7 +61,7 @@
                     @foreach (var item in Model.News)
                     {
                         <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
-                            <a class="main_link" href="Home/News/@item.NewsId">
+                            <a class="main_link" >
                                 <div class="carousel_overlay"></div>
                                 <div class="main_feed_container">
                                     <div class="news_info_container">
@@ -1596,11 +1596,9 @@
         </div>
     </div>
 
+    <div class="test_count">
 
-
-
-
-
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -1615,6 +1613,30 @@
     <script src="~/js/wow.min.js">
     </script>
     <script src="~/js/index.js">
+    </script>
+    <script>
+        var testCount = $('.test_count')
+        var link = $('.main_link')
+
+        function getCount (){
+            var count = 0
+            link.click(function (){
+                count ++
+                console.log(count)
+                testCount.text(count)
+            })
+
+            $.ajax({
+                url: ""
+            })
+
+
+        }
+        getCount ()
+
+       
+
+
     </script>
 </body>
 </html>

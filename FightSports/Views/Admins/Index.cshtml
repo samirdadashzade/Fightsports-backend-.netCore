@@ -19,6 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.AdminPassword)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminEmail)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,6 +33,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AdminPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminEmail)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.AdminId">Edit</a> |

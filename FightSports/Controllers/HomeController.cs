@@ -42,12 +42,12 @@ namespace FightSports.Controllers
         }
 
         public IActionResult SportsPage(int? id)
-        {            
+        {
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
-            ViewBag.Magazine = _context.Magazine.ToList();
-            ViewBag.MagazinePhotos = _context.MagazinePhotos;
-        
+            ViewBag.Magazine = _context.Magazine.Where(x => x.SportCategoryId == id).ToList();
+
+            ViewBag.MagazinePhotos = _context.MagazinePhotos.ToList();
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
         }
@@ -75,7 +75,7 @@ namespace FightSports.Controllers
         public IActionResult ClubAndFederation(int? id)
         {
             ViewBag.SportCategories = _context.SportCategories.ToList();
-            return View(_context.News.Where(x=>x.NewsId == id).ToList());
+            return View(_context.News.Where(x => x.NewsId == id).ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

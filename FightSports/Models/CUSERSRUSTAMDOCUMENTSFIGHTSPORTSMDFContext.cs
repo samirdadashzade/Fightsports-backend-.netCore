@@ -33,7 +33,6 @@ namespace FightSports.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\rustam\\Documents\\fightSports.mdf;Integrated Security=True;Connect Timeout=30;");
             }
         }
@@ -245,9 +244,9 @@ namespace FightSports.Models
 
                 entity.Property(e => e.NewsBigTitle).HasColumnName("news_big_title");
 
-                entity.Property(e => e.NewsFirstPhotoPath)
-                    .IsRequired()
-                    .HasColumnName("news_first_photo_path");
+                entity.Property(e => e.NewsFirstPhotoPath).HasColumnName("news_first_photo_path");
+
+                entity.Property(e => e.NewsFirstVideoPath).HasColumnName("news_first_video_path");
 
                 entity.Property(e => e.NewsName)
                     .HasColumnName("news_name")

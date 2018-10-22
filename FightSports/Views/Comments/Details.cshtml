@@ -1,43 +1,50 @@
 ﻿@model FightSports.Models.Comments
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
+<!DOCTYPE html>
 
-<h2>Details</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
 
-<div>
-    <h4>Comments</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AuthorName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AuthorName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentTxt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CommentTxt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CommentDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.News)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.News.NewsFirstPhotoPath)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <h4>Comments</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AuthorName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CommentTxt)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CommentTxt)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CommentDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CommentDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.News)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.NewsTitle)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
+</html>

@@ -401,6 +401,26 @@ body {
       .main_container .news_big_slider #owl-two .item .main_row_container img {
         border: 1px solid transparent;
         border-radius: 7px; }
+      .main_container .news_big_slider #owl-two .item .main_row_container .owl_two_module_content_img_con {
+        display: block;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        margin-right: 5px;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 144px; }
+        .main_container .news_big_slider #owl-two .item .main_row_container .owl_two_module_content_img_con .owl_two_module_content_img {
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          margin-right: 5px;
+          background-image: url(../images/B206_1920x1080_announce.jpg); }
       .main_container .news_big_slider #owl-two .item .main_row_container .col-md-3 {
         padding-right: 4px !important;
         padding-left: 4px !important;
@@ -619,6 +639,26 @@ body {
         .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_img_example {
           border: 1px solid transparent;
           border-radius: 7px; }
+        .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .owl_nine_module_content_img_con {
+          display: block;
+          border: 1px solid transparent;
+          border-radius: 7px;
+          margin-right: 5px;
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 144px; }
+          .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .owl_nine_module_content_img_con .owl_nine_module_content_img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-right: 5px;
+            background-image: url(../images/B206_1920x1080_announce.jpg); }
         .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .video_svg {
           position: absolute;
           margin: auto;
@@ -627,7 +667,8 @@ body {
           bottom: 0;
           top: 0;
           width: 27px;
-          height: 27px; }
+          height: 27px;
+          z-index: 1; }
           .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .video_svg svg {
             position: absolute;
             width: 27px;
@@ -698,6 +739,26 @@ body {
         .main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .foto_tab_img_example {
           border: 1px solid transparent;
           border-radius: 7px; }
+        .main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .owl_nine_module_content_img_con {
+          display: block;
+          border: 1px solid transparent;
+          border-radius: 7px;
+          margin-right: 5px;
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 144px; }
+          .main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .owl_nine_module_content_img_con .owl_nine_module_content_img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-right: 5px;
+            background-image: url(../images/B206_1920x1080_announce.jpg); }
         .main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .foto_tab_row_content {
           position: absolute;
           z-index: 2;
@@ -763,6 +824,26 @@ body {
         .main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .master_tab_for_hover .master_tab_img_example {
           border: 1px solid transparent;
           border-radius: 7px; }
+        .main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .master_tab_for_hover .owl_nine_module_content_img_con {
+          display: block;
+          border: 1px solid transparent;
+          border-radius: 7px;
+          margin-right: 5px;
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 144px; }
+          .main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .master_tab_for_hover .owl_nine_module_content_img_con .owl_nine_module_content_img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-right: 5px;
+            background-image: url(../images/B206_1920x1080_announce.jpg); }
         .main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .master_tab_for_hover .master_tab_row_content {
           position: absolute;
           z-index: 2;

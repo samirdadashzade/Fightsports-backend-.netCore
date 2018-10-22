@@ -19,10 +19,11 @@ namespace FightSports.Controllers
             _context = context;
         }
 
-        public IActionResult GetMelumatCommentsById(int? id)
+        public IActionResult GetMelumatCommentsById (int? id)
         {
-            var comms = _context.MelumatComments.Where(x => x.MelumatId == id);
-            return Json(comms);
+            var melumatComms = _context.MelumatComments.Where(x => x.MelumatId == id);
+
+            return Json(melumatComms);
         }
 
         // GET: MelumatComments

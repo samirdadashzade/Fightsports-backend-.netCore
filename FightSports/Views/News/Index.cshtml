@@ -5,98 +5,113 @@
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsBigTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsTxt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsViews)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsAddedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionalLongitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionalLatitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionalAdress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsFirstPhotoPath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SportCategory)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsBigTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsTxt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsViews)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsAddedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionalLongitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionalLatitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionalAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsFirstPhotoPath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsType.NewsTypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NewsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NewsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NewsId">Delete</a>
-            </td>
-        </tr>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsBigTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsTxt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsViews)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsAddedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OptionalLongitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OptionalLatitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OptionalAdress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsFirstPhotoPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsFirstVideoPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SportCategory)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsTitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsBigTitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsTxt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsViews)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsAddedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OptionalLongitude)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OptionalLatitude)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OptionalAdress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsFirstPhotoPath)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsFirstVideoPath)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewsType.NewsTypeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.NewsId">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.NewsId">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.NewsId">Delete</a>
+    </td>
+</tr>
 }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</body>
+</html>

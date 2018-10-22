@@ -1,73 +1,82 @@
 ﻿@model FightSports.Models.Magazine
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
 
-<h2>Details</h2>
+<!DOCTYPE html>
 
-<div>
-    <h4>Magazine</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MagazineAdress)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MagazineAdress)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MagazineLongitude)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MagazineLongitude)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MagazineLatitude)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MagazineLatitude)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductTxt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductTxt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductTitle)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductTitle)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MagazineFirstPhotoPath)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MagazineFirstPhotoPath)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SportCategory)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SportCategory.SportCategoryName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.MagazineId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>Magazine</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineAdress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineAdress)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineLongitude)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineLongitude)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineLatitude)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineLatitude)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductTxt)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductTxt)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductPrice)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductTitle)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineFirstPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineFirstPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SportCategory)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SportCategory.SportCategoryName)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.MagazineId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
+</html>

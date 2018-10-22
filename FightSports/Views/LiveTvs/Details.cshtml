@@ -1,31 +1,40 @@
 ﻿@model FightSports.Models.LiveTv
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
 
-<h2>Details</h2>
+<!DOCTYPE html>
 
-<div>
-    <h4>LiveTv</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LivePath)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LivePath)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LiveTitle)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LiveTitle)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.LiveTvId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>LiveTv</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LivePath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LivePath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LiveTitle)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LiveTitle)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.LiveTvId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
+</html>

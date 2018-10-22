@@ -22,7 +22,6 @@ namespace FightSports.Models
         public string ProductTitle { get; set; }
         public int SportCategoryId { get; set; }
         public string MagazineFirstPhotoPath { get; set; }
-
         [NotMapped]
         public IFormFile FormFile { get; set; }
         public SportCategories SportCategory { get; set; }

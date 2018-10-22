@@ -1,5 +1,11 @@
 ﻿@model FightSports.ViewModel;
 
+
+@{
+    List<NewsWithPhotos> news = new List<NewsWithPhotos>();
+    news = ViewBag.newsWithPhotos;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,10 +64,10 @@
         <div class="main_news_feed_container">
             <div class="container">
                 <div id="owl-one" class="owl-carousel owl-theme">
-                    @foreach (var item in Model.News)
+                    @foreach (var item in Model.News.TakeLast(5))
                     {
                         <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
-                            <a class="main_link" >
+                            <a class="main_link" href="/Home/News/@item.NewsId">
                                 <div class="carousel_overlay"></div>
                                 <div class="main_feed_container">
                                     <div class="news_info_container">
@@ -71,9 +77,9 @@
                                         <div class="news_feed_date_container">
                                             <div class="week_day">saturday</div>
                                             <br />
-                                            <div class="day_time">september 13</div>
+                                            <div class="day_time">@item.NewsAddedDate</div>
                                             <br />
-                                            <div class="little_info">straming live on amazon</div>
+                                            <div class="little_info"></div>
                                         </div>
                                         <div class="news_feed_adress">
                                             <div class="building_name">@item.NewsName</div>
@@ -115,7 +121,7 @@
                                                     </div>
                                                     <div class="post_date_and_seen_times">
                                                         <div class="post_date">
-                                                            16.45 saturday
+                                                            @item.NewsAddedDate
                                                         </div>
                                                         <div class="seen_times">
                                                             <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -131,6 +137,774 @@
                                                                             c0.479-0.7,11.914-17.124,27.963-17.124c9.511,0,18.429,5.75,26.506,17.089c0.564,0.793,0.579,1.852,0.037,2.659
                                                                             C54.482,30.266,44.105,45.438,28.042,45.438z M5.348,28.211c7.487,8.332,15.115,12.553,22.694,12.553
                                                                             c11.041,0,19.297-9.045,22.025-12.465c-6.859-9.126-14.151-13.752-21.694-13.752C17.329,14.546,8.36,24.447,5.348,28.211z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -646,10 +1420,778 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                            345
+                                                            @item.NewsViews
                                                         </div>
                                                         <div class="read_more_button">
                                                             read more
@@ -684,8 +2226,11 @@
                                         @foreach (var item in Model.News.Skip(i * 8).Take(8))
                                         {
                                             <div class="col-md-3 col-sm-3 col-3 for_hover">
-                                                <a href="">
-                                                    <img class="img-fluid img_example" src="@item.NewsFirstPhotoPath" />
+                                                <a href="/Home/News/@item.NewsId">
+                                                    @*<img class="img-fluid img_example" src="@item.NewsFirstPhotoPath" />*@
+                                                    <div class="owl_two_module_content_img_con">
+                                                         <div class="owl_two_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
+                                                    </div>
                                                     <div class="row_content">
                                                         <div class="content_title">@item.NewsBigTitle</div>
                                                         <!-- <div class="small_info">
@@ -694,7 +2239,7 @@
                                                         </div> -->
                                                         <div class="post_date_and_seen_times">
                                                             <div class="post_date">
-                                                                16.45 saturday
+                                                                @item.NewsAddedDate
                                                             </div>
                                                             <div class="seen_times">
                                                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55.312px" height="55.312px" viewBox="0 0 55.312 55.312" style="enable-background:new 0 0 55.312 55.312;" xml:space="preserve">
@@ -713,7 +2258,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                345
+                                                                @item.NewsViews
                                                             </div>
                                                         </div>
                                                     </div>
@@ -741,7 +2286,7 @@
                                         @foreach (var item in Model.News.Skip(i * 3).Take(3))
                                         {
                                             <div class="small_module_con_item">
-                                                <a href="">
+                                                <a href="/Home/News/@item.NewsId">
                                                     <div class="small_module_item_content_main no_border">
                                                         <div class="module_content_img_con">
                                                             <div class="module_content_img" style="background-image:url(@Url.Content(item.NewsFirstPhotoPath)"></div>
@@ -753,7 +2298,7 @@
                                                             </div>
                                                             <div class="small_module_post_date_and_seen_times">
                                                                 <div class="small_module_post_date">
-                                                                    16.45 saturday
+                                                                    @item.NewsAddedDate
                                                                 </div>
                                                                 <div class="small_module_seen_times">
                                                                     <!--?xml version="1.0" encoding="iso-8859-1"?-->
@@ -774,7 +2319,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                    345
+                                                                    @item.NewsViews
                                                                 </div>
                                                                 <div class="small_module_read_more_button">
                                                                     read more
@@ -802,7 +2347,7 @@
                                         @foreach (var item in Model.News.Skip(i * 3).Take(3))
                                         {
                                             <div class="small_module_con_item">
-                                                <a href="">
+                                                <a href="/Home/News/@item.NewsId">
                                                     <div class="small_module_item_content_main no_border">
                                                         <div class="module_content_img_con">
                                                             <div class="module_content_img" style="background-image:url(@Url.Content(item.NewsFirstPhotoPath)"></div>
@@ -814,7 +2359,7 @@
                                                             </div>
                                                             <div class="small_module_post_date_and_seen_times">
                                                                 <div class="small_module_post_date">
-                                                                    16.45 saturday
+                                                                    @item.NewsAddedDate
                                                                 </div>
                                                                 <div class="small_module_seen_times">
                                                                     <!--?xml version="1.0" encoding="iso-8859-1"?-->
@@ -835,7 +2380,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                    345
+                                                                    @item.NewsViews
                                                                 </div>
                                                                 <div class="small_module_read_more_button">
                                                                     read more
@@ -904,13 +2449,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                                                                 <g>
                                                                 </g>
                                                                 </svg>
                                                             </div>
-                                                            <img class="img-fluid tab_img_example" src="@item.NewsFirstPhotoPath" />
+                                                            <div class="owl_nine_module_content_img_con">
+                                                                <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
+                                                            </div>
                                                             <div class="tab_row_content myBtn01">
-                                                                <div class="my_url">https://www.youtube.com/watch?v=v6EmLhu7C9M</div>
+                                                                <div class="my_url">@item.NewsFirstVideoPath</div>
                                                                 <div class="tab_content_title">@item.NewsBigTitle</div>
                                                                 <!-- <div class="small_info">
                                                                     After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
@@ -918,7 +2477,7 @@
                                                                 </div> -->
                                                                 <div class="tab_post_date_and_seen_times">
                                                                     <div class="tab_post_date">
-                                                                        16.45 saturday
+                                                                        @item.NewsAddedDate
                                                                     </div>
                                                                     <div class="tab_seen_times">
                                                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55.312px" height="55.312px" viewBox="0 0 55.312 55.312" style="enable-background:new 0 0 55.312 55.312;" xml:space="preserve">
@@ -937,7 +2496,7 @@
                                                                         </g>
                                                                     </g>
                                                                     </svg>
-                                                                        345
+                                                                        @item.NewsViews
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -962,8 +2521,10 @@
                                                 @foreach (var item in Model.News.Skip(i * 8).Take(8))
                                                 {
                                                     <div class="col-md-3 col-sm-3 col-3 foto_tab_for_hover">
-                                                        <a href="">
-                                                            <img class="img-fluid foto_tab_img_example" src="@item.NewsFirstPhotoPath" />
+                                                        <a href="/Home/News/@item.NewsId">
+                                                            <div class="owl_nine_module_content_img_con">
+                                                                <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
+                                                            </div>
                                                             <div class="foto_tab_row_content">
                                                                 <div class="foto_tab_content_title">@item.NewsBigTitle</div>
                                                                 <!-- <div class="small_info">
@@ -972,7 +2533,7 @@
                                                                 </div> -->
                                                                 <div class="foto_tab_post_date_and_seen_times">
                                                                     <div class="foto_tab_post_date">
-                                                                        16.45 saturday
+                                                                        @item.NewsAddedDate
                                                                     </div>
                                                                     <div class="foto_tab_seen_times">
                                                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55.312px" height="55.312px" viewBox="0 0 55.312 55.312" style="enable-background:new 0 0 55.312 55.312;" xml:space="preserve">
@@ -991,7 +2552,7 @@
                                                                         </g>
                                                                     </g>
                                                                     </svg>
-                                                                        345
+                                                                        @item.NewsViews
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1017,8 +2578,10 @@
                                                 @foreach (var item in Model.News.Skip(i * 8).Take(8))
                                                 {
                                                     <div class="col-md-3 col-sm-3 col-3 master_tab_for_hover">
-                                                        <a href="">
-                                                            <img class="img-fluid master_tab_img_example" src="@item.NewsFirstPhotoPath" />
+                                                        <a href="/Home/News/@item.NewsId">
+                                                            <div class="owl_nine_module_content_img_con">
+                                                                <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
+                                                            </div>
                                                             <div class="master_tab_row_content">
                                                                 <div class="master_tab_content_title">@item.NewsBigTitle</div>
                                                                 <!-- <div class="small_info">
@@ -1027,7 +2590,7 @@
                                                                 </div> -->
                                                                 <div class="master_tab_post_date_and_seen_times">
                                                                     <div class="master_tab_post_date">
-                                                                        16.45 saturday
+                                                                        @item.NewsAddedDate
                                                                     </div>
                                                                     <div class="master_tab_seen_times">
                                                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55.312px" height="55.312px" viewBox="0 0 55.312 55.312" style="enable-background:new 0 0 55.312 55.312;" xml:space="preserve">
@@ -1046,7 +2609,7 @@
                                                                         </g>
                                                                     </g>
                                                                     </svg>
-                                                                        345
+                                                                        @item.NewsViews
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1066,9 +2629,12 @@
                             <div class="row">
                                 <div class="col-md-12 fsftv_padd">
                                     <div class="fsftv_container">
-                                        <div class="fsftv_background_img_container">
-                                            <div class="fsftv_background_img"></div>
-                                        </div>
+                                        @*<div class="fsftv_background_img_container">
+                                                @foreach (var item in collection)
+                                                {
+                                                    <div class="fsftv_background_img"></div>
+                                                }
+                                            </div>*@
                                     </div>
                                 </div>
                             </div>
@@ -1095,7 +2661,7 @@
                                         <span class="con_item">
                                             <div class="main_img_example" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                             @item.NewsTitle
-                                            <a href="">
+                                            <a href="/Home/News/@item.NewsId">
                                                 <div class="con_item_txt_container_main">
                                                     <div class="con_item_txt_container">
                                                         @item.NewsTxt
@@ -1129,7 +2695,7 @@
                                 {
                                     <div class="item">
                                         <div class="big_small_module_con_item">
-                                            <a href="">
+                                            <a href="/Home/News/@item.NewsId">
                                                 <div class="big_small_module_item_content_main no_border">
                                                     <div class="big_module_content_img_con">
                                                         <div class="big_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
@@ -1141,7 +2707,7 @@
                                                         </div>
                                                         <div class="big_small_module_post_date_and_seen_times">
                                                             <div class="big_small_module_post_date">
-                                                                16.45 saturday
+                                                                @item.NewsAddedDate
                                                             </div>
                                                             <div class="big_small_module_seen_times">
                                                                 <!--?xml version="1.0" encoding="iso-8859-1"?-->
@@ -1162,7 +2728,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                345
+                                                                @item.NewsViews
                                                             </div>
                                                             <div class="big_small_module_read_more_button">
                                                                 read more
@@ -1185,7 +2751,7 @@
                                 {
                                     <div class="item">
                                         <div class="big_small_module_con_item">
-                                            <a href="">
+                                            <a href="/Home/News/@item.NewsId">
                                                 <div class="big_small_module_item_content_main no_border">
                                                     <div class="big_module_content_img_con">
                                                         <div class="big_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
@@ -1197,7 +2763,7 @@
                                                         </div>
                                                         <div class="big_small_module_post_date_and_seen_times">
                                                             <div class="big_small_module_post_date">
-                                                                16.45 saturday
+                                                                @item.NewsAddedDate
                                                             </div>
                                                             <div class="big_small_module_seen_times">
                                                                 <!--?xml version="1.0" encoding="iso-8859-1"?-->
@@ -1218,7 +2784,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                345
+                                                                @item.NewsViews
                                                             </div>
                                                             <div class="big_small_module_read_more_button">
                                                                 read more
@@ -1242,7 +2808,7 @@
                                 {
                                     <div class="item">
                                         <div class="biggest_small_module_con_item">
-                                            <a href="">
+                                            <a href="/Home/News/@item.NewsId">
                                                 <div class="biggest_small_module_item_content_main no_border">
                                                     <div class="biggest_module_content_img_con">
                                                         <div class="biggest_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
@@ -1254,7 +2820,7 @@
                                                         </div>
                                                         <div class="biggest_small_module_post_date_and_seen_times">
                                                             <div class="biggest_small_module_post_date">
-                                                                16.45 saturday
+                                                                @item.NewsAddedDate
                                                             </div>
                                                             <div class="biggest_small_module_seen_times">
                                                                 <!--?xml version="1.0" encoding="iso-8859-1"?-->
@@ -1275,7 +2841,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                345
+                                                                @item.NewsViews
                                                             </div>
                                                             <div class="biggest_small_module_read_more_button">
                                                                 read more
@@ -1310,7 +2876,7 @@
                                         @foreach (var item in Model.SportCategories)
                                         {
                                             <span class="footer_nav_bar_items">
-                                                <a href="">@item.SportCategoryName</a>
+                                                <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>
                                             </span>
                                         }
                                     </div>
@@ -1342,6 +2908,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                             </g>
                                                             </svg>
                                                 </a>
@@ -1351,6 +2941,30 @@
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 478.161 478.161" style="enable-background:new 0 0 478.161 478.161;" xml:space="preserve" width="512px" height="512px">
                                                     <g>
                                                     <path id="Vimeo_2_" d="M408.173,31.91c-66.405-2.152-111.293,35.125-135.002,111.93c12.133-4.981,23.868-7.511,35.484-7.511   c24.247,0,34.966,13.588,32.157,40.863c-1.395,16.576-12.114,40.584-32.157,72.123c-20.083,31.658-35.026,47.279-44.888,47.279   c-12.97,0-24.725-24.307-35.464-73.119c-3.666-14.285-10.061-50.865-19.366-109.719c-8.607-54.571-31.479-80.013-68.597-76.367   c-15.66,1.415-39.21,15.74-70.569,42.995C46.8,101.124,23.629,122.064,0,142.824l22.534,29.009   C43.951,156.771,56.523,149.2,60.01,149.2c16.497,0,31.778,25.881,46.123,77.463c12.871,47.398,25.741,94.677,38.632,142.174   c19.166,51.502,42.895,77.503,70.689,77.503c45.007,0,100.116-42.437,165.066-127.012c62.699-81.168,95.254-144.984,97.386-191.664   C480.894,65.341,457.624,33.384,408.173,31.91z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1369,6 +2983,30 @@
                                                     <g>
                                                     <g id="post-instagram">
                                                     <path d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z     M255,153c56.1,0,102,45.9,102,102c0,56.1-45.9,102-102,102c-56.1,0-102-45.9-102-102C153,198.9,198.9,153,255,153z M63.75,459    C56.1,459,51,453.9,51,446.25V229.5h53.55C102,237.15,102,247.35,102,255c0,84.15,68.85,153,153,153c84.15,0,153-68.85,153-153    c0-7.65,0-17.85-2.55-25.5H459v216.75c0,7.65-5.1,12.75-12.75,12.75H63.75z M459,114.75c0,7.65-5.1,12.75-12.75,12.75h-51    c-7.65,0-12.75-5.1-12.75-12.75v-51c0-7.65,5.1-12.75,12.75-12.75h51C453.9,51,459,56.1,459,63.75V114.75z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1405,18 +3043,6 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
 
 
 
@@ -1424,18 +3050,28 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1462,6 +3098,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                 </g>
                                                                 </svg>
                                                         </div>
@@ -1474,6 +3134,116 @@
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
                                                             <g>
                                                             <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1502,18 +3272,6 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
 
 
 
@@ -1521,18 +3279,16 @@
 
 
 
-                                                                </g>
-                                                                </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="partner_item">
-                                                        <div class="partner_img">
-                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
-                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
-                                                            <g>
-                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1559,6 +3315,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                 </g>
                                                                 </svg>
                                                         </div>
@@ -1571,6 +3351,116 @@
                                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
                                                             <g>
                                                             <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                </g>
+                                                                </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="partner_item">
+                                                        <div class="partner_img">
+                                                            <?xml version="1.0" encoding="iso-8859-1" ?>
+                                                            <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 60.734 60.733" style="enable-background:new 0 0 60.734 60.733;" xml:space="preserve">
+                                                            <g>
+                                                            <path d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914   v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462   v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z" fill="#c80000" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1596,9 +3486,6 @@
         </div>
     </div>
 
-    <div class="test_count">
-
-    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -1614,29 +3501,6 @@
     </script>
     <script src="~/js/index.js">
     </script>
-    <script>
-        var testCount = $('.test_count')
-        var link = $('.main_link')
 
-        function getCount (){
-            var count = 0
-            link.click(function (){
-                count ++
-                console.log(count)
-                testCount.text(count)
-            })
-
-            $.ajax({
-                url: ""
-            })
-
-
-        }
-        getCount ()
-
-       
-
-
-    </script>
 </body>
 </html>

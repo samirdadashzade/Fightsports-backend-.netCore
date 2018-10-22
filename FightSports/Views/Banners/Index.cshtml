@@ -4,39 +4,47 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
+<!DOCTYPE html>
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CustumerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BannerPath)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustumerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BannerPath)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BannerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BannerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BannerId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustumerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BannerPath)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustumerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BannerPath)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.BannerId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.BannerId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.BannerId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

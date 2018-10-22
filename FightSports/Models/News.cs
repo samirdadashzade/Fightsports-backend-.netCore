@@ -27,6 +27,7 @@ namespace FightSports.Models
         public int SportCategoryId { get; set; }
         public string OptionalAdress { get; set; }
         public string NewsFirstPhotoPath { get; set; }
+        public string NewsFirstVideoPath { get; set; }
 
         [NotMapped]
         public IFormFile FormFile { get; set; }

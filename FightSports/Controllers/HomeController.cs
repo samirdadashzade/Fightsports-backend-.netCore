@@ -47,6 +47,7 @@ namespace FightSports.Controllers
             ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
             ViewBag.Magazine = _context.Magazine.Where(x => x.SportCategoryId == id).ToList();
 
+
             ViewBag.MagazinePhotos = _context.MagazinePhotos.ToList();
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
@@ -64,12 +65,28 @@ namespace FightSports.Controllers
                                       NewsName = news.NewsName,
                                       NewsTitle = news.NewsTitle,
                                       NewsTxt = news.NewsTxt,
-                                      PhotoPath = photos.PhotoPath,
+                                      NewsFirstVideoPath = news.NewsFirstVideoPath,
+                                      NewsViews = news.NewsViews,
+                                      PhotoPath = photos.PhotoPath
                                   }).ToList();
 
             ViewBag.Comments = _context.Comments.Where(x => x.NewsId == id).ToList();
             ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
-            return View(Vm());
+            ViewBag.SportCategories = _context.SportCategories.ToList();
+            ViewBag.Test = _context.News.ToList();
+
+            var count = 0;
+
+            while (count == 0)
+            {
+                count++;
+                var newsById = _context.News.SingleOrDefault(x => x.NewsId == id);
+                newsById.NewsViews += count;
+            }
+
+            _context.SaveChanges();
+
+            return View(_context.News.Where(x => x.NewsId == id).ToList());
         }
 
         public IActionResult ClubAndFederation(int? id)

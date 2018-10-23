@@ -98,3 +98,4 @@ C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\SportsPage.g.cshtml.cs
 C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\News.g.cshtml.cs
+C:\Users\rustam\Desktop\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\ClubAndFederation.g.cshtml.cs

@@ -2,8 +2,14 @@
 
 
 @{
-    List<NewsWithPhotos> news = new List<NewsWithPhotos>();
-    news = ViewBag.newsWithPhotos;
+    List<News> masterClass = new List<News>();
+    masterClass = ViewBag.masterClass;
+
+    List<News> fotos = new List<News>();
+    fotos = ViewBag.fotos;
+
+    List<News> videos = new List<News>();
+    videos = ViewBag.videos;
 }
 
 <!DOCTYPE html>
@@ -27,7 +33,7 @@
         <div class="container">
             <div class="up_thin_footer_container">
                 <div class="logo_container">
-                    <a href="">
+                    <a href="/Home/Index">
                         <img class="img-fluid" src="images/ufc_logo.png" />
                     </a>
                 </div>
@@ -45,7 +51,7 @@
                     @foreach (var item in Model.SportCategories)
                     {
                         <span class="nav_bar_items">
-                            <a href="Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>
+                            <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>
                         </span>
                     }
                 </div>
@@ -104,12 +110,12 @@
                     <div class="module_item_title">spotlight</div>
                     <div class="news_tab_container wow fadeIn">
                         <div id="owl-eight" class="owl-carousel owl-theme">
-                            @for (var i = 0; i < Model.News.Count / 3; i++)
+                            @for (var i = 0; i < Model.News.Count / 3.0; i++)
                             {
                                 <div class="item">
                                     @foreach (var item in Model.News.Skip(i * 3).Take(3))
                                     {
-                                        <a href="Home/News/@item.NewsId">
+                                        <a href="/Home/News/@item.NewsId">
                                             <div class="news_tab_container_items">
                                                 <div class="tab_background_img_con">
                                                     <div class="tab_background_img" style="background-image:url(@Url.Content(item.NewsFirstPhotoPath)"></div>
@@ -2217,7 +2223,7 @@
             <div class="container">
                 <div class="module_item_title">spotlight</div>
                 <div id="owl-two" class="owl-carousel owl-theme">
-                    @for (int i = 0; i < Model.News.Count / 8; i++)
+                    @for (int i = 0; i < Model.News.Count / 8.0; i++)
                     {
                         <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
                             <div class="container no_padding">
@@ -2280,7 +2286,7 @@
                         <div class="small_news_module_row_container wow fadeIn">
                             <div class="module_item_title">spotlight</div>
                             <div id="owl-three" class="owl-carousel owl-theme">
-                                @for (int i = 0; i < Model.News.Count / 3; i++)
+                                @for (int i = 0; i < Model.News.Count / 3.0; i++)
                                 {
                                     <div class="item">
                                         @foreach (var item in Model.News.Skip(i * 3).Take(3))
@@ -2341,7 +2347,7 @@
                         <div class="small_news_module_row_container wow fadeIn">
                             <div class="module_item_title">spotlight</div>
                             <div id="owl-four" class="owl-carousel owl-theme">
-                                @for (int i = 0; i < Model.News.Count / 3; i++)
+                                @for (int i = 0; i < Model.News.Count / 3.0; i++)
                                 {
                                     <div class="item">
                                         @foreach (var item in Model.News.Skip(i * 3).Take(3))
@@ -2431,13 +2437,13 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active show" id="video">
                         <div id="owl-nine" class="owl-carousel owl-theme">
-                            @for (int i = 0; i < Model.News.Count / 8; i++)
+                            @for (int i = 0; i < videos.Count / 8.0; i++)
                             {
                                 <div class="item">
                                     <div class="container">
                                         <div class="tab_main_row_container">
                                             <div class="row tab_first_row">
-                                                @foreach (var item in Model.News.Skip(i * 8).Take(8))
+                                                @foreach (var item in videos.Skip(i * 8).Take(8))
                                                 {
                                                     <div class="col-md-3 col-sm-3 col-3 tab_for_hover">
                                                         <a>
@@ -2446,20 +2452,6 @@
                                                                 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;" xml:space="preserve" width="512px" height="512px">
                                                                 <path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40  c0,0.372,0.206,0.713,0.535,0.886c0.146,0.076,0.306,0.114,0.465,0.114c0.199,0,0.397-0.06,0.568-0.177l29-20  c0.271-0.187,0.432-0.494,0.432-0.823S36.338,20.363,36.068,20.176z" fill="#c80000" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                                                 <g>
                                                                 </g>
@@ -2512,13 +2504,13 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="foto">
                         <div id="owl-ten" class="owl-carousel">
-                            @for (int i = 0; i < Model.News.Count / 8; i++)
+                            @for (int i = 0; i < fotos.Count / 8.0; i++)
                             {
                                 <div class="item">
                                     <div class="container">
                                         <div class="foto_tab_main_row_container">
                                             <div class="row foto_tab_first_row">
-                                                @foreach (var item in Model.News.Skip(i * 8).Take(8))
+                                                @foreach (var item in fotos.Skip(i * 8).Take(8))
                                                 {
                                                     <div class="col-md-3 col-sm-3 col-3 foto_tab_for_hover">
                                                         <a href="/Home/News/@item.NewsId">
@@ -2569,13 +2561,13 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="masterklass">
                         <div id="owl-eleven" class="owl-carousel owl-theme">
-                            @for (int i = 0; i < Model.News.Count / 8; i++)
+                            @for (int i = 0; i < masterClass.Count / 8.0; i++)
                             {
                                 <div class="item">
                                     <div class="container">
                                         <div class="master_tab_main_row_container">
                                             <div class="row master_tab_first_row">
-                                                @foreach (var item in Model.News.Skip(i * 8).Take(8))
+                                                @foreach (var item in masterClass.Skip(i * 8).Take(8))
                                                 {
                                                     <div class="col-md-3 col-sm-3 col-3 master_tab_for_hover">
                                                         <a href="/Home/News/@item.NewsId">
@@ -2656,7 +2648,7 @@
                             </div>
                             <div class="items_helper_con">
                                 <div class="items_container">
-                                    @foreach (var item in Model.News)
+                                    @foreach (var item in Model.News.TakeLast(10))
                                     {
                                         <span class="con_item">
                                             <div class="main_img_example" style="background-image:url(@item.NewsFirstPhotoPath)"></div>

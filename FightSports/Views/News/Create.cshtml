@@ -18,7 +18,7 @@
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Create">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="NewsName" class="control-label"></label>
@@ -90,6 +90,14 @@
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </form>
+            <form id="form" name="form" action="/Photos/Creates" enctype="multipart/form-data" method="post">
+                <div class="buttons">
+                    <div class="upload-button">
+                        <div class="label">Click me!</div>
+                        <input id="files" name="files" type="file" size="1" multiple onchange="uploadFiles('files');" />
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -97,5 +105,37 @@
         <a asp-action="Index">Back to List</a>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js">
+    </script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+    </script>
+
+    <script type="text/javascript">
+        function uploadFiles(inputId) {
+            var input = document.getElementById(inputId);
+            var files = input.files;
+            var formData = new FormData();
+
+            for (var i = 0; i != files.length; i++) {
+                formData.append("files", files[i]);
+            }
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "/Photos/Creates",
+                    data: formData,
+                    processData: false,
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        alert("Files Uploaded!");
+                    }
+                }
+            );
+        }
+    </script>
 </body>
 </html>

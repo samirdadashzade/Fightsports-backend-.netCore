@@ -38,6 +38,9 @@ namespace FightSports.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.masterClass = _context.News.Where(x => x.NewsTypeId == 5).ToList();
+            ViewBag.fotos = _context.News.Where(x => x.NewsTypeId == 8).ToList();
+            ViewBag.videos = _context.News.Where(x => x.NewsFirstVideoPath != null).ToList();
             return View(Vm());
         }
 
@@ -46,9 +49,18 @@ namespace FightSports.Controllers
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
             ViewBag.Magazine = _context.Magazine.Where(x => x.SportCategoryId == id).ToList();
-
-
             ViewBag.MagazinePhotos = _context.MagazinePhotos.ToList();
+
+            ViewBag.infoLent = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 2).ToList();
+            ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 4).ToList();
+            ViewBag.photos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 8).ToList();
+            ViewBag.masterClass = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 3).ToList();
+            ViewBag.expert = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 13).ToList();
+            ViewBag.club = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 10).ToList();
+            ViewBag.federation = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 11).ToList();
+            ViewBag.report = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 12).ToList();
+            ViewBag.exclusive = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 14).ToList();
+            ViewBag.person = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 9).ToList();
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
         }
@@ -73,7 +85,7 @@ namespace FightSports.Controllers
             ViewBag.Comments = _context.Comments.Where(x => x.NewsId == id).ToList();
             ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
             ViewBag.SportCategories = _context.SportCategories.ToList();
-            ViewBag.Test = _context.News.ToList();
+            ViewBag.News = _context.News.ToList();
 
             var count = 0;
 

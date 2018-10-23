@@ -11,6 +11,7 @@ using System.IO;
 
 namespace FightSports.Controllers
 {
+    [IgnoreAntiforgeryToken(Order = 1001)]
     public class PhotosController : Controller
     {
         public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
@@ -78,6 +79,27 @@ namespace FightSports.Controllers
             }
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
             return View(photos);
+        }
+        [HttpPost]
+        [RequestFormSizeLimit(valueCountLimit: 4000)]
+        public async Task<IActionResult> Creates([FromBody] Photos photos)
+        {
+            if (ModelState.IsValid)
+            {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await photos.FormFile.CopyToAsync(stream);
+                }
+
+                _context.Add(photos);
+                await _context.SaveChangesAsync();
+                //return RedirectToAction(nameof(Index));
+            }
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
+            return Json(photos);
         }
 
         // GET: Photos/Edit/5

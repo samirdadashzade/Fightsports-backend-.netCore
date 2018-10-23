@@ -4,8 +4,8 @@
     List<NewsWithPhotos> news = new List<NewsWithPhotos>();
     news = ViewBag.newsWithPhotos;
 
-    List<News> test = new List<News>();
-    test = ViewBag.Test;
+    List<News> newsAll = new List<News>();
+    newsAll = ViewBag.News;
 }
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="up_thin_footer_container">
                 <div class="logo_container">
-                    <a href="">
+                    <a href="/Home/Index">
                         <img class="img-fluid" src="images/ufc_logo.png" />
                     </a>
                 </div>
@@ -268,13 +268,13 @@
         </div>
         <div class="container carousel_padding">
             <div id="owl-one" class="owl-carousel owl-theme wow fadeIn">
-                @for (int i = 0; i < test.Count / 4; i++)
+                @for (int i = 0; i < newsAll.Count / 4.0; i++)
                 {
                     <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
                         <div class="container no_padding">
                             <div class="main_row_container">
                                 <div class="row first_row">
-                                    @foreach (var item in test.Skip(i * 4).Take(4))
+                                    @foreach (var item in newsAll.Skip(i * 4).Take(4).TakeLast(20))
                                     {
                                         <div class="col-md-3 col-sm-3 col-3 for_hover">
                                             <a href="">
@@ -650,7 +650,7 @@
 
 
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
             var url = window.location.href;
             var id = url.substring(url.lastIndexOf('/') + 1);

@@ -330,7 +330,7 @@ const getId = (url) => {
         return match[2];
 
     } else {
-        console.log('url not valid!!!!!');
+        console.log('url not valid!!!');
         return 'error';
     }
 }
@@ -350,7 +350,7 @@ const getVimeoId = (url) => {
 $('.myBtn01').on('click', function () {
     $('#modal').modal('show')
 
-    let myUrl = $(this).find($('.my_url')).text()
+    let myUrl = $('.tab_row_content ').find($('.my_url')).text()
 
     if(myUrl.length > 27){
         myId = getId(myUrl)

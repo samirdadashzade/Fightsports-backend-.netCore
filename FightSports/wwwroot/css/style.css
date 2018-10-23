@@ -670,11 +670,26 @@ body {
           top: 0;
           width: 27px;
           height: 27px;
-          z-index: 1; }
+          z-index: 4;
+          cursor: pointer; }
           .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .video_svg svg {
+            cursor: pointer;
             position: absolute;
             width: 27px;
             height: 27px; }
+        .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_content_title {
+          font-size: 13px;
+          cursor: pointer;
+          color: #fefefe;
+          font-weight: 700;
+          text-transform: uppercase;
+          overflow: hidden;
+          text-align: left;
+          margin-left: 7px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          z-index: 3; }
         .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_row_content {
           cursor: pointer;
           position: absolute;
@@ -689,14 +704,6 @@ body {
           width: 97%;
           border-radius: 7px;
           box-shadow: 0px -16px 37px 12px black inset; }
-          .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_row_content .tab_content_title {
-            font-size: 13px;
-            color: #fefefe;
-            font-weight: 700;
-            text-transform: uppercase;
-            overflow: hidden;
-            text-align: left;
-            margin-left: 7px; }
           .main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_row_content .tab_post_date_and_seen_times {
             display: flex;
             margin-left: 7px;
@@ -1088,6 +1095,8 @@ body {
             .main_container .big_feed_panels_cotnainer .big_small_news_module_row_container .big_small_module_con_item .big_small_module_item_content_main .big_small_module_item_content .big_small_module_content_title {
               font-size: 13px;
               color: #fff;
+              white-space: nowrap;
+              text-overflow: ellipsis;
               font-weight: 700;
               text-transform: uppercase;
               margin-top: -2px;
@@ -1202,6 +1211,8 @@ body {
               font-size: 13px;
               color: #fff;
               font-weight: 700;
+              white-space: nowrap;
+              text-overflow: ellipsis;
               text-transform: uppercase;
               margin-top: -2px;
               overflow: hidden; }
@@ -1558,13 +1569,13 @@ body {
         bottom: 2px !important; }
       .main_container .small_module_item_content .small_module_post_date_and_seen_times {
         bottom: -5px !important; }
+    .main_container .tab_content_title {
+      font-size: 11px !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
     .main_container .tab_row_content {
       width: 96% !important; }
-      .main_container .tab_row_content .tab_content_title {
-        font-size: 11px !important;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap; }
       .main_container .tab_row_content .tab_post_date {
         font-size: 10px !important; }
       .main_container .tab_row_content .tab_seen_times {
@@ -1703,10 +1714,10 @@ body {
         font-size: 8px !important; }
       .main_container .foto_tab_row_content .foto_tab_post_date_and_seen_times {
         display: none !important; }
+    .main_container .tab_content_title {
+      font-size: 7px !important; }
     .main_container .tab_row_content {
       width: 93% !important; }
-      .main_container .tab_row_content .tab_content_title {
-        font-size: 7px !important; }
       .main_container .tab_row_content .tab_post_date_and_seen_times {
         display: none; }
       .main_container .tab_row_content .tab_post_date {
@@ -2295,22 +2306,24 @@ body {
             width: 30px;
             height: 30px;
             fill: #fff; }
-        .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .cooment_author_name {
-          text-transform: uppercase;
-          color: #fcebeb;
-          font-size: 12px; }
-        .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_date {
-          color: #dfd0d0;
-          font-size: 10px; }
-        .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_txt {
-          border-left: 1px dotted #c80000;
-          border-right: 1px dotted #c80000;
-          padding: 7px;
-          border-radius: 7px;
-          margin-top: 8px;
-          text-transform: uppercase;
-          color: #fff;
-          font-size: 12px; }
+        .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets {
+          width: 100%; }
+          .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .cooment_author_name {
+            text-transform: uppercase;
+            color: #fcebeb;
+            font-size: 12px; }
+          .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_date {
+            color: #dfd0d0;
+            font-size: 10px; }
+          .main_news_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_txt {
+            border-left: 1px dotted #c80000;
+            border-right: 1px dotted #c80000;
+            padding: 7px;
+            border-radius: 7px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 12px; }
   .main_news_container #owl-one .owl-stage-outer {
     box-shadow: 0px 0px 20px 2px #e9e8e8;
     border: 0px solid transparent;
@@ -2341,6 +2354,26 @@ body {
     text-decoration: none; }
   .main_news_container #owl-one .item .no_padding {
     background-color: black; }
+  .main_news_container #owl-one .item .news_owl_one_module_content_img_con {
+    display: block;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    margin-right: 5px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 144px; }
+    .main_news_container #owl-one .item .news_owl_one_module_content_img_con .news_owl_one_module_content_img {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      margin-right: 5px;
+      background-image: url(../images/B206_1920x1080_announce.jpg); }
   .main_news_container #owl-one .item .first_row {
     padding-top: 6px;
     padding-bottom: 6px;
@@ -2374,6 +2407,7 @@ body {
       overflow: hidden;
       margin-top: 14px;
       text-align: left;
+      height: 36px;
       margin-left: 7px; }
     .main_news_container #owl-one .item .row_content .small_info {
       margin: 10px 0 16px;
@@ -2573,6 +2607,10 @@ body {
   .main_news_container .in-share {
     cursor: pointer; }
   @media (max-width: 1200px) {
+    .main_news_container .owl-one .content_title {
+      height: 36px !important; }
+    .main_news_container .news_owl_one_module_content_img_con {
+      height: 119px !important; }
     .main_news_container .upper_custom {
       display: none; }
     .main_news_container .nav_bar_items a::before {
@@ -2627,6 +2665,10 @@ body {
     .main_news_container .footer_container_main .footer_nav_bar_items a {
       font-size: 8px !important; } }
   @media (max-width: 992px) {
+    .main_news_container .content_title {
+      height: 18px !important; }
+    .main_news_container .news_owl_one_module_content_img_con {
+      height: 85px !important; }
     .main_news_container .second_part_of_big_con {
       flex-direction: column; }
     .main_news_container .first_part_of_big_con {
@@ -2814,6 +2856,10 @@ body {
     .main_news_container .biggest_module_content_img_con {
       height: 189px !important; } }
   @media (max-width: 768px) {
+    .main_news_container .content_title {
+      height: 11px !important; }
+    .main_news_container .news_owl_one_module_content_img_con {
+      height: 63px !important; }
     .main_news_container .banner_container_right {
       height: 250px !important;
       margin-top: 50px; }
@@ -3084,6 +3130,12 @@ body {
       max-width: 400px !important; } }
   .main_news_container .modal-dialog {
     max-width: 662px; }
+  .main_news_container .adjust_font {
+    font-size: 13px !important; }
+  .main_news_container .adjust_font_size svg {
+    cursor: pointer;
+    width: 23px;
+    height: 23px; }
 
 body {
   background-color: black;
@@ -3263,6 +3315,26 @@ body {
         .sports_page_main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_img_example {
           border: 1px solid transparent;
           border-radius: 7px; }
+        .sports_page_main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .news_owl_one_module_content_img_con {
+          display: block;
+          border: 1px solid transparent;
+          border-radius: 7px;
+          margin-right: 5px;
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 144px; }
+          .sports_page_main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .news_owl_one_module_content_img_con .news_owl_one_module_content_img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-right: 5px;
+            background-image: url(../images/B206_1920x1080_announce.jpg); }
         .sports_page_main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .video_svg {
           position: absolute;
           margin: auto;
@@ -3285,6 +3357,9 @@ body {
           border-left: 1px dotted #c80000;
           height: 100%;
           width: 97%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
           border-radius: 7px;
           box-shadow: 0px -16px 37px 12px black inset; }
           .sports_page_main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_row_content .tab_content_title {
@@ -3293,7 +3368,6 @@ body {
             font-weight: 700;
             text-transform: uppercase;
             overflow: hidden;
-            margin-top: 84px;
             text-align: left;
             margin-left: 7px; }
           .sports_page_main_container .tabs_container .tab-content .tab-pane .tab_main_row_container .tab_for_hover .tab_row_content .tab_post_date_and_seen_times {
@@ -3342,6 +3416,26 @@ body {
         .sports_page_main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .foto_tab_img_example {
           border: 1px solid transparent;
           border-radius: 7px; }
+        .sports_page_main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .news_owl_one_module_content_img_con {
+          display: block;
+          border: 1px solid transparent;
+          border-radius: 7px;
+          margin-right: 5px;
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 144px; }
+          .sports_page_main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .news_owl_one_module_content_img_con .news_owl_one_module_content_img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-right: 5px;
+            background-image: url(../images/B206_1920x1080_announce.jpg); }
         .sports_page_main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .foto_tab_row_content {
           position: absolute;
           z-index: 2;
@@ -3349,6 +3443,9 @@ body {
           border-right: 1px dotted #c80000;
           border-left: 1px dotted #c80000;
           height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
           width: 97%;
           border-radius: 7px;
           box-shadow: 0px -16px 37px 12px black inset; }
@@ -3358,7 +3455,6 @@ body {
             font-weight: 700;
             text-transform: uppercase;
             overflow: hidden;
-            margin-top: 84px;
             text-align: left;
             margin-left: 7px; }
           .sports_page_main_container .tabs_container .tab-content .tab-pane .foto_tab_main_row_container .foto_tab_for_hover .foto_tab_row_content .foto_tab_post_date_and_seen_times {
@@ -3398,13 +3494,14 @@ body {
         box-shadow: 0px -1px 20px 4px #c80000;
         border-radius: 7px; }
       .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .row_content {
-        height: 25%;
+        height: 60px;
         border-radius: 7px;
         box-shadow: 0px -16px 37px 12px black inset; }
         .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .row_content .content_title {
           font-size: 13px;
           color: #fefefe;
           font-weight: 700;
+          height: 37px;
           text-transform: uppercase;
           overflow: hidden;
           margin-top: 7px;
@@ -3439,6 +3536,26 @@ body {
       .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container img {
         border: 1px solid transparent;
         border-radius: 7px; }
+      .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .news_owl_one_module_content_img_con {
+        display: block;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        margin-right: 5px;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 144px; }
+        .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .news_owl_one_module_content_img_con .news_owl_one_module_content_img {
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          margin-right: 5px;
+          background-image: url(../images/B206_1920x1080_announce.jpg); }
       .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .col-md-3 {
         padding-right: 4px !important;
         padding-left: 4px !important;
@@ -3465,6 +3582,9 @@ body {
           border-left: 1px dotted #c80000;
           height: 100%;
           width: 97%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex;
           border-radius: 7px;
           box-shadow: 0px -16px 37px 12px black inset; }
           .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .master_tab_for_hover .master_tab_row_content .master_tab_content_title {
@@ -3473,7 +3593,6 @@ body {
             font-weight: 700;
             text-transform: uppercase;
             overflow: hidden;
-            margin-top: 84px;
             text-align: left;
             margin-left: 7px; }
           .sports_page_main_container .tabs_container .tab-content .tab-pane .master_tab_main_row_container .master_tab_for_hover .master_tab_row_content .master_tab_post_date_and_seen_times {
@@ -3744,22 +3863,24 @@ body {
                 width: 30px;
                 height: 30px;
                 fill: #fff; }
-            .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .cooment_author_name {
-              text-transform: uppercase;
-              color: #fcebeb;
-              font-size: 12px; }
-            .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_date {
-              color: #dfd0d0;
-              font-size: 10px; }
-            .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_txt {
-              border-left: 1px dotted #c80000;
-              border-right: 1px dotted #c80000;
-              padding: 7px;
-              border-radius: 7px;
-              margin-top: 8px;
-              text-transform: uppercase;
-              color: #fff;
-              font-size: 12px; }
+            .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets {
+              width: 100%; }
+              .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .cooment_author_name {
+                text-transform: uppercase;
+                color: #fcebeb;
+                font-size: 12px; }
+              .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_date {
+                color: #dfd0d0;
+                font-size: 10px; }
+              .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .comments_main_container .posted_comments_container .comment_item_container .comment_sets .comment_txt {
+                border-left: 1px dotted #c80000;
+                border-right: 1px dotted #c80000;
+                padding: 7px;
+                border-radius: 7px;
+                margin-top: 8px;
+                text-transform: uppercase;
+                color: #fff;
+                font-size: 12px; }
       .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .info_padd_left {
         padding-left: 30px; }
       .sports_page_main_container .tabs_container .tab-content .tab-pane .information_container .sport_type_img {
@@ -4469,6 +4590,8 @@ body {
     .sports_page_main_container #myCode {
       max-width: 400px !important; } }
   @media (max-width: 1200px) {
+    .sports_page_main_container .news_owl_one_module_content_img_con {
+      height: 118px !important; }
     .sports_page_main_container .nav_bar_items a::before {
       left: -6px !important; }
     .sports_page_main_container .nav_bar_items:last-child::after {
@@ -4506,12 +4629,6 @@ body {
       bottom: 2px !important; }
     .sports_page_main_container .small_module_item_content .small_module_post_date_and_seen_times {
       bottom: -5px !important; }
-    .sports_page_main_container .tab_row_content .tab_content_title {
-      margin-top: 61px !important; }
-    .sports_page_main_container .foto_tab_row_content .foto_tab_content_title {
-      margin-top: 61px !important; }
-    .sports_page_main_container .master_tab_row_content .master_tab_content_title {
-      margin-top: 61px !important; }
     .sports_page_main_container .biggest_small_module_item_content .biggest_small_module_small_info {
       font-size: 11px !important; }
     .sports_page_main_container .big_small_module_item_content .big_small_module_small_info {
@@ -4521,6 +4638,12 @@ body {
     .sports_page_main_container .footer_container_main .footer_nav_bar_items a {
       font-size: 8px !important; } }
   @media (max-width: 992px) {
+    .sports_page_main_container .row_content {
+      height: 35px !important; }
+      .sports_page_main_container .row_content .content_title {
+        height: 18px !important; }
+    .sports_page_main_container .news_owl_one_module_content_img_con {
+      height: 91px !important; }
     .sports_page_main_container .sport_types_container {
       flex-wrap: wrap; }
     .sports_page_main_container .person_info {
@@ -4634,7 +4757,6 @@ body {
     .sports_page_main_container .tab_row_content {
       width: 96% !important; }
       .sports_page_main_container .tab_row_content .tab_content_title {
-        margin-top: 54px !important;
         font-size: 11px !important;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -4646,7 +4768,6 @@ body {
     .sports_page_main_container .foto_tab_row_content {
       width: 96% !important; }
       .sports_page_main_container .foto_tab_row_content .foto_tab_content_title {
-        margin-top: 54px !important;
         font-size: 11px !important;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -4664,7 +4785,6 @@ body {
     .sports_page_main_container .master_tab_row_content {
       width: 96% !important; }
       .sports_page_main_container .master_tab_row_content .master_tab_content_title {
-        margin-top: 54px !important;
         font-size: 11px !important;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -4695,6 +4815,12 @@ body {
     .sports_page_main_container .biggest_module_content_img_con {
       height: 189px !important; } }
   @media (max-width: 768px) {
+    .sports_page_main_container .row_content {
+      height: 35px !important; }
+      .sports_page_main_container .row_content .content_title {
+        height: 15px !important; }
+    .sports_page_main_container .news_owl_one_module_content_img_con {
+      height: 66px !important; }
     .sports_page_main_container .info_padd_left {
       padding-left: 0 !important;
       padding-right: 0 !important; }
@@ -4784,7 +4910,6 @@ body {
     .sports_page_main_container .foto_tab_row_content {
       width: 93% !important; }
       .sports_page_main_container .foto_tab_row_content .foto_tab_content_title {
-        margin-top: 37px !important;
         font-size: 7px !important; }
       .sports_page_main_container .foto_tab_row_content .foto_tab_post_date_and_seen_times {
         display: none; }
@@ -4797,7 +4922,6 @@ body {
     .sports_page_main_container .tab_row_content {
       width: 93% !important; }
       .sports_page_main_container .tab_row_content .tab_content_title {
-        margin-top: 37px !important;
         font-size: 7px !important; }
       .sports_page_main_container .tab_row_content .tab_post_date_and_seen_times {
         display: none; }
@@ -4810,7 +4934,6 @@ body {
     .sports_page_main_container .master_tab_row_content {
       width: 93% !important; }
       .sports_page_main_container .master_tab_row_content .master_tab_content_title {
-        margin-top: 37px !important;
         font-size: 7px !important; }
       .sports_page_main_container .master_tab_row_content .master_tab_post_date {
         font-size: 8px !important; }
@@ -4845,6 +4968,12 @@ body {
       padding-right: 0 !important;
       padding-left: 0 !important; } }
   @media (max-width: 576px) {
+    .sports_page_main_container .row_content {
+      height: 35px !important; }
+      .sports_page_main_container .row_content .content_title {
+        height: 10px !important; }
+    .sports_page_main_container .news_owl_one_module_content_img_con {
+      height: 65px !important; }
     .sports_page_main_container .footer_container {
       margin-left: 7px !important;
       margin-right: 7px !important; }
@@ -4917,18 +5046,15 @@ body {
     .sports_page_main_container .foto_tab_content_title {
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
-      margin-top: 41px !important; }
+      overflow: hidden; }
     .sports_page_main_container .tab_content_title {
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
-      margin-top: 47px !important; }
+      overflow: hidden; }
     .sports_page_main_container .master_tab_content_title {
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
-      margin-top: 41px !important; }
+      overflow: hidden; }
     .sports_page_main_container .nav-tabs {
       padding: 12px !important; }
       .sports_page_main_container .nav-tabs .nav-link {

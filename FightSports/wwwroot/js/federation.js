@@ -100,4 +100,11 @@ const deleteIframe = () => {
   })
 }
 
-deleteIframe ()
+deleteIframe()
+
+var increaseBtn = $('.adjust_font_size')
+var fontcon = $('.main_news_txt01')
+
+increaseBtn.click(function () {
+    fontcon.toggleClass('adjust_font')
+})

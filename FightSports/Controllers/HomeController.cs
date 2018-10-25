@@ -107,6 +107,32 @@ namespace FightSports.Controllers
             return View(_context.News.Where(x => x.NewsId == id).ToList());
         }
 
+        public IActionResult Videos(int? id)
+        {
+            var newsWithPhotos = (from news in _context.News
+                                  join photos in _context.Photos
+                                  on news.NewsId equals photos.NewsId
+                                  select new NewsWithPhotos
+                                  {
+                                      NewsBigTitle = news.NewsBigTitle,
+                                      NewsId = news.NewsId,
+                                      NewsName = news.NewsName,
+                                      NewsTitle = news.NewsTitle,
+                                      NewsTxt = news.NewsTxt,
+                                      NewsFirstVideoPath = news.NewsFirstVideoPath,
+                                      NewsViews = news.NewsViews,
+                                      PhotoPath = photos.PhotoPath
+                                  }).ToList();
+
+            ViewBag.Comments = _context.Comments.Where(x => x.NewsId == id).ToList();
+            ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
+            ViewBag.SportCategories = _context.SportCategories.ToList();
+            ViewBag.News = _context.News.ToList();
+
+
+            return View(_context.News.ToList());
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -86,7 +86,7 @@ const getId = (url) => {
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     let match = url.match(regExp);
 
-    if (match && match[2].length == 11) {
+    if (match && match[2].length === 11) {
         return match[2];
 
     } else {
@@ -99,7 +99,7 @@ const getVimeoId = (url) => {
     let regExp = /https:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
     let match = url.match(regExp);
 
-    if (match && match[2].length == 9) {
+    if (match && match[2].length === 9) {
         return match[2];
     } else {
         console.log('url not valid!!!!');

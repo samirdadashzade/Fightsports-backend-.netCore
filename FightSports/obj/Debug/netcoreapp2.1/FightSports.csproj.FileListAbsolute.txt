@@ -201,3 +201,4 @@ C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netco
 C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\FightSports.csproj.CopyComplete
 C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Videos.g.cshtml.cs
 C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Home\Photos.g.cshtml.cs

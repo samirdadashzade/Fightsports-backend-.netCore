@@ -30,6 +30,9 @@
 
     List<News> person = new List<News>();
     person = ViewBag.person;
+
+    List<SportCategories> sportCategories = new List<SportCategories>();
+    sportCategories = ViewBag.SportCategories;
 }
 
 <!DOCTYPE html>
@@ -4205,7 +4208,7 @@
         <div class="container">
             <div class="full_nav_bar_container">
                 <div class="nav_bar_container">
-                    @foreach (var item in ViewBag.SportCategories)
+                    @foreach (var item in sportCategories.Take(12))
                     {
                         <span class="nav_bar_items">
                             <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>

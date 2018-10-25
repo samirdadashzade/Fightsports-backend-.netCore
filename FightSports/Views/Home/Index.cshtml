@@ -48,7 +48,7 @@
         <div class="container">
             <div class="full_nav_bar_container">
                 <div class="nav_bar_container">
-                    @foreach (var item in Model.SportCategories)
+                    @foreach (var item in Model.SportCategories.Take(12))
                     {
                         <span class="nav_bar_items">
                             <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>
@@ -2515,7 +2515,7 @@
                                                 @foreach (var item in fotos.Skip(i * 8).Take(8))
                                                 {
                                                     <div class="col-md-3 col-sm-3 col-3 foto_tab_for_hover">
-                                                        <a href="/Home/News/@item.NewsId">
+                                                        <a href="/Home/Photos">
                                                             <div class="owl_nine_module_content_img_con">
                                                                 <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                             </div>

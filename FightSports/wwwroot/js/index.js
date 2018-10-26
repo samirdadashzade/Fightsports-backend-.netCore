@@ -400,10 +400,21 @@ function accordionSets () {
     $('.items_container').css({width : width})
 }
 
+const tabConTitleWidth = () => {
+    let contentTitle = $('.for_res_width')
+    let tabRowWidth = $('.tab_row_content').width()
+
+    contentTitle.css({width : tabRowWidth  + "px"})
+}
+
+tabConTitleWidth()
+
 window.onload = function () {
     accordionSets()
+    tabConTitleWidth()
 }
 
 window.onresize = function () {
     accordionSets()
+    tabConTitleWidth()
 }

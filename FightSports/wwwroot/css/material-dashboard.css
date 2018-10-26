@@ -12829,9 +12829,9 @@ h2.title {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 2;
+  z-index: 10000;
   width: 260px;
-  background: #fff;
+  background: #eee;
   -webkit-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
           box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); }
   .sidebar .caret {
@@ -13576,7 +13576,7 @@ h2.title {
   background-color: #f5f5f5; }
 
 body {
-  background-color: #eee;
+  background-color: #fff;
   color: #3C4858;
   font-weight: 300; }
 

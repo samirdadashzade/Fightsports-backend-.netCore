@@ -80,8 +80,7 @@ namespace FightSports.Controllers
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
             return View(photos);
         }
-        [HttpPost]
-        [RequestFormSizeLimit(valueCountLimit: 4000)]
+        [HttpPost]       
         public async Task<IActionResult> Creates([FromBody] Photos photos)
         {
             if (ModelState.IsValid)

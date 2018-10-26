@@ -9,6 +9,7 @@ namespace FightSports.Models
         public string AuthorName { get; set; }
         public string CommentTxt { get; set; }
         public string CommentDate { get; set; }
+        public string AbstractCommentType { get; set; }
         public int NewsId { get; set; }
 
         public News News { get; set; }

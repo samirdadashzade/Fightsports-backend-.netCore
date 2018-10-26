@@ -92,6 +92,11 @@ namespace FightSports.Models
                     .HasColumnName("comment_date")
                     .HasMaxLength(50);
 
+                entity.Property(e => e.AbstractCommentType)
+                    .IsRequired()
+                    .HasColumnName("abstract_comment_type")
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.CommentTxt)
                     .IsRequired()
                     .HasColumnName("comment_txt");

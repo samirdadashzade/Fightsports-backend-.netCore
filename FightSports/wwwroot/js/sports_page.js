@@ -383,3 +383,20 @@ inShare.onclick = function(e) {
   if(inShare.focus) { inShare.focus(); }
     return false;
 }
+
+const tabConTitleWidth = () => {
+    let contentTitle = $('.for_res_width')
+    let tabRowWidth = $('.tab_row_content').width()
+
+    contentTitle.css({width : tabRowWidth  + "px"})
+}
+
+tabConTitleWidth ()
+
+window.onload = function () {
+    tabConTitleWidth()
+}
+
+window.onresize = function () {
+    tabConTitleWidth()
+}

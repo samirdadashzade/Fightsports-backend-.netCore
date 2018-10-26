@@ -4428,7 +4428,7 @@
                                                         <div class="news_owl_one_module_content_img_con">
                                                             <div class="news_owl_one_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                         </div>
-                                                        <a href="/Home/News/" class="tab_content_title">@item.NewsBigTitle</a>
+                                                        <a href="/Home/Videos" class="tab_content_title for_res_width">@item.NewsTitle</a>
                                                         <div class="tab_row_content">
                                                             <!-- <div class="small_info">
                                                                     After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
@@ -4478,12 +4478,12 @@
                                             @foreach (var item in photos.Skip(i * 12).Take(12))
                                             {
                                                 <div class="col-md-3 col-sm-3 col-3 foto_tab_for_hover">
-                                                    <a href="/Home/News/@item.NewsId">
+                                                    <a href="/Home/Photos">
                                                         <div class="news_owl_one_module_content_img_con">
                                                             <div class="news_owl_one_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                         </div>
                                                         <div class="foto_tab_row_content">
-                                                            <div class="foto_tab_content_title">@item.NewsBigTitle</div>
+                                                            <div class="foto_tab_content_title">@item.NewsTitle</div>
                                                             <!-- <div class="small_info">
                                                                 After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
                                                                 Justin Gaethje and James Vick
@@ -4537,7 +4537,7 @@
                                                             <div class="news_owl_one_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                         </div>
                                                         <div class="row_content">
-                                                            <div class="content_title">@item.NewsBigTitle</div>
+                                                            <div class="content_title">@item.NewsTitle</div>
                                                             <!-- <div class="small_info">
                                                                 After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
                                                                 Justin Gaethje and James Vick
@@ -5003,9 +5003,9 @@
                                                                 <div class="tab_background_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                             </div>
                                                             <div class="item_content">
-                                                                <div class="content_title">@item.NewsBigTitle</div>
+                                                                <div class="content_title">@item.NewsTitle</div>
                                                                 <div class="small_info">
-                                                                    @item.NewsTxt
+                                                                    @item.NewsBigTitle
                                                                 </div>
                                                                 <div class="post_date_and_seen_times">
                                                                     <div class="post_date">

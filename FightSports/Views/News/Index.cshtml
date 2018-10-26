@@ -105,9 +105,9 @@
         @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)
     </td>
     <td>
-        <a asp-action="Edit" asp-route-id="@item.NewsId">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.NewsId">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.NewsId">Delete</a>
+        <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-primary">Edit</a> 
+        <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-success">Details</a> 
+        <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-danger">Delete</a>
     </td>
 </tr>
 }

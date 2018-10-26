@@ -322,15 +322,37 @@ $('.master_tab_for_hover').mouseout (function () {
 //     $('.footer_container').css({height: '328px'})
 // })
 
+$('.myBtn01').on('click', function () {
+    $('#modal').modal('show');
+
+    let myUrl = $(this).find($('.my_url')).text();
+
+    if(myUrl.length > 27){
+        myId = getId(myUrl);
+
+        let con = $(this).find('#myCode');
+
+        con.html('<iframe width="653" class="delete" height="386" src="http://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
+    }
+    else{
+        myId = getVimeoId(myUrl);
+
+        let con = $('body').find('#myCode');
+
+        con.html('<iframe src="https://player.vimeo.com/video/' + myId + '" width="653" class="delete" height="386" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+    }
+})
+
+
 const getId = (url) => {
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     let match = url.match(regExp);
 
-    if (match && match[2].length == 11) {
+    if (match && match[2].length === 11) {
         return match[2];
 
     } else {
-        console.log('url not valid!!!');
+        console.log('url not valid!!!!!!!!!!');
         return 'error';
     }
 }
@@ -339,34 +361,13 @@ const getVimeoId = (url) => {
     let regExp = /https:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
     let match = url.match(regExp);
 
-    if (match && match[2].length == 9) {
+    if (match && match[2].length === 9) {
         return match[2];
     } else {
         console.log('url not valid!!!!');
         return 'error';
     }
-}
-
-$('.myBtn01').on('click', function () {
-    $('#modal').modal('show')
-
-    let myUrl = $('.tab_row_content ').find($('.my_url')).text()
-
-    if(myUrl.length > 27){
-        myId = getId(myUrl)
-
-        let con = $('body').find('#myCode')
-
-        con.html('<iframe width="653" class="delete" height="386" src="http://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
-    }
-    else{
-        myId = getVimeoId(myUrl);
-
-        let con = $('body').find('#myCode')
-
-        con.html('<iframe src="https://player.vimeo.com/video/' + myId + '" width="653" class="delete" height="386" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
-    }
-})
+};
 
 const deleteIframe = () => {
     $('.modal').click( () => {

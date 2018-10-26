@@ -272,81 +272,81 @@ $('#owl-eleven').owlCarousel({
 })
 
 $('#owl-twelve').owlCarousel({
-    loop:true,
-    nav:false,
-    dots:false,
-    dotsData:false,
-    autoplay:true,
-    autoplayTimeout:3500,
-    autoplaySpeed:2500,
-    mouseDrag:true,
-    items:1,
+    loop: true,
+    nav: false,
+    dots: false,
+    dotsData: false,
+    autoplay: true,
+    autoplayTimeout: 3500,
+    autoplaySpeed: 2500,
+    mouseDrag: true,
+    items: 1,
     animateIn: 'slideInUp',
     animateOut: 'slideOutUp',
-    responsive:{
-        0:{
-            items:1
+    responsive: {
+        0: {
+            items: 1
         }
     }
-})
+});
 
 const getId = (url) => {
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     let match = url.match(regExp);
 
-    if (match && match[2].length == 11) {
+    if (match && match[2].length === 11) {
         return match[2];
 
     } else {
         console.log('url not valid!!!!');
         return 'error';
     }
-}
+};
 
 const getVimeoId = (url) => {
     let regExp = /https:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/;
     let match = url.match(regExp);
 
-    if (match && match[2].length == 9) {
+    if (match && match[2].length === 9) {
         return match[2];
     } else {
         console.log('url not valid!!!!');
         return 'error';
     }
-}
+};
 
 $('.myBtn01').on('click', function () {
-    $('#modal').modal('show')
+    $('#modal').modal('show');
 
-    let myUrl = $('.tab_row_content').find($('.my_url')).text()
+    let myUrl = $(this).find($('.my_url')).text();
 
-    if(myUrl.length > 27){
-        myId = getId(myUrl)
+    if (myUrl.length > 27) {
+        myId = getId(myUrl);
 
-        let con = $('body').find('#myCode')
+        let con = $('body').find('#myCode');
 
         con.html('<iframe width="653" class="delete" height="386" src="http://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
     }
-    else{
+    else {
         myId = getVimeoId(myUrl);
 
         let con = $('body').find('#myCode')
 
         con.html('<iframe src="https://player.vimeo.com/video/' + myId + '" width="653" class="delete" height="386" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
     }
-})
+});
 
 const deleteIframe = () => {
-    $('.modal').click( () => {
-        $('.delete').remove()
-    })
-}
+    $('.modal').click(() => {
+        $('.delete').remove();
+    });
+};
 
-deleteIframe ()
+deleteIframe();
 
 $('.myBtn02').on('click', function () {
-    $('#modal02').modal('show')
-})
+    $('#modal02').modal('show');
+});
 
 var twitterShare = document.querySelector('[data-js="twitter-share"]');
 

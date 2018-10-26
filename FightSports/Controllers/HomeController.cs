@@ -41,6 +41,9 @@ namespace FightSports.Controllers
             ViewBag.masterClass = _context.News.Where(x => x.NewsTypeId == 5).ToList();
             ViewBag.fotos = _context.News.Where(x => x.NewsTypeId == 8).ToList();
             ViewBag.videos = _context.News.Where(x => x.NewsFirstVideoPath != null).ToList();
+
+            _context.SaveChanges();
+
             return View(Vm());
         }
 
@@ -103,11 +106,22 @@ namespace FightSports.Controllers
 
         public IActionResult ClubAndFederation(int? id)
         {
+            var count = 0;
+
+            while (count == 0)
+            {
+                count++;
+                var newsById = _context.News.SingleOrDefault(x => x.NewsId == id);
+                newsById.NewsViews += count;
+            }
+
+            _context.SaveChanges();
+
             ViewBag.SportCategories = _context.SportCategories.ToList();
             return View(_context.News.Where(x => x.NewsId == id).ToList());
         }
 
-        public IActionResult Videos(int? id)
+        public IActionResult Videos()
         {
             var newsWithPhotos = (from news in _context.News
                                   join photos in _context.Photos
@@ -124,11 +138,8 @@ namespace FightSports.Controllers
                                       PhotoPath = photos.PhotoPath
                                   }).ToList();
 
-            ViewBag.Comments = _context.Comments.Where(x => x.NewsId == id).ToList();
-            ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.News = _context.News.ToList();
-
 
             return View(_context.News.ToList());
         }
@@ -150,8 +161,6 @@ namespace FightSports.Controllers
                                       PhotoPath = photos.PhotoPath
                                   }).ToList();
 
-            //ViewBag.Comments = _context.Comments.Where(x => x.NewsId == id).ToList();
-            //ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.News = _context.News.ToList();
 

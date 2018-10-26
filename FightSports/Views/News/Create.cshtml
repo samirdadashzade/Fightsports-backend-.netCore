@@ -40,12 +40,12 @@
                     <input asp-for="NewsTxt" class="form-control" />
                     <span asp-validation-for="NewsTxt" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display:none">
                     <label asp-for="NewsViews" class="control-label"></label>
-                    <input asp-for="NewsViews" class="form-control" />
+                    <input asp-for="NewsViews" class="form-control" value="0" />
                     <span asp-validation-for="NewsViews" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display:none">
                     <label asp-for="NewsAddedDate" class="control-label"></label>
                     <input asp-for="NewsAddedDate" class="form-control" />
                     <span asp-validation-for="NewsAddedDate" class="text-danger"></span>
@@ -87,17 +87,17 @@
                     <span asp-validation-for="NewsFirstVideoPath" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-default submit" />
                 </div>
             </form>
-            <form id="form" name="form" action="/Photos/Creates" enctype="multipart/form-data" method="post">
-                <div class="buttons">
-                    <div class="upload-button">
-                        <div class="label">Click me!</div>
-                        <input id="files" name="files" type="file" size="1" multiple onchange="uploadFiles('files');" />
+            @*<form id="form" name="form" action="/Photos/Creates" enctype="multipart/form-data" method="post">
+                    <div class="buttons">
+                        <div class="upload-button">
+                            <div class="label">Click me!</div>
+                            <input id="files" name="files" type="file" size="1" multiple onchange="uploadFiles('files');" />
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>*@
         </div>
     </div>
 
@@ -113,29 +113,29 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
     </script>
 
-    <script type="text/javascript">
-        function uploadFiles(inputId) {
-            var input = document.getElementById(inputId);
-            var files = input.files;
-            var formData = new FormData();
+    @*<script type="text/javascript">
+            function uploadFiles(inputId) {
+                var input = document.getElementById(inputId);
+                var files = input.files;
+                var formData = new FormData();
 
-            for (var i = 0; i != files.length; i++) {
-                formData.append("files", files[i]);
-            }
-
-            $.ajax(
-                {
-                    type: "POST",
-                    url: "/Photos/Creates",
-                    data: formData,
-                    processData: false,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        alert("Files Uploaded!");
-                    }
+                for (var i = 0; i != files.length; i++) {
+                    formData.append("files", files[i]);
                 }
-            );
-        }
-    </script>
+
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Photos/Creates",
+                        data: formData,
+                        processData: false,
+                        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                        success: function (data) {
+                            alert("Files Uploaded!");
+                        }
+                    }
+                );
+            }
+        </script>*@
 </body>
 </html>

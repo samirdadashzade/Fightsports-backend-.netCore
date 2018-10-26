@@ -83,14 +83,14 @@
                                         <div class="news_feed_date_container">
                                             <div class="week_day">saturday</div>
                                             <br />
-                                            <div class="day_time">@item.NewsAddedDate</div>
+                                            <div class="day_time">@item.NewsBigTitle</div>
                                             <br />
                                             <div class="little_info"></div>
                                         </div>
                                         <div class="news_feed_adress">
                                             <div class="building_name">@item.NewsName</div>
                                             <br />
-                                            <div class="city_name">baku,azerbaijan</div>
+                                            <div class="city_name">@item.NewsAddedDate</div>
                                         </div>
                                         <div class="show_more_button">show more</div>
                                     </div>
@@ -121,9 +121,9 @@
                                                     <div class="tab_background_img" style="background-image:url(@Url.Content(item.NewsFirstPhotoPath)"></div>
                                                 </div>
                                                 <div class="item_content">
-                                                    <div class="content_title">@item.NewsBigTitle</div>
+                                                    <div class="content_title">@item.NewsTitle</div>
                                                     <div class="small_info">
-                                                        @item.NewsTxt
+                                                        @item.NewsBigTitle
                                                     </div>
                                                     <div class="post_date_and_seen_times">
                                                         <div class="post_date">
@@ -2238,7 +2238,7 @@
                                                          <div class="owl_two_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                     </div>
                                                     <div class="row_content">
-                                                        <div class="content_title">@item.NewsBigTitle</div>
+                                                        <div class="content_title">@item.NewsTitle</div>
                                                         <!-- <div class="small_info">
                                                             After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
                                                             Justin Gaethje and James Vick
@@ -2448,10 +2448,15 @@
                                                     <div class="col-md-3 col-sm-3 col-3 tab_for_hover">
                                                         <a>
                                                             <div class="video_svg myBtn01">
+                                                                <div class="my_url">@item.NewsFirstVideoPath</div>
                                                                 <?xml version="1.0" encoding="iso-8859-1" ?>
                                                                 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;" xml:space="preserve" width="512px" height="512px">
                                                                 <path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40  c0,0.372,0.206,0.713,0.535,0.886c0.146,0.076,0.306,0.114,0.465,0.114c0.199,0,0.397-0.06,0.568-0.177l29-20  c0.271-0.187,0.432-0.494,0.432-0.823S36.338,20.363,36.068,20.176z" fill="#c80000" />
+
+
+
+
 
 
 
@@ -2462,9 +2467,8 @@
                                                             <div class="owl_nine_module_content_img_con">
                                                                 <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                             </div>
-                                                            <a href="/Home/Videos" class="tab_content_title">@item.NewsBigTitle</a>
-                                                            <div class="tab_row_content ">
-                                                                <div class="my_url">@item.NewsFirstVideoPath</div>
+                                                            <a href="/Home/Videos" class="tab_content_title">@item.NewsTitle</a>
+                                                            <div class="tab_row_content">
                                                                 <!-- <div class="small_info">
                                                                     After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
                                                                     Justin Gaethje and James Vick
@@ -2520,7 +2524,7 @@
                                                                 <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                             </div>
                                                             <div class="foto_tab_row_content">
-                                                                <div class="foto_tab_content_title">@item.NewsBigTitle</div>
+                                                                <div class="foto_tab_content_title">@item.NewsTitle</div>
                                                                 <!-- <div class="small_info">
                                                                     After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
                                                                     Justin Gaethje and James Vick
@@ -2577,7 +2581,7 @@
                                                                 <div class="owl_nine_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                             </div>
                                                             <div class="master_tab_row_content">
-                                                                <div class="master_tab_content_title">@item.NewsBigTitle</div>
+                                                                <div class="master_tab_content_title">@item.NewsTitle</div>
                                                                 <!-- <div class="small_info">
                                                                     After three weeks off, the Ultimate Fighting Championship  returns with a Fox Sports 1 offering headlined by
                                                                     Justin Gaethje and James Vick
@@ -2658,7 +2662,7 @@
                                             <a href="/Home/News/@item.NewsId">
                                                 <div class="con_item_txt_container_main">
                                                     <div class="con_item_txt_container">
-                                                        @item.NewsTxt
+                                                        @item.NewsBigTitle
                                                     </div>
                                                 </div>
                                             </a>
@@ -2695,9 +2699,9 @@
                                                         <div class="big_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                     </div>
                                                     <div class="big_small_module_item_content">
-                                                        <div class="big_small_module_content_title">@item.NewsBigTitle</div>
+                                                        <div class="big_small_module_content_title">@item.NewsTitle</div>
                                                         <div class="big_small_module_small_info">
-                                                            @item.NewsTxt
+                                                            @item.NewsBigTitle
                                                         </div>
                                                         <div class="big_small_module_post_date_and_seen_times">
                                                             <div class="big_small_module_post_date">
@@ -2751,9 +2755,9 @@
                                                         <div class="big_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                     </div>
                                                     <div class="big_small_module_item_content">
-                                                        <div class="big_small_module_content_title">@item.NewsBigTitle</div>
+                                                        <div class="big_small_module_content_title">@item.NewsTitle</div>
                                                         <div class="big_small_module_small_info">
-                                                            @item.NewsTxt
+                                                            @item.NewsBigTitle
                                                         </div>
                                                         <div class="big_small_module_post_date_and_seen_times">
                                                             <div class="big_small_module_post_date">
@@ -2808,9 +2812,9 @@
                                                         <div class="biggest_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                     </div>
                                                     <div class="biggest_small_module_item_content">
-                                                        <div class="biggest_small_module_content_title">@item.NewsBigTitle</div>
+                                                        <div class="biggest_small_module_content_title">@item.NewsTitle</div>
                                                         <div class="biggest_small_module_small_info">
-                                                            @item.NewsTxt
+                                                            @item.NewsBigTitle
                                                         </div>
                                                         <div class="biggest_small_module_post_date_and_seen_times">
                                                             <div class="biggest_small_module_post_date">

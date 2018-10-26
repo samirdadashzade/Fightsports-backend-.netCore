@@ -34,7 +34,7 @@ namespace FightSports.Migrations
                         .HasColumnName("admin_name")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("AdminPassword")
+                    b.Property<string>("AdminPassword")
                         .HasColumnName("admin_password");
 
                     b.HasKey("AdminId");

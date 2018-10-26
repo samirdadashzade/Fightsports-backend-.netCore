@@ -262,7 +262,9 @@ namespace FightSports.Models
 
                 entity.Property(e => e.NewsTypeId).HasColumnName("news_type_id");
 
-                entity.Property(e => e.NewsViews).HasColumnName("news_views");
+                entity.Property(e => e.NewsViews)
+                    .IsRequired()
+                    .HasColumnName("news_views");
 
                 entity.Property(e => e.OptionalAdress)
                     .HasColumnName("optional_adress")

@@ -66,6 +66,10 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
+                var date = DateTime.Now;
+                var currentDate = date.ToLocalTime();
+                var newsDate = news.NewsAddedDate = currentDate.ToString();
+
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));
                 news.NewsFirstPhotoPath = "/" + Path.GetFileName(news.FormFile.FileName);
 

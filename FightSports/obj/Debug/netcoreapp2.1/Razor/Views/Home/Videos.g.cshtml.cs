@@ -83,7 +83,7 @@ using FightSports.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
             EndContext();
             BeginContext(381, 999, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e816a5196c44422a30585963bae63da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e3fd1c9c1385492c96f0034c3190bc56", async() => {
                 BeginContext(387, 627, true);
                 WriteLiteral(@"
     <meta charset=""UTF-8"" />
@@ -96,7 +96,7 @@ using FightSports.Models;
     ");
                 EndContext();
                 BeginContext(1014, 48, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a29babd97688470a8d686fff255c75ce", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "40040e44c1ee4b5bb2ab25a2cadb3f00", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -115,7 +115,7 @@ using FightSports.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(1068, 59, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0a09fd54741c4afa81c1a96ebf8b61d1", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "acee7b8401424843b6eb2388dd0fed3e", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -134,7 +134,7 @@ using FightSports.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(1133, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "47435edcf3d140ebbcaab88c401124fa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f11bae9e5a514b759325c48f34f80f97", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -153,7 +153,7 @@ using FightSports.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(1203, 57, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d272ac1703d647e594c91afe264d1e1d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7aae43462ed548408dd70644b53cbc1c", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -187,7 +187,7 @@ using FightSports.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1382, 52311, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6def366ffd04bbd94fd6fa163021d67", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "696ba1004d844c979ebdfbcf3a39131f", async() => {
                 BeginContext(1412, 1208, true);
                 WriteLiteral(@"
     <div class=""page_background_img""></div>
@@ -1452,7 +1452,7 @@ WriteAttributeValue("", 23008, item.SportCategoryId, 23008, 21, false);
     ");
                 EndContext();
                 BeginContext(48254, 54, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e011501407f744cdadeac9c936ba66a9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ad8ef844a40340da83a539355f11fa54", async() => {
                     BeginContext(48293, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -1473,7 +1473,7 @@ WriteAttributeValue("", 23008, item.SportCategoryId, 23008, 21, false);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(48314, 45, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a9b58ce1e9f40519de10dd985d036b3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86489e3ba58a4a7094104ac78aae1bcb", async() => {
                     BeginContext(48344, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -1494,7 +1494,7 @@ WriteAttributeValue("", 23008, item.SportCategoryId, 23008, 21, false);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(48365, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2a5a7390cbe3489c9a0d5cbf01d41ebc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0048996547a84556a3389441d4038ecb", async() => {
                     BeginContext(48408, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -1515,7 +1515,7 @@ WriteAttributeValue("", 23008, item.SportCategoryId, 23008, 21, false);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(48429, 42, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3829aaef1d943b79a9407cdaac81396", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cba13503b284280b033936d1152529b", async() => {
                     BeginContext(48456, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -1536,7 +1536,7 @@ WriteAttributeValue("", 23008, item.SportCategoryId, 23008, 21, false);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(48477, 77, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31616ab0d8bd4ad48aa54acb5b53f85f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c85c95c7762d4ca8a3a22718ba926d28", async() => {
                     BeginContext(48539, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -1557,7 +1557,7 @@ WriteAttributeValue("", 23008, item.SportCategoryId, 23008, 21, false);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(48560, 96, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7bcb33376f9e4f67b1e6fc8e82f05342", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "53f1357603cc4a1a9b39e1ae4ac639b9", async() => {
                     BeginContext(48641, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();

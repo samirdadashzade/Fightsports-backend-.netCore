@@ -36,6 +36,16 @@ namespace FightSports.Controllers
             return viewModel;
         }
 
+        public IActionResult Search(string id)
+        {
+            var result = _context.News.Where(x => x.NewsTitle.Contains(id) ||
+                                                    x.NewsName.Contains(id) || 
+                                                    x.NewsTxt.Contains(id) || 
+                                                    x.NewsBigTitle.Contains(id));
+
+            return Json(result);
+        }
+        
         public IActionResult Index()
         {
             ViewBag.masterClass = _context.News.Where(x => x.NewsTypeId == 5).ToList();

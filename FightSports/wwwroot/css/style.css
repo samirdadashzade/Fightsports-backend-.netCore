@@ -9,9 +9,32 @@ body {
   position: fixed;
   top: 0;
   z-index: -10000000000000000; }
+.no_result_con {
+    display:block;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+}
+.search_list {
+    padding: 44px;
+}
+.search_list_item {
+    list-style-type: none;
+}
+.list_item_href {
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+}
 
 .main_container {
-  margin: auto; }
+    margin: auto;
+}
   .main_container .up_thin_footer_container {
     height: 65px;
     border: 1px solid transparent;

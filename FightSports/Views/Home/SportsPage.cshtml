@@ -53,6 +53,13 @@
 </head>
 <body class="animated fadeIn">
     <div class="page_background_img"></div>
+    <div class="modal fade" id="modal03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog02 modal-dialog-centered" role="document">
+                <div class="modal-content02 modal-content">
+                    <div class="search_list"></div>
+                </div>
+            </div>
+        </div>
     <div class="sports_page_main_container">
         <div class="modal fade" id="modal02" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog02 modal-dialog-centered" role="document">
@@ -4198,10 +4205,10 @@
                     </a>
                 </div>
                 <div class="search_container_main">
-                    <input class="search_area" type="text" />
-                    <a class="search_button" href="">
-                        <div>go</div>
-                    </a>
+                    <input class="search_area" id="search-text" type="text" />
+                    <button type="button" class="search_button myBtn03">
+                        go
+                    </button>
                 </div>
             </div>
         </div>
@@ -31656,6 +31663,25 @@
                     id: 'accordion'
                 });
             });
+        })
+
+        $('.search_button').click(function(){
+            var data = $('.search_area').val()
+            $.ajax({
+                url:"/Home/Search/" + data,
+                type:"GET",
+                dataType: "json",
+                success:function(data){
+                   $('#modal03').modal('show');
+                    var searchList = $('.search_list')
+                    searchList.empty()
+
+                    $.each(data,function(index,val){
+                        var result = '<div class="search_list_item">' + '<a class="list_item_href" href="/Home/News/' + val.newsId + '">' + val.newsTitle + '</a>' + '<div>';
+                        searchList.append(result)
+                    })
+                }
+            })
         })
     </script>
     <script type="text/javascript">

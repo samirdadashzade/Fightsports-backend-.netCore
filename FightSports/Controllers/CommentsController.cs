@@ -19,9 +19,23 @@ namespace FightSports.Controllers
             _context = context;
         }
 
-        public IActionResult GetCommentsById(int? id)
+        public IActionResult GetNewsCommentsById(int? id)
         {
-            var comms = _context.Comments.Where(x => x.NewsId == id);
+            var comms = _context.Comments.Where(x => x.NewsId == id && x.AbstractCommentType == "news");
+
+            return Json(comms);
+        }
+
+        public IActionResult GetVideosCommentsById(int? id)
+        {
+            var comms = _context.Comments.Where(x => x.AbstractCommentType == "videos");
+
+            return Json(comms);
+        }
+
+        public IActionResult GetPhotosCommentsById(int? id)
+        {
+            var comms = _context.Comments.Where(x => x.AbstractCommentType == "photos");
 
             return Json(comms);
         }

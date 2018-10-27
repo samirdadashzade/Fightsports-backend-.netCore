@@ -31,6 +31,10 @@ namespace FightSports
             new PhysicalFileProvider(
                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+            });
             services.AddMvc();
             services.AddTransient<CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext, CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext>();
             services.AddSingleton<CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext, CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext>();
@@ -61,7 +65,7 @@ namespace FightSports
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

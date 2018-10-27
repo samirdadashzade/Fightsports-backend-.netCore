@@ -12847,7 +12847,8 @@
                     CommentDate : time,
                     AuthorName : $('.name_input').val(),
                     CommentTxt : $('.comment_input').val(),
-                    NewsId : id
+                    NewsId : id,
+                    AbstractCommentType : "news"
                 }
 
                 $.ajax({
@@ -12857,11 +12858,22 @@
                     dataType: "json",
                     contentType: "application/json;charset=utf-8"
                 })
+
+                var nameInput = $('.name_input').val('')
+                var commentInput = $('.comment_input').val('')
+
+                setTimeout(function(){
+                    getComms()
+                },500)
             })
+
+            setTimeout(function(){
+                 getComms()
+            },500)
 
             function getComms () {
                 $.ajax({
-                    url: "/Comments/GetCommentsById/" + id,
+                    url: "/Comments/GetNewsCommentsById/" + id,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {

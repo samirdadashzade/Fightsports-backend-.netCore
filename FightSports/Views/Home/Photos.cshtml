@@ -318,15 +318,15 @@
                 </div>
             </div>
         </div>
-        @*<div class="container comment_block_margin_bottom">
+        <div class="container comment_block_margin_bottom">
             <div class="row">
                 <div class="col-md-8">
                     <div class="comments_main_container wow fadeIn">
                         <div class="name_area">
-                            <input type="text" name="AuthorName" class="name_input" placeholder="name*" />
+                            <input type="text" name="AuthorName" required class="name_input" placeholder="name*" />
                         </div>
                         <div class="comment_area">
-                            <textarea class="comment_input" name="CommentTxt" placeholder="comment*"></textarea>
+                            <textarea class="comment_input" required name="CommentTxt" placeholder="comment*"></textarea>
                         </div>
                         <div class="post_comment">
                             <input type="submit" name="" id="insert" value="post comment" class="post_input" />
@@ -338,7 +338,7 @@
                     <div class="banner_container_right wow fadeIn"></div>
                 </div>
             </div>
-        </div>*@
+        </div>
         <div class="container carousel_padding">
             <div id="owl-one" class="owl-carousel owl-theme wow fadeIn">
                 @for (int i = 0; i < newsAll.Count / 4.0; i++)
@@ -1509,7 +1509,7 @@
 
 
 
-    @*<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function(){
             var url = window.location.href;
             var id = url.substring(url.lastIndexOf('/') + 1);
@@ -1522,7 +1522,7 @@
                     CommentDate : time,
                     AuthorName : $('.name_input').val(),
                     CommentTxt : $('.comment_input').val(),
-                    NewsId : id
+                    AbstractCommentType : "photos"
                 }
 
                 $.ajax({
@@ -1532,11 +1532,22 @@
                     dataType: "json",
                     contentType: "application/json;charset=utf-8"
                 })
+
+                var nameInput = $('.name_input').val('')
+                var commentInput = $('.comment_input').val('')
+
+                setTimeout(function(){
+                    getComms()
+                },500)
             })
+
+            setTimeout(function(){
+                getComms()
+            },500)
 
             function getComms () {
                 $.ajax({
-                    url: "/Comments/GetCommentsById/" + id,
+                    url: "/Comments/GetPhotosCommentsById/",
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
@@ -1567,11 +1578,8 @@
                     }
                 })
             }
-            setInterval(function(){
-                getComms()
-            },500)
         })
-    </script>*@
+    </script>
 
 </body>
 </html>

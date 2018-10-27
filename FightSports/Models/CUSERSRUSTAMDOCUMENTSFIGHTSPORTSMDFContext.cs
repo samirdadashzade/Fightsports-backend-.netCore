@@ -79,7 +79,7 @@ namespace FightSports.Models
 
                 entity.ToTable("comments");
 
-                entity.HasIndex(e => e.NewsId);
+                entity.HasIndex(e => e.NewsId);                  
 
                 entity.Property(e => e.CommentId).HasColumnName("comment_id");
 

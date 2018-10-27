@@ -294,7 +294,7 @@
                 </div>
             </div>
         </div>
-        @*<div class="container comment_block_margin_bottom">
+        <div class="container comment_block_margin_bottom">
             <div class="row">
                 <div class="col-md-8">
                     <div class="comments_main_container wow fadeIn">
@@ -314,7 +314,7 @@
                     <div class="banner_container_right wow fadeIn"></div>
                 </div>
             </div>
-        </div>*@
+        </div>
         <div class="container carousel_padding">
             <div id="owl-one" class="owl-carousel owl-theme wow fadeIn">
                 @for (int i = 0; i < newsAll.Count / 4.0; i++)
@@ -1037,7 +1037,7 @@
 
 
 
-    @*<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function(){
             var url = window.location.href;
             var id = url.substring(url.lastIndexOf('/') + 1);
@@ -1050,7 +1050,7 @@
                     CommentDate : time,
                     AuthorName : $('.name_input').val(),
                     CommentTxt : $('.comment_input').val(),
-                    NewsId : id
+                    AbstractCommentType : "videos"
                 }
 
                 $.ajax({
@@ -1060,11 +1060,22 @@
                     dataType: "json",
                     contentType: "application/json;charset=utf-8"
                 })
+
+                var nameInput = $('.name_input').val('')
+                var commentInput = $('.comment_input').val('')
+
+                setTimeout(function(){
+                    getComms()
+                },500)
             })
+
+            setTimeout(function(){
+                getComms()
+            },500)
 
             function getComms () {
                 $.ajax({
-                    url: "/Comments/GetCommentsById/" + id,
+                    url: "/Comments/GetVideosCommentsById/",
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
@@ -1095,11 +1106,8 @@
                     }
                 })
             }
-            setInterval(function(){
-                getComms()
-            },500)
         })
-    </script>*@
+    </script>
 
 </body>
 </html>

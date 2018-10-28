@@ -14,7 +14,7 @@
 </head>
 <body>
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create" class="btn btn-info">Create New</a>
     </p>
     <table class="table">
         <thead>
@@ -75,15 +75,15 @@
         @Html.DisplayFor(modelItem => item.ProductTitle)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.MagazineFirstPhotoPath)
+        <img src="@item.MagazineFirstPhotoPath" width="300px;" height="200px;" alt="Alternate Text" />
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)
     </td>
     <td>
-        <a asp-action="Edit" asp-route-id="@item.MagazineId">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.MagazineId">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.MagazineId">Delete</a>
+        <a asp-action="Edit" asp-route-id="@item.MagazineId" class="btn btn-primary">Edit</a> 
+        <a asp-action="Details" asp-route-id="@item.MagazineId" class="btn btn-success">Details</a> 
+        <a asp-action="Delete" asp-route-id="@item.MagazineId" class="btn btn-danger">Delete</a>
     </td>
 </tr>
 }

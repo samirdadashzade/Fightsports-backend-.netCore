@@ -20,10 +20,15 @@ body {
     justify-content: center;
     align-items: center;
 }
+.news_search_bg{
+    font-size:11px;
+}
 .search_list {
     padding: 44px;
 }
 .search_list_item {
+    margin-top: 8px;
+    margin-bottom: 8px;
     list-style-type: none;
 }
 .list_item_href {

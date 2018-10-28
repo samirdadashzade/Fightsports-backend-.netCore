@@ -14,7 +14,9 @@ namespace FightSports.Models
         public string CommentDate { get; set; }
         public string AbstractCommentType { get; set; }
         public int? NewsId { get; set; }
+        public int? MelumatId { get; set; }
 
         public News News { get; set; }
+        public Melumat Melumats{ get; set; }
     }
 }

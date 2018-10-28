@@ -22,7 +22,6 @@ namespace FightSports.Models
         public virtual DbSet<Magazine> Magazine { get; set; }
         public virtual DbSet<MagazinePhotos> MagazinePhotos { get; set; }
         public virtual DbSet<Melumat> Melumat { get; set; }
-        public virtual DbSet<MelumatComments> MelumatComments { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsType> NewsType { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
@@ -79,7 +78,8 @@ namespace FightSports.Models
 
                 entity.ToTable("comments");
 
-                entity.HasIndex(e => e.NewsId);                  
+                entity.HasIndex(e => e.NewsId);
+                entity.HasIndex(e => e.MelumatId);
 
                 entity.Property(e => e.CommentId).HasColumnName("comment_id");
 
@@ -102,12 +102,19 @@ namespace FightSports.Models
                     .HasColumnName("comment_txt");
 
                 entity.Property(e => e.NewsId).HasColumnName("news_id");
+                entity.Property(e => e.MelumatId).HasColumnName("melumat_id");
 
                 entity.HasOne(d => d.News)
                     .WithMany(p => p.Comments)
                     .HasForeignKey(d => d.NewsId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_comments_ToTablenews");
+
+                entity.HasOne(d => d.Melumats)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(d => d.MelumatId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_comments_ToTablemalumats");
             });
 
             modelBuilder.Entity<LiveTv>(entity =>
@@ -205,32 +212,6 @@ namespace FightSports.Models
                     .WithMany(p => p.Melumat)
                     .HasForeignKey(d => d.SportCategoryId)
                     .HasConstraintName("FK_Melumat_ToTable_sport_categories");
-            });
-
-            modelBuilder.Entity<MelumatComments>(entity =>
-            {
-                entity.HasKey(e => e.MelumatCommentId);
-
-                entity.ToTable("melumat_comments");
-
-                entity.Property(e => e.MelumatCommentId).HasColumnName("melumat_comment_id");
-
-                entity.Property(e => e.MelumatCommentAuthorName)
-                    .HasColumnName("melumat_comment_author_name")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.MelumatCommentDate)
-                    .HasColumnName("melumat_comment_date")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.MelumatCommentTxt).HasColumnName("melumat_comment_txt");
-
-                entity.Property(e => e.MelumatId).HasColumnName("melumat_id");
-
-                entity.HasOne(d => d.Melumat)
-                    .WithMany(p => p.MelumatComments)
-                    .HasForeignKey(d => d.MelumatId)
-                    .HasConstraintName("FK_melumat_comments_ToTablemelumat_id");
             });
 
             modelBuilder.Entity<News>(entity =>

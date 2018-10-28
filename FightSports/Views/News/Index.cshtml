@@ -14,7 +14,7 @@
 </head>
 <body>
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create" class="btn btn-info">Create New</a>
     </p>
     <table class="table">
         <thead>
@@ -93,7 +93,7 @@
         @Html.DisplayFor(modelItem => item.OptionalAdress)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.NewsFirstPhotoPath)
+        <img src="@item.NewsFirstPhotoPath" width="300px;" height="200px;" alt="Alternate Text" />
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.NewsFirstVideoPath)

@@ -897,7 +897,12 @@
                     searchList.empty()
 
                     $.each(data,function(index,val){
-                        var result = '<div class="search_list_item">' + '<a class="list_item_href" href="/Home/News/' + val.newsId + '">' + val.newsTitle + '</a>' + '<div>';
+                        var result = '<div class="search_list_item">' + 
+                                        '<a class="list_item_href" href="/Home/News/' + val.newsId + '">' 
+                                            + '<div>' + val.newsTitle + '</div>' 
+                                            + '<div class="news_search_bg">' + val.newsBigTitle + '</div>' + 
+                                         '</a>' + 
+                                      '</div>';
                         searchList.append(result)
                     })
                 }

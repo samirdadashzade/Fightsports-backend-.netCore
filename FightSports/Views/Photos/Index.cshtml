@@ -5,10 +5,8 @@
     Layout = "~/Views/Shared/admin_panel.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-info">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -41,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.PhotoName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhotoPath)
+                <img src="@item.PhotoPath" width="300px;" height="200px;" alt="Alternate Text" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PhotoTitle)
@@ -53,12 +51,12 @@
                 @Html.DisplayFor(modelItem => item.PhotoAddedData)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.News.NewsFirstPhotoPath)
+                @Html.DisplayFor(modelItem => item.News.NewsName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PhotoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PhotoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PhotoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.PhotoId" class="btn btn-primary">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.PhotoId" class="btn btn-success">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.PhotoId" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

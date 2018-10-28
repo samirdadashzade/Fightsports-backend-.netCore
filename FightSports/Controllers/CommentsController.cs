@@ -40,6 +40,13 @@ namespace FightSports.Controllers
             return Json(comms);
         }
 
+        public IActionResult GetMelumatsCommentsById(int? id)
+        {
+            var comms = _context.Comments.Where(x => x.MelumatId == id && x.AbstractCommentType == "melumats");
+
+            return Json(comms);
+        }
+
         // GET: Comments
         public async Task<IActionResult> Index()
         {

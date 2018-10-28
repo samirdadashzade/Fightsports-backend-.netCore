@@ -9,7 +9,7 @@ namespace FightSports.Models
     {
         public Melumat()
         {
-            MelumatComments = new HashSet<MelumatComments>();
+            Comments = new HashSet<Comments>();
         }
 
         public int MelumatId { get; set; }
@@ -21,6 +21,6 @@ namespace FightSports.Models
         [NotMapped]
         public IFormFile FormFile { get; set; }
         public SportCategories SportCategory { get; set; }
-        public ICollection<MelumatComments> MelumatComments { get; set; }
+        public ICollection<Comments> Comments { get; set; }
     }
 }

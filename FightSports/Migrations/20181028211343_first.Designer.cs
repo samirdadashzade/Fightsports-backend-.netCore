@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FightSports.Migrations
 {
     [DbContext(typeof(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext))]
-    [Migration("20181027101141_test")]
-    partial class test
+    [Migration("20181028211343_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,7 +73,9 @@ namespace FightSports.Migrations
 
                     b.Property<string>("AbstractCommentType")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("abstract_comment_type")
+                        .HasDefaultValueSql("(N'')")
                         .HasMaxLength(50);
 
                     b.Property<string>("AuthorName")
@@ -89,10 +91,15 @@ namespace FightSports.Migrations
                         .IsRequired()
                         .HasColumnName("comment_txt");
 
+                    b.Property<int?>("MelumatId")
+                        .HasColumnName("melumat_id");
+
                     b.Property<int?>("NewsId")
                         .HasColumnName("news_id");
 
                     b.HasKey("CommentId");
+
+                    b.HasIndex("MelumatId");
 
                     b.HasIndex("NewsId");
 
@@ -132,11 +139,13 @@ namespace FightSports.Migrations
                         .IsRequired()
                         .HasColumnName("magazine_first_photo_path");
 
-                    b.Property<int?>("MagazineLatitude")
-                        .HasColumnName("magazine_latitude");
+                    b.Property<string>("MagazineLatitude")
+                        .HasColumnName("magazine_latitude")
+                        .HasMaxLength(50);
 
-                    b.Property<int?>("MagazineLongitude")
-                        .HasColumnName("magazine_longitude");
+                    b.Property<string>("MagazineLongitude")
+                        .HasColumnName("magazine_longitude")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ProductName")
                         .HasColumnName("product_name")
@@ -213,34 +222,6 @@ namespace FightSports.Migrations
                     b.ToTable("Melumat");
                 });
 
-            modelBuilder.Entity("FightSports.Models.MelumatComments", b =>
-                {
-                    b.Property<int>("MelumatCommentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("melumat_comment_id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MelumatCommentAuthorName")
-                        .HasColumnName("melumat_comment_author_name")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("MelumatCommentDate")
-                        .HasColumnName("melumat_comment_date")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("MelumatCommentTxt")
-                        .HasColumnName("melumat_comment_txt");
-
-                    b.Property<int?>("MelumatId")
-                        .HasColumnName("melumat_id");
-
-                    b.HasKey("MelumatCommentId");
-
-                    b.HasIndex("MelumatId");
-
-                    b.ToTable("melumat_comments");
-                });
-
             modelBuilder.Entity("FightSports.Models.News", b =>
                 {
                     b.Property<int>("NewsId")
@@ -283,11 +264,13 @@ namespace FightSports.Migrations
                         .HasColumnName("optional_adress")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("OptionalLatitude")
-                        .HasColumnName("optional_latitude");
+                    b.Property<string>("OptionalLatitude")
+                        .HasColumnName("optional_latitude")
+                        .HasMaxLength(50);
 
-                    b.Property<int?>("OptionalLongitude")
-                        .HasColumnName("optional_longitude");
+                    b.Property<string>("OptionalLongitude")
+                        .HasColumnName("optional_longitude")
+                        .HasMaxLength(50);
 
                     b.Property<int>("SportCategoryId")
                         .HasColumnName("sport_category_id");
@@ -413,6 +396,11 @@ namespace FightSports.Migrations
 
             modelBuilder.Entity("FightSports.Models.Comments", b =>
                 {
+                    b.HasOne("FightSports.Models.Melumat", "Melumat")
+                        .WithMany("Comments")
+                        .HasForeignKey("MelumatId")
+                        .HasConstraintName("FK_comments_ToTablemalumats");
+
                     b.HasOne("FightSports.Models.News", "News")
                         .WithMany("Comments")
                         .HasForeignKey("NewsId")
@@ -441,14 +429,6 @@ namespace FightSports.Migrations
                         .WithMany("Melumat")
                         .HasForeignKey("SportCategoryId")
                         .HasConstraintName("FK_Melumat_ToTable_sport_categories");
-                });
-
-            modelBuilder.Entity("FightSports.Models.MelumatComments", b =>
-                {
-                    b.HasOne("FightSports.Models.Melumat", "Melumat")
-                        .WithMany("MelumatComments")
-                        .HasForeignKey("MelumatId")
-                        .HasConstraintName("FK_melumat_comments_ToTablemelumat_id");
                 });
 
             modelBuilder.Entity("FightSports.Models.News", b =>

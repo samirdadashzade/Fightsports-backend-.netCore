@@ -25010,7 +25010,11 @@
     </div>
 
 
-
+    @foreach (var item in Model)
+    {
+       <div class="lat" style="display:none;">@item.OptionalLatitude</div>
+       <div class="long" style="display:none;">@item.OptionalLongitude</div>
+    }
 
 
 
@@ -25038,7 +25042,14 @@
     </script>
     <script type="text/javascript">
         function initMap() {
-        var cords = { lat: 47.435203, lng: -122.247089 };
+            var lat = $('.lat').text()
+            var long = $('.long').text()
+            var f = parseFloat(long)
+            var h = parseFloat(lat)
+            console.log(f)
+            console.log(h)
+
+        var cords = { lat: h, lng: f };
         var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
         center: cords,

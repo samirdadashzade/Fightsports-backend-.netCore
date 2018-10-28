@@ -123,7 +123,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PhotoId,PhotoName,PhotoPath,PhotoTitle,PhotoViews,PhotoAddedData,NewsId")] Photos photos)
+        public async Task<IActionResult> Edit(int id, Photos photos)
         {
             if (id != photos.PhotoId)
             {
@@ -132,6 +132,14 @@ namespace FightSports.Controllers
 
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await photos.FormFile.CopyToAsync(stream);
+                }
+
                 try
                 {
                     _context.Update(photos);

@@ -110,7 +110,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsName,NewsTitle,NewsBigTitle,NewsTxt,NewsViews,NewsAddedDate,OptionalLongitude,OptionalLatitude,NewsTypeId,SportCategoryId,OptionalAdress,NewsFirstPhotoPath,NewsFirstVideoPath")] News news)
+        public async Task<IActionResult> Edit(int id, News news)
         {
             if (id != news.NewsId)
             {
@@ -119,6 +119,18 @@ namespace FightSports.Controllers
 
             if (ModelState.IsValid)
             {
+                var date = DateTime.Now;
+                var currentDate = date.ToLocalTime();
+                var newsDate = news.NewsAddedDate = currentDate.ToString();
+
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));
+                news.NewsFirstPhotoPath = "/" + Path.GetFileName(news.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await news.FormFile.CopyToAsync(stream);
+                }
+
                 try
                 {
                     _context.Update(news);

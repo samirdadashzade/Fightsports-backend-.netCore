@@ -31544,6 +31544,11 @@
         </div>
     </div>
 
+     @foreach (var item in ViewBag.Magazine)
+     {
+           <div class="lat" style="display:none;">@item.MagazineLatitude</div>
+           <div class="long" style="display:none;">@item.MagazineLongitude</div>
+     }
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -31692,95 +31697,102 @@
     <script type="text/javascript">
 
         function initMap() {
-        var cords = { lat: 47.435203, lng: -122.247089 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: cords,
-        styles: [
-        { elementType: 'geometry', stylers: [{ color: '#000000' }] },
-        { elementType: 'labels.text.stroke', stylers: [{ color: '#000000' }] },
-        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
-        {
-        featureType: 'administrative.locality',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
-        },
-        {
-        featureType: 'poi',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
-        },
-        {
-        featureType: 'poi.park',
-        elementType: 'geometry',
-        stylers: [{ color: '#263c3f' }]
-        },
-        {
-        featureType: 'poi.park',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#6b9a76' }]
-        },
-        {
-        featureType: 'road',
-        elementType: 'geometry',
-        stylers: [{ color: '#38414e' }]
-        },
-        {
-        featureType: 'road',
-        elementType: 'geometry.stroke',
-        stylers: [{ color: '#212a37' }]
-        },
-        {
-        featureType: 'road',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#9ca5b3' }]
-        },
-        {
-        featureType: 'road.highway',
-        elementType: 'geometry',
-        stylers: [{ color: '#746855' }]
-        },
-        {
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [{ color: '#1f2835' }]
-        },
-        {
-        featureType: 'road.highway',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#f3d19c' }]
-        },
-        {
-        featureType: 'transit',
-        elementType: 'geometry',
-        stylers: [{ color: '#2f3948' }]
-        },
-        {
-        featureType: 'transit.station',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
-        },
-        {
-        featureType: 'water',
-        elementType: 'geometry',
-        stylers: [{ color: '#blue' }]
-        },
-        {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#515c6d' }]
-        },
-        {
-        featureType: 'water',
-        elementType: 'labels.text.stroke',
-        stylers: [{ color: '#17263c' }]
-        }
-        ]
-        })
-        var marker = new google.maps.Marker({
-        position: cords,
-        map: map
-        })
+            var lat = $('.lat').text()
+            var long = $('.long').text()
+            var f = parseFloat(long)
+            var h = parseFloat(lat)
+            console.log(f)
+            console.log(h)
+
+            var cords = { lat: h, lng: f };
+            var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: cords,
+            styles: [
+                { elementType: 'geometry', stylers: [{ color: '#000000' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#000000' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                {
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+                },
+                {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+                },
+                {
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [{ color: '#263c3f' }]
+                },
+                {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#6b9a76' }]
+                },
+                {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{ color: '#38414e' }]
+                },
+                {
+                featureType: 'road',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#212a37' }]
+                },
+                {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#9ca5b3' }]
+                },
+                {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{ color: '#746855' }]
+                },
+                {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#1f2835' }]
+                },
+                {
+                featureType: 'road.highway',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#f3d19c' }]
+                },
+                {
+                featureType: 'transit',
+                elementType: 'geometry',
+                stylers: [{ color: '#2f3948' }]
+                },
+                {
+                featureType: 'transit.station',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+                },
+                {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{ color: '#blue' }]
+                },
+                {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#515c6d' }]
+                },
+                {
+                featureType: 'water',
+                elementType: 'labels.text.stroke',
+                stylers: [{ color: '#17263c' }]
+                }
+                ]
+            })
+            var marker = new google.maps.Marker({
+            position: cords,
+            map: map
+            })
         }
     </script>
 </body>

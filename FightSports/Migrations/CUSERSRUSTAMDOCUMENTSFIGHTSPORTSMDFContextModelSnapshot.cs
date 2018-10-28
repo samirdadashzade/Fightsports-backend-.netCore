@@ -71,7 +71,9 @@ namespace FightSports.Migrations
 
                     b.Property<string>("AbstractCommentType")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("abstract_comment_type")
+                        .HasDefaultValueSql("(N'')")
                         .HasMaxLength(50);
 
                     b.Property<string>("AuthorName")
@@ -135,11 +137,13 @@ namespace FightSports.Migrations
                         .IsRequired()
                         .HasColumnName("magazine_first_photo_path");
 
-                    b.Property<int?>("MagazineLatitude")
-                        .HasColumnName("magazine_latitude");
+                    b.Property<string>("MagazineLatitude")
+                        .HasColumnName("magazine_latitude")
+                        .HasMaxLength(50);
 
-                    b.Property<int?>("MagazineLongitude")
-                        .HasColumnName("magazine_longitude");
+                    b.Property<string>("MagazineLongitude")
+                        .HasColumnName("magazine_longitude")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ProductName")
                         .HasColumnName("product_name")
@@ -258,11 +262,13 @@ namespace FightSports.Migrations
                         .HasColumnName("optional_adress")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("OptionalLatitude")
-                        .HasColumnName("optional_latitude");
+                    b.Property<string>("OptionalLatitude")
+                        .HasColumnName("optional_latitude")
+                        .HasMaxLength(50);
 
-                    b.Property<int?>("OptionalLongitude")
-                        .HasColumnName("optional_longitude");
+                    b.Property<string>("OptionalLongitude")
+                        .HasColumnName("optional_longitude")
+                        .HasMaxLength(50);
 
                     b.Property<int>("SportCategoryId")
                         .HasColumnName("sport_category_id");
@@ -388,7 +394,7 @@ namespace FightSports.Migrations
 
             modelBuilder.Entity("FightSports.Models.Comments", b =>
                 {
-                    b.HasOne("FightSports.Models.Melumat", "Melumats")
+                    b.HasOne("FightSports.Models.Melumat", "Melumat")
                         .WithMany("Comments")
                         .HasForeignKey("MelumatId")
                         .HasConstraintName("FK_comments_ToTablemalumats");

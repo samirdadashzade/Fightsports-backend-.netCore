@@ -28,19 +28,16 @@ namespace FightSports.Migrations
                 name: "magazine_photos");
 
             migrationBuilder.DropTable(
-                name: "melumat_comments");
-
-            migrationBuilder.DropTable(
                 name: "photos");
 
             migrationBuilder.DropTable(
                 name: "videos");
 
             migrationBuilder.DropTable(
-                name: "magazine");
+                name: "Melumat");
 
             migrationBuilder.DropTable(
-                name: "Melumat");
+                name: "magazine");
 
             migrationBuilder.DropTable(
                 name: "news");

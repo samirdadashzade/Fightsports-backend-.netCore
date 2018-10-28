@@ -21,14 +21,13 @@ namespace FightSports.Models
         public string NewsTxt { get; set; }
         public int NewsViews { get; set; }
         public string NewsAddedDate { get; set; }
-        public int? OptionalLongitude { get; set; }
-        public int? OptionalLatitude { get; set; }
+        public string OptionalLongitude { get; set; }
+        public string OptionalLatitude { get; set; }
         public int NewsTypeId { get; set; }
         public int SportCategoryId { get; set; }
         public string OptionalAdress { get; set; }
         public string NewsFirstPhotoPath { get; set; }
         public string NewsFirstVideoPath { get; set; }
-
         [NotMapped]
         public IFormFile FormFile { get; set; }
         public NewsType NewsType { get; set; }

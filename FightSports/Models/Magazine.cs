@@ -15,8 +15,8 @@ namespace FightSports.Models
         public int MagazineId { get; set; }
         public string ProductName { get; set; }
         public string MagazineAdress { get; set; }
-        public int? MagazineLongitude { get; set; }
-        public int? MagazineLatitude { get; set; }
+        public string MagazineLongitude { get; set; }
+        public string MagazineLatitude { get; set; }
         public string ProductTxt { get; set; }
         public int? ProductPrice { get; set; }
         public string ProductTitle { get; set; }
@@ -24,6 +24,7 @@ namespace FightSports.Models
         public string MagazineFirstPhotoPath { get; set; }
         [NotMapped]
         public IFormFile FormFile { get; set; }
+
         public SportCategories SportCategory { get; set; }
         public ICollection<MagazinePhotos> MagazinePhotos { get; set; }
     }

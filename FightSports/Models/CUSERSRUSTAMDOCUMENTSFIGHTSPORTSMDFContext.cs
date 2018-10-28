@@ -78,10 +78,17 @@ namespace FightSports.Models
 
                 entity.ToTable("comments");
 
-                entity.HasIndex(e => e.NewsId);
                 entity.HasIndex(e => e.MelumatId);
 
+                entity.HasIndex(e => e.NewsId);
+
                 entity.Property(e => e.CommentId).HasColumnName("comment_id");
+
+                entity.Property(e => e.AbstractCommentType)
+                    .IsRequired()
+                    .HasColumnName("abstract_comment_type")
+                    .HasMaxLength(50)
+                    .HasDefaultValueSql("(N'')");
 
                 entity.Property(e => e.AuthorName)
                     .IsRequired()
@@ -92,29 +99,23 @@ namespace FightSports.Models
                     .HasColumnName("comment_date")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.AbstractCommentType)
-                    .IsRequired()
-                    .HasColumnName("abstract_comment_type")
-                    .HasMaxLength(50);
-
                 entity.Property(e => e.CommentTxt)
                     .IsRequired()
                     .HasColumnName("comment_txt");
 
-                entity.Property(e => e.NewsId).HasColumnName("news_id");
                 entity.Property(e => e.MelumatId).HasColumnName("melumat_id");
+
+                entity.Property(e => e.NewsId).HasColumnName("news_id");
+
+                entity.HasOne(d => d.Melumat)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(d => d.MelumatId)
+                    .HasConstraintName("FK_comments_ToTablemalumats");
 
                 entity.HasOne(d => d.News)
                     .WithMany(p => p.Comments)
                     .HasForeignKey(d => d.NewsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_comments_ToTablenews");
-
-                entity.HasOne(d => d.Melumats)
-                    .WithMany(p => p.Comments)
-                    .HasForeignKey(d => d.MelumatId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_comments_ToTablemalumats");
             });
 
             modelBuilder.Entity<LiveTv>(entity =>
@@ -144,9 +145,13 @@ namespace FightSports.Models
                     .IsRequired()
                     .HasColumnName("magazine_first_photo_path");
 
-                entity.Property(e => e.MagazineLatitude).HasColumnName("magazine_latitude");
+                entity.Property(e => e.MagazineLatitude)
+                    .HasColumnName("magazine_latitude")
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.MagazineLongitude).HasColumnName("magazine_longitude");
+                entity.Property(e => e.MagazineLongitude)
+                    .HasColumnName("magazine_longitude")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ProductName)
                     .HasColumnName("product_name")
@@ -248,17 +253,19 @@ namespace FightSports.Models
 
                 entity.Property(e => e.NewsTypeId).HasColumnName("news_type_id");
 
-                entity.Property(e => e.NewsViews)
-                    .IsRequired()
-                    .HasColumnName("news_views");
+                entity.Property(e => e.NewsViews).HasColumnName("news_views");
 
                 entity.Property(e => e.OptionalAdress)
                     .HasColumnName("optional_adress")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.OptionalLatitude).HasColumnName("optional_latitude");
+                entity.Property(e => e.OptionalLatitude)
+                    .HasColumnName("optional_latitude")
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.OptionalLongitude).HasColumnName("optional_longitude");
+                entity.Property(e => e.OptionalLongitude)
+                    .HasColumnName("optional_longitude")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.SportCategoryId).HasColumnName("sport_category_id");
 

@@ -6,15 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace FightSports.Controllers
 {
     public class BannersController : Controller
     {
-        private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
+        public IHostingEnvironment _hostingEnvironment;
 
-        public BannersController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
+        public BannersController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
 
@@ -53,10 +57,18 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BannerId,CustumerName,BannerPath")] Banners banners)
+        public async Task<IActionResult> Create(Banners banners)
         {
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(banners.FormFile.FileName));
+                banners.BannerPath = "/" + Path.GetFileName(banners.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await banners.FormFile.CopyToAsync(stream);
+                }
+
                 _context.Add(banners);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -85,7 +97,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BannerId,CustumerName,BannerPath")] Banners banners)
+        public async Task<IActionResult> Edit(int id, Banners banners)
         {
             if (id != banners.BannerId)
             {
@@ -94,6 +106,14 @@ namespace FightSports.Controllers
 
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(banners.FormFile.FileName));
+                banners.BannerPath = "/" + Path.GetFileName(banners.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await banners.FormFile.CopyToAsync(stream);
+                }
+
                 try
                 {
                     _context.Update(banners);

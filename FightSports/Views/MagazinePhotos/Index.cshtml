@@ -36,13 +36,13 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.MagazinePhotoPath)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.MagazinePhotoName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Magazine.MagazineFirstPhotoPath)
+                        <img src="@item.MagazinePhotoPath" width="300px;" height="200px;" alt="Alternate Text" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Magazine.ProductName)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.MagazinePhotoId" class="btn btn-primary">Edit</a> 

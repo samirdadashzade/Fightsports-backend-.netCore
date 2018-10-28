@@ -21,6 +21,5 @@ namespace FightSports
         public List<SportCategories> SportCategories { get; set; }
         public List<Videos> Videos { get; set; }
         public List<Melumat> Melumats { get; set; }
-        public List<MelumatComments> MelumatComments { get; set; }
     }
 }

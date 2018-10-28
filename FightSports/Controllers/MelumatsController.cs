@@ -102,7 +102,7 @@ namespace FightSports.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MelumatId,MelumatTxt,MelumatPhotoPath,MelumatAdress,SportCategoryId")] Melumat melumat)
+        public async Task<IActionResult> Edit(int id, Melumat melumat)
         {
             if (id != melumat.MelumatId)
             {
@@ -111,6 +111,14 @@ namespace FightSports.Controllers
 
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(melumat.FormFile.FileName));
+                melumat.MelumatPhotoPath = "/" + Path.GetFileName(melumat.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await melumat.FormFile.CopyToAsync(stream);
+                }
+
                 try
                 {
                     _context.Update(melumat);

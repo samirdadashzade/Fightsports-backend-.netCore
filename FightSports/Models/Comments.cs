@@ -17,6 +17,6 @@ namespace FightSports.Models
         public int? MelumatId { get; set; }
 
         public News News { get; set; }
-        public Melumat Melumats{ get; set; }
+        public Melumat Melumat{ get; set; }
     }
 }

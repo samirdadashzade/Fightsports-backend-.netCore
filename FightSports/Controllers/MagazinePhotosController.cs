@@ -22,11 +22,11 @@ namespace FightSports.Controllers
             _context = context;
         }
 
-        public IActionResult GetMagazinePhotosById(int? id)
-        {
-            var magazinePhotos = _context.MagazinePhotos.Where(x => x.MagazineId == id);
-            return Json(magazinePhotos);
-        }
+        //public IActionResult GetMagazinePhotosById(int? id)
+        //{
+        //    ViewBag.test = _context.MagazinePhotos.Where(x => x.MagazineId == id);
+        //    return Json(null);
+        //}
 
         // GET: MagazinePhotos
         public async Task<IActionResult> Index()

@@ -716,6 +716,7 @@ body {
           position: absolute;
           top: 0;
           bottom: 0;
+          word-break:break-word;
           z-index: 3;
           padding-left: 10px;
           padding-right: 10px; }
@@ -1015,10 +1016,12 @@ body {
         margin-left: 15px;
         margin-right: 15px;
         border-top: 1px dotted #fff; }
-      .main_container .medicine_hepler_con .medicine_con_main .items_container {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin: auto; }
+        .main_container .medicine_hepler_con .medicine_con_main .items_container {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: auto;
+            margin-left: 76px;
+        }
         .main_container .medicine_hepler_con .medicine_con_main .items_container a:hover {
           text-decoration: none; }
         .main_container .medicine_hepler_con .medicine_con_main .items_container .con_item {
@@ -3400,6 +3403,7 @@ body {
           font-weight: 700;
           text-transform: uppercase;
           overflow: hidden;
+          word-break:break-word;
           text-align: left;
           position: absolute;
           top: 0;
@@ -4456,7 +4460,9 @@ body {
       border-bottom: 1px solid #23282e; }
     .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .nav-side-menu li a {
       text-decoration: none;
-      color: #e1ffff; }
+      color: #e1ffff;
+      display:block;
+    }
     .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .nav-side-menu li a i {
       padding-left: 10px;
       width: 20px;
@@ -4660,6 +4666,21 @@ body {
     border-radius: 7px; }
   .sports_page_main_container .my_url {
     display: none; }
+@media(max-width: 545px) {
+    .for_res_width {
+        width: 92px !important;
+    }
+}
+@media(max-width: 992px) {
+    .for_res_width {
+        width: 150px;
+    }
+}
+@media(max-width: 768px) {
+    .for_res_width {
+        width: 108px;
+    }
+}
   @media (max-width: 576px) {
     .sports_page_main_container .for_res_width {
       padding-left: 3px !important;

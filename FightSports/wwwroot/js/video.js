@@ -117,7 +117,7 @@ $('.myBtn01').on('click', function () {
 
         let con = $('body').find('#myCode')
 
-        con.html('<iframe width="653" class="delete" height="386" src="http://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
+        con.html('<iframe width="653" class="delete" height="386" src="https://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
     }
     else{
         myId = getVimeoId(myUrl);

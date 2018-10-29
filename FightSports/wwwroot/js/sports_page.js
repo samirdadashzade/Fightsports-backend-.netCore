@@ -325,7 +325,7 @@ $('.myBtn01').on('click', function () {
 
         let con = $('body').find('#myCode');
 
-        con.html('<iframe width="653" class="delete" height="386" src="http://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
+        con.html('<iframe width="653" class="delete" height="386" src="https://www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
     }
     else {
         myId = getVimeoId(myUrl);
@@ -382,21 +382,4 @@ inShare.onclick = function(e) {
   var inShare = window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(location.href), 'vk-popup', 'height=350,width=600');
   if(inShare.focus) { inShare.focus(); }
     return false;
-}
-
-const tabConTitleWidth = () => {
-    let contentTitle = $('.for_res_width')
-    let tabRowWidth = $('.tab_row_content').width()
-
-    contentTitle.css({width : tabRowWidth  + "px"})
-}
-
-tabConTitleWidth ()
-
-window.onload = function () {
-    tabConTitleWidth()
-}
-
-window.onresize = function () {
-    tabConTitleWidth()
 }

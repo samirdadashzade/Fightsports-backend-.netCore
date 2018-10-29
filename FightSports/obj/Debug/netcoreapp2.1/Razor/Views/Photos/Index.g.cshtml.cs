@@ -71,7 +71,7 @@ using FightSports.Models;
             WriteLiteral("\r\n<p>\r\n    ");
             EndContext();
             BeginContext(152, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a49e1b33dcae49af9251d2b3926da94a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31977ece4659412b86c09be7d8ffa174", async() => {
                 BeginContext(196, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -222,7 +222,7 @@ WriteAttributeValue("", 1131, item.PhotoPath, 1131, 15, false);
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1668, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "610dfc4b6369454ca984a6ebae5d5e70", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffb685e7beed4b789d8511878888fc8d", async() => {
                 BeginContext(1742, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -258,7 +258,7 @@ WriteAttributeValue("", 1131, item.PhotoPath, 1131, 15, false);
             WriteLiteral(" \r\n                ");
             EndContext();
             BeginContext(1769, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67df3bbd4f074e8ebf5317964a43e600", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa34466f136b49b89dc91f6d279fb388", async() => {
                 BeginContext(1846, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -294,7 +294,7 @@ WriteAttributeValue("", 1131, item.PhotoPath, 1131, 15, false);
             WriteLiteral(" \r\n                ");
             EndContext();
             BeginContext(1876, 85, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7a274ac6ef9c4f62a2a2aa09ad821f7e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2de22b2cb496496fa548f653b7b74871", async() => {
                 BeginContext(1951, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

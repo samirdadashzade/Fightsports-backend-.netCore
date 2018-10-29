@@ -4653,6 +4653,7 @@
                                                                 {
                                                                     <div class="col col-sm-4 col-xs-6">
                                                                         <a>
+                                                                            <div class="magazineId" style="display:none">@item.MagazineId</div>
                                                                             <div class="product_main myBtn02">
                                                                                 <img class="img-fluid" src="@item.MagazineFirstPhotoPath" />
                                                                                 <div class="product_info">
@@ -31644,9 +31645,9 @@
             }
             @*window.onload = function (){
                     var magazinePhotoCon = $('.pana-accordion-wrap')
-
+                    var magId = $('.magazineId').val()
                     $.ajax({
-                        url: "/MagazinePhotos/GetMagazinePhotosById/4",
+                        url: "/Home/SportsPage?magId=" + magId",
                         type: "GET",
                         dataType: "json",
                         success: function (data){

@@ -61,11 +61,13 @@ namespace FightSports.Controllers
         {
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
-            ViewBag.Magazine = _context.Magazine.Where(x => x.SportCategoryId == id).ToList();
+            ViewBag.Magazine = _context.Magazine.Where(x=>x.SportCategoryId == id).ToList();
             ViewBag.MagazinePhotos = _context.MagazinePhotos.ToList();
 
+            //ViewBag.test = _context.MagazinePhotos.Where(x => x.MagazineId == magid);
+
             ViewBag.infoLent = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 2).ToList();
-            ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 4).ToList();
+            ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 4 && x.NewsFirstVideoPath != null).ToList();
             ViewBag.photos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 8).ToList();
             ViewBag.masterClass = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 3).ToList();
             ViewBag.expert = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 13).ToList();
@@ -76,6 +78,13 @@ namespace FightSports.Controllers
             ViewBag.person = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 9).ToList();
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
+        }
+
+        public IActionResult Test (int? id)
+        {
+
+
+            return Json();
         }
 
         public IActionResult News(int? id)

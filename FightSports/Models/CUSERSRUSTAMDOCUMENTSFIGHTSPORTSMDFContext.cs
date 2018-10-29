@@ -20,7 +20,6 @@ namespace FightSports.Models
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<LiveTv> LiveTv { get; set; }
         public virtual DbSet<Magazine> Magazine { get; set; }
-        public virtual DbSet<MagazinePhotos> MagazinePhotos { get; set; }
         public virtual DbSet<Melumat> Melumat { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsType> NewsType { get; set; }
@@ -145,6 +144,18 @@ namespace FightSports.Models
                     .IsRequired()
                     .HasColumnName("magazine_first_photo_path");
 
+                entity.Property(e => e.MagazineSecondPhotoPath)
+                    .HasColumnName("magazine_second_photo_path");
+
+                entity.Property(e => e.MagazineThirdPhotoPath)
+                    .HasColumnName("magazine_third_photo_path");
+
+                entity.Property(e => e.MagazineFourthPhotoPath)
+                    .HasColumnName("magazine_fourth_photo_path");
+
+                entity.Property(e => e.MagazineFifthPhotoPath)
+                    .HasColumnName("magazine_fifth_photo_path");
+
                 entity.Property(e => e.MagazineLatitude)
                     .HasColumnName("magazine_latitude")
                     .HasMaxLength(50);
@@ -172,31 +183,6 @@ namespace FightSports.Models
                     .HasForeignKey(d => d.SportCategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_magazine_ToTablesport_catgory");
-            });
-
-            modelBuilder.Entity<MagazinePhotos>(entity =>
-            {
-                entity.HasKey(e => e.MagazinePhotoId);
-
-                entity.ToTable("magazine_photos");
-
-                entity.HasIndex(e => e.MagazineId);
-
-                entity.Property(e => e.MagazinePhotoId).HasColumnName("magazine_photo_id");
-
-                entity.Property(e => e.MagazineId).HasColumnName("magazine_id");
-
-                entity.Property(e => e.MagazinePhotoName)
-                    .HasColumnName("magazine_photo_name")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.MagazinePhotoPath).HasColumnName("magazine_photo_path");
-
-                entity.HasOne(d => d.Magazine)
-                    .WithMany(p => p.MagazinePhotos)
-                    .HasForeignKey(d => d.MagazineId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_magazine_photos_ToTablemagazine");
             });
 
             modelBuilder.Entity<Melumat>(entity =>

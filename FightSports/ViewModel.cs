@@ -14,7 +14,6 @@ namespace FightSports
         public List<Comments> Comments { get; set; }
         public List<LiveTv> LiveTvs { get; set; }
         public List<Magazine> Magazines { get; set; }
-        public List<MagazinePhotos> MagazinePhotos { get; set; }
         public List<News> News { get; set; }
         public List<NewsType> NewsTypes { get; set; }
         public List<Photos> Photos { get; set; }

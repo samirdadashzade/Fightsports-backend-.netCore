@@ -26,7 +26,6 @@ namespace FightSports.Controllers
             viewModel.Comments = _context.Comments.ToList();
             viewModel.LiveTvs = _context.LiveTv.ToList();
             viewModel.Magazines = _context.Magazine.ToList();
-            viewModel.MagazinePhotos = _context.MagazinePhotos.ToList();
             viewModel.News = _context.News.ToList();
             viewModel.NewsTypes = _context.NewsType.ToList();
             viewModel.Photos = _context.Photos.ToList();
@@ -62,9 +61,6 @@ namespace FightSports.Controllers
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
             ViewBag.Magazine = _context.Magazine.Where(x=>x.SportCategoryId == id).ToList();
-            ViewBag.MagazinePhotos = _context.MagazinePhotos.ToList();
-
-            //ViewBag.test = _context.MagazinePhotos.Where(x => x.MagazineId == magid);
 
             ViewBag.infoLent = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 2).ToList();
             ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 4 && x.NewsFirstVideoPath != null).ToList();
@@ -78,13 +74,6 @@ namespace FightSports.Controllers
             ViewBag.person = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 9).ToList();
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
-        }
-
-        public IActionResult Test (int? id)
-        {
-
-
-            return Json();
         }
 
         public IActionResult News(int? id)

@@ -4,14 +4,16 @@ using FightSports.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FightSports.Migrations
 {
     [DbContext(typeof(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext))]
-    partial class CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContextModelSnapshot : ModelSnapshot
+    [Migration("20181029185802_weg")]
+    partial class weg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,7 +154,9 @@ namespace FightSports.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("MagazineSecondPhotoPath")
-                        .HasColumnName("magazine_second_photo_path");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("magazine_second_photo_path")
+                        .HasDefaultValue(null);
 
                     b.Property<string>("MagazineThirdPhotoPath")
                         .HasColumnName("magazine_third_photo_path");

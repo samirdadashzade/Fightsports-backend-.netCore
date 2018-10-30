@@ -12,6 +12,7 @@ namespace FightSports.Models
         public string CustumerName { get; set; }
         public string BannerPath { get; set; }
         [NotMapped]
+        [Required]
         public IFormFile FormFile { get; set; }
     }
 }

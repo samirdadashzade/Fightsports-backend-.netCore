@@ -48,9 +48,22 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fafafa; }
-
+.own_svg {
+    font-size: 24px;
+    float: left;
+    margin-right: 15px;
+    line-height: 30px;
+    width: 30px;
+    height:30px;
+    text-align: center;
+    color: #a9afbb;
+}
+    .own_svg path {
+        fill: #a9afbb;
+    }
 [tabindex="-1"]:focus {
-  outline: 0 !important; }
+    outline: 0 !important;
+}
 
 hr {
   -webkit-box-sizing: content-box;

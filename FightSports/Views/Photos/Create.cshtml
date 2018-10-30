@@ -13,12 +13,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PhotoName" class="control-label"></label>
-                <input asp-for="PhotoName" class="form-control" />
+                <input asp-for="PhotoName" required class="form-control" />
                 <span asp-validation-for="PhotoName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PhotoTitle" class="control-label"></label>
-                <input asp-for="PhotoTitle" class="form-control" />
+                <input asp-for="PhotoTitle" required class="form-control" />
                 <span asp-validation-for="PhotoTitle" class="text-danger"></span>
             </div>
             @*<div class="form-group">
@@ -32,19 +32,19 @@
                 <span asp-validation-for="PhotoAddedData" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="NewsId" class="control-label"></label>
+                <label asp-for="NewsId" class="control-label">News Name</label>
                 <select asp-for="NewsId" class="form-control" asp-items="ViewBag.NewsId"></select>
             </div>
             <div class="form-group">
-                <input asp-for="FormFile" class="form-control" type="file" />
-                <span asp-validation-for="FormFile" class="text-danger"></span>
+                <input asp-for="FormFile" class="form-control forFileSize" type="file"/>
+                <span asp-validation-for="FormFile" required class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FormFile" class="control-label"></label>
+                <label asp-for="FormFile" class="control-label">Photo</label>
                 <label class="btn btn-primary" for="FormFile">Choose File</label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Create" class="btn btn-success submitThis" />
             </div>
         </form>
     </div>
@@ -54,3 +54,21 @@
     <a asp-action="Index" class="btn btn-info">Back to List</a>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+</script>
+ 
+<script type="text/javascript">
+    $(function () {
+        $('.forFileSize').bind('change', function () {
+            // check if the file is larger than 2MB
+            if (this.files[0].size > 2 * 1024 * 1024) {
+                alert("file is larger than 2 Mb, please choose a smaller one.")
+                $('.submitThis').attr('disabled','disabled')
+            }
+            else {
+                $('.submitThis').removeAttr('disabled', 'disabled')
+            }
+        });
+    })
+</script>

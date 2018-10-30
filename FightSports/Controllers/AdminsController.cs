@@ -6,13 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FightSports.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
+using Newtonsoft.Json;
 
 namespace FightSports.Controllers
 {
     public class AdminsController : Controller
     {
         private readonly CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
-
+        
         public AdminsController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
         {
             _context = context;
@@ -20,7 +23,7 @@ namespace FightSports.Controllers
 
         // GET: Admins
         public async Task<IActionResult> Index()
-        {
+        {           
             return View(await _context.Admin.ToListAsync());
         }
 
@@ -57,9 +60,6 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                                
-
                 _context.Add(admin);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -18,11 +18,11 @@
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Create">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="MelumatTxt" class="control-label"></label>
-                    <input asp-for="MelumatTxt" class="form-control" />
+                    <input asp-for="MelumatTxt" required class="form-control" />
                     <span asp-validation-for="MelumatTxt" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -31,19 +31,19 @@
                     <span asp-validation-for="MelumatAdress" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="SportCategoryId" class="control-label"></label>
+                    <label asp-for="SportCategoryId" class="control-label">Sport Category Name</label>
                     <select asp-for="SportCategoryId" class="form-control" asp-items="ViewBag.SportCategoryId"></select>
                 </div>
                 <div class="form-group">
-                    <input asp-for="FormFile" class="form-control" type="file" />
+                    <input asp-for="FormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="FormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="FormFile" class="control-label"></label>
+                    <label asp-for="FormFile" class="control-label">Melumat Photo</label>
                     <label class="btn btn-primary" for="FormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-success" />
+                    <input type="submit" value="Create" class="btn btn-success submitThis" />
                 </div>
             </form>
         </div>
@@ -52,6 +52,23 @@
     <div>
         <a asp-action="Index" class="btn btn-info">Back to List</a>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
 
+    <script type="text/javascript">
+    $(function () {
+        $('.forFileSize').bind('change', function () {
+            // check if the file is larger than 2MB
+            if (this.files[0].size > 2 * 1024 * 1024) {
+                alert("file is larger than 2 Mb, please choose a smaller one.")
+                $('.submitThis').attr('disabled','disabled')
+            }
+            else {
+                $('.submitThis').removeAttr('disabled', 'disabled')
+            }
+        });
+    })
+    </script>
 </body>
 </html>

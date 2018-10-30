@@ -72,19 +72,11 @@ namespace FightSports.Controllers
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
                 photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
 
-                if (photos.FormFile.Length > 1024 * 1024)
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    return Content("file size is big");
-                }
-                else
-                {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await photos.FormFile.CopyToAsync(stream);
-                    }
+                    await photos.FormFile.CopyToAsync(stream);
                 }
 
-              
                 _context.Add(photos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

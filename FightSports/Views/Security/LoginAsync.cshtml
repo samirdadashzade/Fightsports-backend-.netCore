@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FightSports.Controllers.SecurityController;
+<!DOCTYPE html>
+
+<html>
+<body>
+    <p>Login using form below:</p>
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        Username: <input asp-for="loginData.Username" value="" /><br />
+        Password: <input asp-for="loginData.Password" value="" /><br />
+        @*Remember me: <input asp-for="loginData.RememberMe" type="checkbox" /><br />*@
+        <input type="submit" value="LoginAsync" />
+        @Html.AntiForgeryToken()
+    </form>
+</body>
+</html>

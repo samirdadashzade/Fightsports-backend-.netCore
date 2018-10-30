@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="NewsTitle" class="control-label"></label>
-                    <input asp-for="NewsTitle" class="form-control" />
+                    <input asp-for="NewsTitle" required class="form-control" />
                     <span asp-validation-for="NewsTitle" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="NewsTxt" class="control-label"></label>
-                    <input asp-for="NewsTxt" class="form-control" />
+                    <input asp-for="NewsTxt" required class="form-control" />
                     <span asp-validation-for="NewsTxt" class="text-danger"></span>
                 </div>
                 <div class="form-group" style="display:none">
@@ -61,11 +61,11 @@
                     <span asp-validation-for="OptionalLatitude" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="NewsTypeId" class="control-label"></label>
+                    <label asp-for="NewsTypeId" class="control-label">News Type Name</label>
                     <select asp-for="NewsTypeId" class="form-control" asp-items="ViewBag.NewsTypeId"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="SportCategoryId" class="control-label"></label>
+                    <label asp-for="SportCategoryId" class="control-label">Sport Category Name</label>
                     <select asp-for="SportCategoryId" class="form-control" asp-items="ViewBag.SportCategoryId"></select>
                 </div>
                 <div class="form-group">
@@ -79,7 +79,7 @@
                     <span asp-validation-for="NewsFirstVideoPath" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input asp-for="FormFile" class="form-control" type="file" />
+                    <input asp-for="FormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="FormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -87,17 +87,9 @@
                     <label class="btn btn-primary" for="FormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-success submit" />
+                    <input type="submit" value="Create" class="btn btn-success submitThis" />
                 </div>
             </form>
-            @*<form id="form" name="form" action="/Photos/Creates" enctype="multipart/form-data" method="post">
-                    <div class="buttons">
-                        <div class="upload-button">
-                            <div class="label">Click me!</div>
-                            <input id="files" name="files" type="file" size="1" multiple onchange="uploadFiles('files');" />
-                        </div>
-                    </div>
-                </form>*@
         </div>
     </div>
 
@@ -113,29 +105,19 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
     </script>
 
-    @*<script type="text/javascript">
-            function uploadFiles(inputId) {
-                var input = document.getElementById(inputId);
-                var files = input.files;
-                var formData = new FormData();
-
-                for (var i = 0; i != files.length; i++) {
-                    formData.append("files", files[i]);
+    <script type="text/javascript">
+        $(function () {
+            $('.forFileSize').bind('change', function () {
+                // check if the file is larger than 2MB
+                if (this.files[0].size > 2 * 1024 * 1024) {
+                    alert("file is larger than 2 Mb, please choose a smaller one.")
+                    $('.submitThis').attr('disabled', 'disabled')
                 }
-
-                $.ajax(
-                    {
-                        type: "POST",
-                        url: "/Photos/Creates",
-                        data: formData,
-                        processData: false,
-                        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                        success: function (data) {
-                            alert("Files Uploaded!");
-                        }
-                    }
-                );
-            }
-        </script>*@
+                else {
+                    $('.submitThis').removeAttr('disabled', 'disabled')
+                }
+            });
+        })
+    </script>
 </body>
 </html>

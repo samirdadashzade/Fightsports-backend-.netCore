@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FightSports.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 
 namespace FightSports
 {
@@ -27,15 +29,29 @@ namespace FightSports
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options => { options.LoginPath = "/LoginAsync"; });
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/");
+                options.Conventions.AllowAnonymousToPage("/LoginAsync");
+            });
+
+
+
             services.AddSingleton<IFileProvider>(
             new PhysicalFileProvider(
                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
-            services.AddDistributedMemoryCache();
-            services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
-            });
-            services.AddMvc();
+            //services.AddDistributedMemoryCache();
+            //services.AddSession(options => {
+            //    options.IdleTimeout = TimeSpan.FromMinutes(10);//You can set Time   
+            //});
+
             services.AddTransient<CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext, CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext>();
             services.AddSingleton<CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext, CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext>();
             services.AddScoped<CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext, CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext>();
@@ -52,6 +68,9 @@ namespace FightSports
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            //loggerFactory.AddDebug();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -62,10 +81,11 @@ namespace FightSports
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseSession();
+            //app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

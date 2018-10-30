@@ -192,3 +192,4 @@ C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netco
 C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Details.g.cshtml.cs
 C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Edit.g.cshtml.cs
 C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Videos\Index.g.cshtml.cs
+C:\Users\rustam\Desktop\projects\FightSports-backend\FightSports\obj\Debug\netcoreapp2.1\Razor\Views\Security\LoginAsync.g.cshtml.cs

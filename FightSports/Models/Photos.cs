@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FightSports.Models
@@ -16,6 +17,7 @@ namespace FightSports.Models
         public int? NewsId { get; set; }
 
         [NotMapped]
+        [Required]
         public IFormFile FormFile { get; set; }
         public News News { get; set; }
     }

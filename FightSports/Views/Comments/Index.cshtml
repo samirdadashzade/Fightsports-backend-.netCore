@@ -29,7 +29,10 @@
                     @Html.DisplayNameFor(model => model.CommentDate)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.News)
+                    @Html.DisplayNameFor(model => model.AbstractCommentType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.NewsName)
                 </th>
                 <th></th>
             </tr>
@@ -37,25 +40,28 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AuthorName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CommentTxt)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CommentDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.News.NewsTitle)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.CommentId" class="btn btn-primary">Edit</a> 
-                        <a asp-action="Details" asp-route-id="@item.CommentId" class="btn btn-success">Details</a> 
-                        <a asp-action="Delete" asp-route-id="@item.CommentId" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentTxt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AbstractCommentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.News.NewsName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CommentId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.CommentId" class="btn btn-success">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.CommentId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

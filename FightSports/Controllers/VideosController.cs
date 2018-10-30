@@ -60,6 +60,10 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
+                var date = DateTime.Now;
+                var currentDate = date.ToLocalTime();
+                var videoAddDate = videos.VideoAddedDate = currentDate.ToString();
+
                 _context.Add(videos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

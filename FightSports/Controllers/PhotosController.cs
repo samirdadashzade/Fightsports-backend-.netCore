@@ -52,7 +52,7 @@ namespace FightSports.Controllers
         // GET: Photos/Create
         public IActionResult Create()
         {
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath");
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName");
             return View();
         }
 
@@ -65,19 +65,31 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
+                var date = DateTime.Now;
+                var currentDate = date.ToLocalTime();
+                var photoAddDate = photos.PhotoAddedData = currentDate.ToString();
+
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
                 photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                if (photos.FormFile.Length > 1024 * 1024)
                 {
-                    await photos.FormFile.CopyToAsync(stream);
+                    return Content("file size is big");
+                }
+                else
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await photos.FormFile.CopyToAsync(stream);
+                    }
                 }
 
+              
                 _context.Add(photos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);
         }
         [HttpPost]       
@@ -97,7 +109,7 @@ namespace FightSports.Controllers
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return Json(photos);
         }
 
@@ -114,7 +126,7 @@ namespace FightSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);
         }
 
@@ -158,7 +170,7 @@ namespace FightSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsFirstPhotoPath", photos.NewsId);
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);
         }
 

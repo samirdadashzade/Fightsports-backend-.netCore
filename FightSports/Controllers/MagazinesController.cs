@@ -104,7 +104,7 @@ namespace FightSports.Controllers
                 //    await magazine.FifthFormFile.CopyToAsync(stream);
                 //}
 
-               
+
                 _context.Add(magazine);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

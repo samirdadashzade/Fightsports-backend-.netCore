@@ -47,8 +47,8 @@ namespace FightSports.Controllers
         
         public IActionResult Index()
         {
-            ViewBag.masterClass = _context.News.Where(x => x.NewsTypeId == 5).ToList();
-            ViewBag.fotos = _context.News.Where(x => x.NewsTypeId == 8).ToList();
+            ViewBag.masterClass = _context.News.Where(x => x.NewsType.NewsTypeName == "melumat").ToList();
+            ViewBag.fotos = _context.News.Where(x => x.NewsType.NewsTypeName == "foto").ToList();
             ViewBag.videos = _context.News.Where(x => x.NewsFirstVideoPath != null).ToList();
 
             _context.SaveChanges();
@@ -62,16 +62,16 @@ namespace FightSports.Controllers
             ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
             ViewBag.Magazine = _context.Magazine.Where(x=>x.SportCategoryId == id).ToList();
 
-            ViewBag.infoLent = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 2).ToList();
-            ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 4 && x.NewsFirstVideoPath != null).ToList();
-            ViewBag.photos = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 8).ToList();
-            ViewBag.masterClass = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 3).ToList();
-            ViewBag.expert = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 13).ToList();
-            ViewBag.club = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 10).ToList();
-            ViewBag.federation = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 11).ToList();
-            ViewBag.report = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 12).ToList();
-            ViewBag.exclusive = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 14).ToList();
-            ViewBag.person = _context.News.Where(x => x.SportCategoryId == id && x.NewsTypeId == 9).ToList();
+            ViewBag.infoLent = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "infolent").ToList();
+            ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "video" && x.NewsFirstVideoPath != null).ToList();
+            ViewBag.photos = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "foto").ToList();
+            ViewBag.masterClass = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "masterklass").ToList();
+            ViewBag.expert = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "ekspert").ToList();
+            ViewBag.club = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "klub").ToList();
+            ViewBag.federation = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "federasiya").ToList();
+            ViewBag.report = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "reportaj").ToList();
+            ViewBag.exclusive = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "ekskluziv").ToList();
+            ViewBag.person = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "persona").ToList();
 
             return View(_context.News.Where(x => x.SportCategoryId == id).ToList());
         }

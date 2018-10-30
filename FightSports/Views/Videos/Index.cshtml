@@ -35,7 +35,7 @@
                     @Html.DisplayNameFor(model => model.VideoAddedDate)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.News)
+                    @Html.DisplayNameFor(model => model.News.NewsName)
                 </th>
                 <th></th>
             </tr>
@@ -60,7 +60,7 @@
                         @Html.DisplayFor(modelItem => item.VideoAddedDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.News.NewsTitle)
+                        @Html.DisplayFor(modelItem => item.News.NewsName)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.VideoId" class="btn btn-primary">Edit</a> 

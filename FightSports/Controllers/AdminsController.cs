@@ -57,6 +57,9 @@ namespace FightSports.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                                
+
                 _context.Add(admin);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

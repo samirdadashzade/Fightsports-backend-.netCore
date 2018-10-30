@@ -20,14 +20,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhotoTitle)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.PhotoViews)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.PhotoAddedData)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.News)
+                @Html.DisplayNameFor(model => model.News.NewsName)
             </th>
             <th></th>
         </tr>
@@ -44,9 +44,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhotoTitle)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.PhotoViews)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.PhotoAddedData)
             </td>

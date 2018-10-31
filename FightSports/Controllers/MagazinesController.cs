@@ -72,13 +72,17 @@ namespace FightSports.Controllers
                     await magazine.FormFile.CopyToAsync(stream);
                 }
 
-                var secondFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.SecondFormFile.FileName));
-                magazine.MagazineSecondPhotoPath = "/" + Path.GetFileName(magazine.SecondFormFile.FileName);
+                if(magazine.SecondFormFile != null){
+                    var secondFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.SecondFormFile.FileName));
+                    magazine.MagazineSecondPhotoPath = "/" + Path.GetFileName(magazine.SecondFormFile.FileName);
 
-                using (var stream = new FileStream(secondFilePath, FileMode.Create))
-                {
-                    await magazine.SecondFormFile.CopyToAsync(stream);
+                    using (var stream = new FileStream(secondFilePath, FileMode.Create))
+                    {
+                        await magazine.SecondFormFile.CopyToAsync(stream);
+                    }
                 }
+
+               
 
                 //var thirdFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.ThirdFormFile.FileName));
                 //magazine.MagazineThirdPhotoPath = "/" + Path.GetFileName(magazine.ThirdFormFile.FileName);

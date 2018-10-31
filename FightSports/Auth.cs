@@ -13,10 +13,13 @@ namespace FightSports
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            //if (value == null)
-            //{
-            //    filterContext.Result = new RedirectResult("~/Admin/AdminLogEntrance/LogIn");
-            //}
+            byte[] arr = null;
+            var x = filterContext.HttpContext.Session.TryGetValue("id", out arr);
+
+            if (arr == null)
+            {
+                filterContext.Result = new RedirectResult("Security/Login");
+            }
 
             base.OnActionExecuting(filterContext);
         }

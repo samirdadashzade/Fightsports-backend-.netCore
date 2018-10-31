@@ -169,7 +169,7 @@ using FightSports.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1309, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6470e4584114a6686a57dab12c91d53", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30f615e02c00483586f1d0361bb1c7e6", async() => {
                 BeginContext(1381, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -205,7 +205,7 @@ using FightSports.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1397, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f487fd8e4cd4f1588c692df65732ab3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "437d8e197cfa43af894f51eef30b75d6", async() => {
                 BeginContext(1440, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

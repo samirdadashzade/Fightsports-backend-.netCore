@@ -60,47 +60,47 @@
                     <select asp-for="SportCategoryId" class="form-control" asp-items="ViewBag.SportCategoryId"></select>
                 </div>
                 <div class="form-group">
-                    <input asp-for="FormFile" class="form-control" type="file" />
+                    <input asp-for="FormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="FormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="FormFile" class="control-label"></label>
+                    <label asp-for="FormFile" class="control-label">Magazine First Image</label>
                     <label class="btn btn-primary" for="FormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input asp-for="SecondFormFile" class="form-control" type="file" />
+                    <input asp-for="SecondFormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="SecondFormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="SecondFormFile" class="control-label"></label>
+                    <label asp-for="SecondFormFile" class="control-label">Magazine Second Image</label>
                     <label class="btn btn-primary" for="SecondFormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input asp-for="ThirdFormFile" class="form-control" type="file" />
+                    <input asp-for="ThirdFormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="ThirdFormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ThirdFormFile" class="control-label"></label>
+                    <label asp-for="ThirdFormFile" class="control-label">Magazine Third Image</label>
                     <label class="btn btn-primary" for="ThirdFormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input asp-for="FourthFormFile" class="form-control" type="file" />
+                    <input asp-for="FourthFormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="FourthFormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="FourthFormFile" class="control-label"></label>
+                    <label asp-for="FourthFormFile" class="control-label">Magazine Fourth Image</label>
                     <label class="btn btn-primary" for="FourthFormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input asp-for="FifthFormFile" class="form-control" type="file" />
+                    <input asp-for="FifthFormFile" class="form-control forFileSize" type="file" />
                     <span asp-validation-for="FifthFormFile" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="FifthFormFile" class="control-label"></label>
+                    <label asp-for="FifthFormFile" class="control-label">Magazine Fifth Image</label>
                     <label class="btn btn-primary" for="FifthFormFile">Choose File</label>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="sb btn btn-success" />
+                    <input type="submit" value="Create" class="sb btn btn-success submitThis" />
                 </div>
             </form>
         </div>
@@ -109,5 +109,24 @@
     <div>
         <a asp-action="Index" class="btn btn-info">Back to List</a>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+        $('.forFileSize').bind('change', function () {
+            // check if the file is larger than 2MB
+            if (this.files[0].size > 2 * 1024 * 1024) {
+                alert("file is larger than 2 Mb, please choose a smaller one.")
+                $('.submitThis').attr('disabled','disabled')
+            }
+            else {
+                $('.submitThis').removeAttr('disabled', 'disabled')
+            }
+        });
+    })
+    </script>
 </body>
 </html>

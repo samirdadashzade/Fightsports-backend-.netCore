@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using FightSports.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
 
 namespace FightSports.Controllers
 {
+    [Auth]
     public class HomeController : Controller
     {
         public CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;

@@ -1,59 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using FightSports.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FightSports.Controllers
 {
     public class SecurityController : Controller
     {
-        public  CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext _context;
-
-        public SecurityController(CUSERSRUSTAMDOCUMENTSFIGHTSPORTSMDFContext context)
+        [HttpPost]
+        public IActionResult Login(Admin admin,string _username, string _password)
         {
-            _context = context;
-        }
+            string username = _username;
+            string password = _password;
 
-        [BindProperty]
-        public LoginData loginData { get; set; }
-
-        public async Task<IActionResult> LoginAsync(Admin admin)
-        {
-            if (ModelState.IsValid)
+            if (username == admin.AdminName && password == admin.AdminPassword)
             {
-                var isValid = (loginData.Username == "rustam" && loginData.Password == "rustam");
-                if (!isValid)
-                {
-                    ModelState.AddModelError("", "username or password is invalid");
-                    return View();
-                }
-                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, loginData.Username));
-                identity.AddClaim(new Claim(ClaimTypes.Name, loginData.Username));
-                var principal = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                HttpContext.Session.Set("id", Encoding.UTF8.GetBytes("salam"));
+
                 return RedirectToAction("Index","Home");
             }
-            else
-            {
-                ModelState.AddModelError("", "username or password is blank");
-                return View();
-            }
-        }
-
-        public class LoginData
-        {
-            [Required]
-            public string Username { get; set; }
-
-            [Required, DataType(DataType.Password)]
-            public string Password { get; set; }
+            return View();
         }
     }
 }

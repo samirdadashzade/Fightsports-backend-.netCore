@@ -72,38 +72,49 @@ namespace FightSports.Controllers
                     await magazine.FormFile.CopyToAsync(stream);
                 }
 
-                var secondFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.SecondFormFile.FileName));
-                magazine.MagazineSecondPhotoPath = "/" + Path.GetFileName(magazine.SecondFormFile.FileName);
-
-                using (var stream = new FileStream(secondFilePath, FileMode.Create))
+                if (magazine.SecondFormFile != null)
                 {
-                    await magazine.SecondFormFile.CopyToAsync(stream);
+                    var secondFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.SecondFormFile.FileName));
+                    magazine.MagazineSecondPhotoPath = "/" + Path.GetFileName(magazine.SecondFormFile.FileName);
+
+                    using (var stream = new FileStream(secondFilePath, FileMode.Create))
+                    {
+                        await magazine.SecondFormFile.CopyToAsync(stream);
+                    }
                 }
 
-                //var thirdFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.ThirdFormFile.FileName));
-                //magazine.MagazineThirdPhotoPath = "/" + Path.GetFileName(magazine.ThirdFormFile.FileName);
+                if (magazine.ThirdFormFile != null)
+                {
+                    var thirdFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.ThirdFormFile.FileName));
+                    magazine.MagazineThirdPhotoPath = "/" + Path.GetFileName(magazine.ThirdFormFile.FileName);
 
-                //using (var stream = new FileStream(thirdFilePath, FileMode.Create))
-                //{
-                //    await magazine.ThirdFormFile.CopyToAsync(stream);
-                //}
+                    using (var stream = new FileStream(thirdFilePath, FileMode.Create))
+                    {
+                        await magazine.ThirdFormFile.CopyToAsync(stream);
+                    }
+                }
 
-                //var fourthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FourthFormFile.FileName));
-                //magazine.MagazineFourthPhotoPath = "/" + Path.GetFileName(magazine.FourthFormFile.FileName);
+                if (magazine.FourthFormFile != null)
+                {
+                    var fourthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FourthFormFile.FileName));
+                    magazine.MagazineFourthPhotoPath = "/" + Path.GetFileName(magazine.FourthFormFile.FileName);
 
-                //using (var stream = new FileStream(fourthFilePath, FileMode.Create))
-                //{
-                //    await magazine.FourthFormFile.CopyToAsync(stream);
-                //}
+                    using (var stream = new FileStream(fourthFilePath, FileMode.Create))
+                    {
+                        await magazine.FourthFormFile.CopyToAsync(stream);
+                    }
+                }
 
-                //var fifthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FifthFormFile.FileName));
-                //magazine.MagazineFifthPhotoPath = "/" + Path.GetFileName(magazine.FifthFormFile.FileName);
+                if (magazine.FifthFormFile != null)
+                {
+                    var fifthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FifthFormFile.FileName));
+                    magazine.MagazineFifthPhotoPath = "/" + Path.GetFileName(magazine.FifthFormFile.FileName);
 
-                //using (var stream = new FileStream(fifthFilePath, FileMode.Create))
-                //{
-                //    await magazine.FifthFormFile.CopyToAsync(stream);
-                //}
-
+                    using (var stream = new FileStream(fifthFilePath, FileMode.Create))
+                    {
+                        await magazine.FifthFormFile.CopyToAsync(stream);
+                    }
+                }
 
                 _context.Add(magazine);
                 await _context.SaveChangesAsync();
@@ -152,36 +163,48 @@ namespace FightSports.Controllers
                     await magazine.FormFile.CopyToAsync(stream);
                 }
 
-                var secondFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.SecondFormFile.FileName));
-                magazine.MagazineSecondPhotoPath = "/" + Path.GetFileName(magazine.SecondFormFile.FileName);
-
-                using (var stream = new FileStream(secondFilePath, FileMode.Create))
+                if (magazine.SecondFormFile != null)
                 {
-                    await magazine.SecondFormFile.CopyToAsync(stream);
+                    var secondFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.SecondFormFile.FileName));
+                    magazine.MagazineSecondPhotoPath = "/" + Path.GetFileName(magazine.SecondFormFile.FileName);
+
+                    using (var stream = new FileStream(secondFilePath, FileMode.Create))
+                    {
+                        await magazine.SecondFormFile.CopyToAsync(stream);
+                    }
                 }
 
-                var thirdFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.ThirdFormFile.FileName));
-                magazine.MagazineThirdPhotoPath = "/" + Path.GetFileName(magazine.ThirdFormFile.FileName);
-
-                using (var stream = new FileStream(thirdFilePath, FileMode.Create))
+                if (magazine.ThirdFormFile != null)
                 {
-                    await magazine.ThirdFormFile.CopyToAsync(stream);
+                    var thirdFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.ThirdFormFile.FileName));
+                    magazine.MagazineThirdPhotoPath = "/" + Path.GetFileName(magazine.ThirdFormFile.FileName);
+
+                    using (var stream = new FileStream(thirdFilePath, FileMode.Create))
+                    {
+                        await magazine.ThirdFormFile.CopyToAsync(stream);
+                    }
                 }
 
-                var fourthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FourthFormFile.FileName));
-                magazine.MagazineFourthPhotoPath = "/" + Path.GetFileName(magazine.FourthFormFile.FileName);
-
-                using (var stream = new FileStream(fourthFilePath, FileMode.Create))
+                if (magazine.FourthFormFile != null)
                 {
-                    await magazine.FourthFormFile.CopyToAsync(stream);
+                    var fourthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FourthFormFile.FileName));
+                    magazine.MagazineFourthPhotoPath = "/" + Path.GetFileName(magazine.FourthFormFile.FileName);
+
+                    using (var stream = new FileStream(fourthFilePath, FileMode.Create))
+                    {
+                        await magazine.FourthFormFile.CopyToAsync(stream);
+                    }
                 }
 
-                var fifthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FifthFormFile.FileName));
-                magazine.MagazineFifthPhotoPath = "/" + Path.GetFileName(magazine.FifthFormFile.FileName);
-
-                using (var stream = new FileStream(fifthFilePath, FileMode.Create))
+                if (magazine.FifthFormFile != null)
                 {
-                    await magazine.FifthFormFile.CopyToAsync(stream);
+                    var fifthFilePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(magazine.FifthFormFile.FileName));
+                    magazine.MagazineFifthPhotoPath = "/" + Path.GetFileName(magazine.FifthFormFile.FileName);
+
+                    using (var stream = new FileStream(fifthFilePath, FileMode.Create))
+                    {
+                        await magazine.FifthFormFile.CopyToAsync(stream);
+                    }
                 }
 
                 try

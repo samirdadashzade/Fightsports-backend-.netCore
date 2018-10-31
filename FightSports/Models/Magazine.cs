@@ -24,6 +24,7 @@ namespace FightSports.Models
         public string MagazineFifthPhotoPath { get; set; }
 
         [NotMapped]
+        [Required]
         public IFormFile FormFile { get; set; }
         [NotMapped]
         public IFormFile SecondFormFile { get; set; }

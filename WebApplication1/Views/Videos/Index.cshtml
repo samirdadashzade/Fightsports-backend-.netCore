@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebApplication1.Models.Videos>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create" class="btn btn-info">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoViews)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VideoAddedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.NewsName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoViews)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoPath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoAddedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.News.NewsName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.VideoId" class="btn btn-primary">Edit</a> 
+                        <a asp-action="Details" asp-route-id="@item.VideoId" class="btn btn-success">Details</a> 
+                        <a asp-action="Delete" asp-route-id="@item.VideoId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

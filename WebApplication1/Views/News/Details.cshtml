@@ -1,0 +1,106 @@
+﻿@model WebApplication1.Models.News
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>News</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsTitle)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsBigTitle)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsBigTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsTxt)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsTxt)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsViews)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsViews)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsAddedDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsAddedDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OptionalLongitude)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OptionalLongitude)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OptionalLatitude)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OptionalLatitude)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OptionalAdress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OptionalAdress)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsFirstPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsFirstPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsFirstVideoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsFirstVideoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NewsType)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NewsType.NewsTypeName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SportCategory)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SportCategory.SportCategoryName)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.NewsId" class="btn btn-info">Edit</a> |
+        <a asp-action="Index" class="btn btn-info">Back to List</a>
+    </div>
+</body>
+</html>

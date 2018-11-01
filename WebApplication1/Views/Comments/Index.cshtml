@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.Comments>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @*<p>
+        <a asp-action="Create" class="btn btn-info">Create New</a>
+    </p>*@
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AuthorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentTxt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbstractCommentType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.NewsName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentTxt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AbstractCommentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.News.NewsName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CommentId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.CommentId" class="btn btn-success">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.CommentId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

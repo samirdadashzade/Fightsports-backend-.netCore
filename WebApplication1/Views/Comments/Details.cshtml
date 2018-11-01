@@ -1,0 +1,56 @@
+﻿@model WebApplication1.Models.Comments
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>Comments</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AuthorName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CommentTxt)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CommentTxt)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AbstractCommentType)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AbstractCommentType)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CommentDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CommentDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.News.NewsName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.NewsName)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.CommentId" class="btn btn-info">Edit</a> |
+        <a asp-action="Index" class="btn btn-info">Back to List</a>
+    </div>
+</body>
+</html>

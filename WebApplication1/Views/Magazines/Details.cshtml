@@ -1,0 +1,106 @@
+﻿@model WebApplication1.Models.Magazine
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/admin_panel.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>Magazine</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineAdress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineAdress)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineLongitude)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineLongitude)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineLatitude)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineLatitude)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductTxt)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductTxt)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductPrice)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductTitle)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineFirstPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineFirstPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineSecondPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineSecondPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineThirdPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineThirdPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineFourthPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineFourthPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MagazineFifthPhotoPath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MagazineFifthPhotoPath)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SportCategory)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SportCategory.SportCategoryName)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.MagazineId" class="btn btn-info">Edit</a> |
+        <a asp-action="Index" class="btn btn-info">Back to List</a>
+    </div>
+</body>
+</html>

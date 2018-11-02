@@ -1,4 +1,4 @@
-﻿@model List<FightSports.Models.News>;
+﻿@model List<WebApplication1.Models.News>;
 
 @{ 
     List<SportCategories> sportCategories = new List<SportCategories>();
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 </head>
 <body class="animated fadeIn">
-    <div class="page_background_img"></div>
+    <div class="page_background_img" style="background-image:url(/blocks.jpg)"></div>
     <div class="modal fade" id="modal03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog02 modal-dialog-centered" role="document">
                 <div class="modal-content02 modal-content">
@@ -8344,10 +8344,10 @@
                         <div class="share_news_container">
                             <div class="views_con">
                                 <div class="views_title">views :</div>
-                                @*@foreach (var item in collection)
+                                @foreach (var item in Model)
                                 {
-                                    <div class="views_number">232</div>
-                                }*@
+                                    <div class="views_number">@item.NewsViews</div>
+                                }
                                 <div class="views_svg">
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55.312px" height="55.312px" viewBox="0 0 55.312 55.312" style="enable-background:new 0 0 55.312 55.312;" xml:space="preserve">
                                     <g>

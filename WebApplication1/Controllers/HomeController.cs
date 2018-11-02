@@ -26,7 +26,6 @@ namespace WebApplication1.Controllers
         {
             var viewModel = new ViewModel();
             viewModel.Banners = _context.Banners.ToList();
-            viewModel.Admins = _context.Admin.ToList();
             viewModel.Comments = _context.Comments.ToList();
             viewModel.LiveTvs = _context.LiveTv.ToList();
             viewModel.Magazines = _context.Magazine.ToList();
@@ -54,6 +53,8 @@ namespace WebApplication1.Controllers
             ViewBag.masterClass = _context.News.Where(x => x.NewsType.NewsTypeName == "melumat").ToList();
             ViewBag.fotos = _context.News.Where(x => x.NewsType.NewsTypeName == "foto").ToList();
             ViewBag.videos = _context.News.Where(x => x.NewsFirstVideoPath != null).ToList();
+
+            ViewBag.rus = _context.SportCategories;
 
             _context.SaveChanges();
 
@@ -153,7 +154,7 @@ namespace WebApplication1.Controllers
             ViewBag.SportCategories = _context.SportCategories.ToList();
             ViewBag.News = _context.News.ToList();
 
-            return View(_context.News.ToList());
+            return View(_context.News.Where(x => x.NewsFirstVideoPath != null).ToList());
         }
 
         public IActionResult Photos()

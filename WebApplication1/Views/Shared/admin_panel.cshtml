@@ -34,12 +34,6 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/Admins/Index">
-                            <i class="material-icons">person</i>
-                            <p>Admins</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
                         <a class="nav-link" href="/Comments/Index">
                             <i class="material-icons">comments</i>
                             <p>Comments</p>
@@ -330,14 +324,14 @@
                                 </div>
                             </li>*@
                              @await Html.PartialAsync("_LoginPartial")
-                            <li class="nav-item">
+                            @*<li class="nav-item">
                                 <a class="nav-link" href="/Admin/AdminLogEntrance/LogOut" style="padding-top:0px; padding-bottom:0px;">
                                     <i class="material-icons">person</i>
                                     <p style="display:block !important;margin-bottom:-20px;">
                                         <span class=" d-md-block" style="position:relative;left:-11px;">Log Out</span>
                                     </p>
                                 </a>
-                            </li>
+                            </li>*@
                         </ul>
                     </div>
                 </div>
@@ -345,7 +339,6 @@
             <!-- End Navbar -->
             <div class="content">
                 @RenderBody()
-               
             </div>
             <footer class="footer ">
                 <div class="container-fluid">

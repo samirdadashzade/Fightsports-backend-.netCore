@@ -15,7 +15,6 @@ namespace WebApplication1.Data
         {
         }
 
-        public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Banners> Banners { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<LiveTv> LiveTv { get; set; }
@@ -37,23 +36,6 @@ namespace WebApplication1.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin>(entity =>
-            {
-                entity.ToTable("admin");
-
-                entity.Property(e => e.AdminId).HasColumnName("admin_id");
-
-                entity.Property(e => e.AdminEmail)
-                    .HasColumnName("admin_email")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.AdminName)
-                    .HasColumnName("admin_name")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.AdminPassword).HasColumnName("admin_password");
-            });
-
             modelBuilder.Entity<Banners>(entity =>
             {
                 entity.HasKey(e => e.BannerId);

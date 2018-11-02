@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 </head>
 <body class="animated fadeIn">
-    <div class="page_background_img"></div>
+    <div class="page_background_img" style="background-image:url(/blocks.jpg)"></div>
     <div class="modal fade" id="modal03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog02 modal-dialog-centered" role="document">
             <div class="modal-content02 modal-content">
@@ -68,9 +68,10 @@
                         more
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        @foreach (var item in ViewBag.rus)
+                        {
+                            <a class="dropdown-item" href="@item.SportCategoryId">@item.SportCategoryName</a>
+                        }
                     </div>
                 </div>
             </div>
@@ -89,16 +90,16 @@
                                             @item.NewsTitle
                                         </div>
                                         <div class="news_feed_date_container">
-                                            <div class="week_day">saturday</div>
+                                            @*<div class="week_day">saturday</div>*@
                                             <br />
                                             <div class="day_time">@item.NewsBigTitle</div>
                                             <br />
                                             <div class="little_info"></div>
                                         </div>
                                         <div class="news_feed_adress">
-                                            <div class="building_name">@item.NewsName</div>
+                                            <div class="building_name">@item.SportCategory.SportCategoryName</div>
                                             <br />
-                                            <div class="city_name">@item.NewsAddedDate</div>
+                                            @*<div class="city_name">@item.NewsAddedDate</div>*@
                                         </div>
                                         <div class="show_more_button">show more</div>
                                     </div>

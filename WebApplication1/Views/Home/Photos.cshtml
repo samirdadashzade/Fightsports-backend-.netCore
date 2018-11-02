@@ -1,4 +1,4 @@
-﻿@model List<FightSports.Models.News>;
+﻿@model List<WebApplication1.Models.News>;
 
 @{
     List<NewsWithPhotos> news = new List<NewsWithPhotos>();
@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
 </head>
 <body class="animated fadeIn">
-    <div class="page_background_img"></div>
+    <div class="page_background_img" style="background-image:url(/blocks.jpg)"></div>
     <div class="modal fade" id="modal03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog02 modal-dialog-centered" role="document">
                 <div class="modal-content02 modal-content">
@@ -97,17 +97,17 @@
                                          data-large="@item.NewsFirstPhotoPath"
                                          data-retina="@item.NewsFirstPhotoPath" />
                                     <p class="sp-layer sp-white sp-padding"
-                                       data-horizontal="50" data-vertical="50"
+                                       data-horizontal="150" data-vertical="320"
                                        data-show-transition="left" data-show-delay="400">
                                         @item.NewsTitle
                                     </p>
-                                    <p class="sp-layer sp-black sp-padding"
-                                       data-horizontal="180" data-vertical="50"
+                                    <p class="sp-layer  sp-black sp-padding"
+                                       data-horizontal="180" data-vertical="400"
                                        data-show-transition="left" data-show-delay="600">
                                         @item.NewsBigTitle
                                     </p>
-                                    <p class="sp-layer sp-black sp-padding"
-                                       data-horizontal="180" data-vertical="50"
+                                    <p class="sp-layer custom_layer sp-black sp-padding"
+                                       data-horizontal="10" data-vertical="10"
                                        data-show-transition="left" data-show-delay="600">
                                         @item.NewsAddedDate
                                     </p>

@@ -9,7 +9,6 @@ namespace WebApplication1
 {
     public class ViewModel
     {
-        public List<Admin> Admins { get; set; }
         public List<Banners> Banners { get; set; }
         public List<Comments> Comments { get; set; }
         public List<LiveTv> LiveTvs { get; set; }

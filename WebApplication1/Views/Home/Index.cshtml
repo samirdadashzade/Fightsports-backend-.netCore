@@ -68,7 +68,7 @@
                         more
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @foreach (var item in ViewBag.rus)
+                        @foreach (var item in Model.SportCategories.Skip(12))
                         {
                             <a class="dropdown-item" href="@item.SportCategoryId">@item.SportCategoryName</a>
                         }

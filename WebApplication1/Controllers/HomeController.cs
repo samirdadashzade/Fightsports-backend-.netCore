@@ -54,8 +54,6 @@ namespace WebApplication1.Controllers
             ViewBag.fotos = _context.News.Where(x => x.NewsType.NewsTypeName == "foto").ToList();
             ViewBag.videos = _context.News.Where(x => x.NewsFirstVideoPath != null).ToList();
 
-            ViewBag.rus = _context.SportCategories;
-
             _context.SaveChanges();
 
             return View(Vm());

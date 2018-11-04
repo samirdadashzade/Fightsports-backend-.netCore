@@ -68,9 +68,10 @@
                         more
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        @foreach (var item in sportCategories.Skip(12))
+                        {
+                            <a class="dropdown-item" href="@item.SportCategoryId">@item.SportCategoryName</a>
+                        }
                     </div>
                 </div>
             </div>

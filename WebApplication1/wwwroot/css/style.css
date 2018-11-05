@@ -4410,16 +4410,39 @@ body {
         border-radius: 7px;
         margin-bottom: 15px;
         margin-top: 15px; }
-        .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main img {
-          border-radius: 7px; }
-        .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main .product_info {
-          color: #fff;
-          text-transform: uppercase;
-          font-size: 12px;
-          margin-top: 7px;
-          border: 1px dotted gray;
-          border-radius: 7px;
-          padding: 7px; }
+        .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main img{
+            border-radius:7px;
+        }
+        .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main .mag_tab_background_img_con {
+            display: block;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            margin-right: 5px;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 15%;
+            width: 29%;
+        }
+            .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main .mag_tab_background_img_con .mag_tab_background_img {
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                margin-right: 5px;
+            }
+            .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main .product_info {
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 12px;
+                margin-top: 7px;
+                border: 1px dotted gray;
+                border-radius: 7px;
+                padding: 7px;
+            }
         .sports_page_main_container .tabs_container .tab-content .tab-pane .magazine_container .products_main_container .product_main .product_price {
           color: #fff;
           text-transform: uppercase;

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace WebApplication1.Controllers
 {
     [Authorize]
+    [IgnoreAntiforgeryToken(Order = 1001)]
     public class MagazinesController : Controller
     {
         public ApplicationDbContext _context;
@@ -30,6 +31,14 @@ namespace WebApplication1.Controllers
         {
             var ApplicationDbContext = _context.Magazine.Include(m => m.SportCategory);
             return View(await ApplicationDbContext.ToListAsync());
+        }
+
+        [AllowAnonymous]
+        public IActionResult GetMagazines(int? id)
+        {
+            var magazines = _context.Magazine.Where(x => x.MagazineId == id);
+
+            return Json(magazines);
         }
 
         // GET: Magazines/Details/5

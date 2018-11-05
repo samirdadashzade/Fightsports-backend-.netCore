@@ -21,28 +21,28 @@ namespace WebApplication1.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         public IActionResult GetNewsCommentsById(int? id)
         {
             var comms = _context.Comments.Where(x => x.NewsId == id && x.AbstractCommentType == "news");
 
             return Json(comms);
         }
-
+        [AllowAnonymous]
         public IActionResult GetVideosCommentsById(int? id)
         {
             var comms = _context.Comments.Where(x => x.AbstractCommentType == "videos");
 
             return Json(comms);
         }
-
+        [AllowAnonymous]
         public IActionResult GetPhotosCommentsById(int? id)
         {
             var comms = _context.Comments.Where(x => x.AbstractCommentType == "photos");
 
             return Json(comms);
         }
-
+        [AllowAnonymous]
         public IActionResult GetMelumatsCommentsById(int? id)
         {
             var comms = _context.Comments.Where(x => x.MelumatId == id && x.AbstractCommentType == "melumats");
@@ -86,8 +86,10 @@ namespace WebApplication1.Controllers
         // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] Comments comments)
         {
             if (ModelState.IsValid)

@@ -1,12 +1,6 @@
-﻿@model List<WebApplication1.Models.News>;
+﻿@model WebApplication1.ViewModel;
 
 @{
-    List<NewsWithPhotos> news = new List<NewsWithPhotos>();
-    news = ViewBag.newsWithPhotos;
-
-    List<News> newsAll = new List<News>();
-    newsAll = ViewBag.News;
-
     List<SportCategories> sportCategories = new List<SportCategories>();
     sportCategories = ViewBag.SportCategories;
 
@@ -63,7 +57,7 @@
         <div class="container">
             <div class="full_nav_bar_container">
                 <div class="nav_bar_container">
-                    @foreach (var item in sportCategories.Take(12))
+                    @foreach (var item in Model.SportCategories.Take(12))
                     {
                         <span class="nav_bar_items">
                             <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>
@@ -75,7 +69,7 @@
                         more
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @foreach (var item in sportCategories.Skip(12))
+                        @foreach (var item in Model.SportCategories.Skip(12))
                         {
                             <a class="dropdown-item" href="@item.SportCategoryId">@item.SportCategoryName</a>
                         }
@@ -88,7 +82,7 @@
                 <div class="custom_for_upper_banner">
                     <div id="tabs_slider" class="slider-pro">
                         <div class="sp-slides">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.News)
                             {
                                 <div class="sp-slide">
                                     <img class="sp-image" src="@item.NewsFirstPhotoPath"
@@ -116,7 +110,7 @@
                             }
                         </div>
                         <div class="sp-thumbnails">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.News)
                             {
                                 <img class="sp-thumbnail" src="@item.NewsFirstPhotoPath" />
                             }
@@ -477,13 +471,13 @@
         </div>
         <div class="container carousel_padding">
             <div id="owl-one" class="owl-carousel owl-theme wow fadeIn">
-                @for (int i = 0; i < newsAll.Count / 4.0; i++)
+                @for (int i = 0; i < Model.News.ToList().Count / 4.0; i++)
                 {
                     <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
                         <div class="container no_padding">
                             <div class="main_row_container">
                                 <div class="row first_row">
-                                    @foreach (var item in newsAll.Skip(i * 4).Take(4).TakeLast(20))
+                                    @foreach (var item in Model.News.Skip(i * 4).Take(4).TakeLast(20))
                                     {
                                         <div class="col-md-3 col-sm-3 col-3 for_hover">
                                             <a href="/Home/News/@item.NewsId">
@@ -546,7 +540,7 @@
                             <div class="footer_container_main row">
                                 <div class="col-md-6 col-12">
                                     <div class="footer_nav_bar_container">
-                                        @foreach (var item in ViewBag.SportCategories)
+                                        @foreach (var item in Model.SportCategories)
                                         {
                                             <span class="footer_nav_bar_items">
                                                 <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>

@@ -11491,7 +11491,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="comments_main_container wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                    <div class="comments_main_container wow fadeIn">
                         <div class="name_area">
                             <input type="text" name="" class="name_input" placeholder="name*" />
                         </div>
@@ -11505,7 +11505,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="banner_container_right wow fadeIn" style="visibility: visible; animation-name: fadeIn;"></div>
+                    <div class="banner_container_right wow fadeIn"></div>
                 </div>
             </div>
         </div>
@@ -11517,7 +11517,7 @@
                             <div class="footer_container_main row">
                                 <div class="col-md-6 col-12">
                                     <div class="footer_nav_bar_container">
-                                        @foreach (var item in ViewBag.SportCategories)
+                                        @foreach (var item in sportCategories)
                                         {
                                             <span class="footer_nav_bar_items">
                                                 <a href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>

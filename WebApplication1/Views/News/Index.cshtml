@@ -64,53 +64,53 @@
         <tbody>
             @foreach (var item in Model)
             {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsBigTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsTxt)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsViews)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsAddedDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.OptionalLongitude)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.OptionalLatitude)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.OptionalAdress)
-    </td>
-    <td>
-        <img src="@item.NewsFirstPhotoPath" style="max-width:300px;" alt="Alternate Text" />
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsFirstVideoPath)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NewsType.NewsTypeName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)
-    </td>
-    <td>
-        <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-primary">Edit</a> 
-        <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-success">Details</a> 
-        <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-danger">Delete</a>
-    </td>
-</tr>
-}
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsBigTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsTxt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsViews)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsAddedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OptionalLongitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OptionalLatitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OptionalAdress)
+                    </td>
+                    <td>
+                        <img src="@item.NewsFirstPhotoPath" style="max-width:300px;" alt="Alternate Text" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsFirstVideoPath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsType.NewsTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SportCategory.SportCategoryName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-primary">Edit</a> 
+                        <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-success">Details</a> 
+                        <a asp-action="Delete" asp-route-id="@item.NewsId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                }
         </tbody>
     </table>
 </body>

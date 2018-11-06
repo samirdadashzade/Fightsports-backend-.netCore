@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApplication1.Controllers
 {
@@ -15,9 +17,11 @@ namespace WebApplication1.Controllers
     public class LiveTvsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        public IHostingEnvironment _hostingEnvironment;
 
-        public LiveTvsController(ApplicationDbContext context)
+        public LiveTvsController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
 
@@ -56,10 +60,18 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LiveTvId,LivePath,LiveTitle")] LiveTv liveTv)
+        public async Task<IActionResult> Create(LiveTv liveTv)
         {
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(liveTv.FormFile.FileName));
+                liveTv.LivePhotoPath = "/" + Path.GetFileName(liveTv.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await liveTv.FormFile.CopyToAsync(stream);
+                }
+
                 _context.Add(liveTv);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -88,7 +100,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LiveTvId,LivePath,LiveTitle")] LiveTv liveTv)
+        public async Task<IActionResult> Edit(int id, LiveTv liveTv)
         {
             if (id != liveTv.LiveTvId)
             {
@@ -97,6 +109,14 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(liveTv.FormFile.FileName));
+                liveTv.LivePhotoPath = "/" + Path.GetFileName(liveTv.FormFile.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await liveTv.FormFile.CopyToAsync(stream);
+                }
+
                 try
                 {
                     _context.Update(liveTv);

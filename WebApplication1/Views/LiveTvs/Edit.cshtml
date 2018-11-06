@@ -18,7 +18,7 @@
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Edit">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data"> 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="LiveTvId" />
                 <div class="form-group">
@@ -32,7 +32,15 @@
                     <span asp-validation-for="LiveTitle" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-success" />
+                    <input asp-for="FormFile" class="form-control forFileSize" type="file" />
+                    <span asp-validation-for="FormFile" required class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FormFile" class="control-label">Photo</label>
+                    <label class="btn btn-primary" for="FormFile">Choose File</label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success submitThis" />
                 </div>
             </form>
         </div>
@@ -41,6 +49,23 @@
     <div>
         <a asp-action="Index" class="btn btn-info">Back to List</a>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
 
+    <script type="text/javascript">
+    $(function () {
+        $('.forFileSize').bind('change', function () {
+            // check if the file is larger than 2MB
+            if (this.files[0].size > 2 * 1024 * 1024) {
+                alert("file is larger than 2 Mb, please choose a smaller one.")
+                $('.submitThis').attr('disabled','disabled')
+            }
+            else {
+                $('.submitThis').removeAttr('disabled', 'disabled')
+            }
+        });
+    })
+    </script>
 </body>
 </html>

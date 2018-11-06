@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
             viewModel.Magazines = _context.Magazine.ToList();
             viewModel.News = _context.News.ToList();
             viewModel.NewsTypes = _context.NewsType.ToList();
-            viewModel.Photos = _context.Photos.ToList();
+            viewModel.Photos = _context.Photos;
             viewModel.SportCategories = _context.SportCategories.ToList();
             viewModel.Melumats = _context.Melumat.ToList();
 
@@ -52,55 +52,22 @@ namespace WebApplication1.Controllers
       
         public IActionResult Index()
         {
-            ViewBag.masterClass = _context.News.Where(x => x.NewsType.NewsTypeName == "melumat").ToList();
-            ViewBag.fotos = _context.News.Where(x => x.NewsType.NewsTypeName == "foto").ToList();
-            ViewBag.videos = _context.News.Where(x => x.NewsFirstVideoPath != null).ToList();
-
-            _context.SaveChanges();
-
             return View(Vm());
         }
 
         public IActionResult SportsPage(int? id)
         {
-            ViewBag.Melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
-            ViewBag.Magazine = _context.Magazine.Where(x=>x.SportCategoryId == id).ToList();
+            Vm();
 
-            ViewBag.infoLent = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "infolent").ToList();
-            ViewBag.videos = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "video" && x.NewsFirstVideoPath != null).ToList();
-            ViewBag.photos = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "foto").ToList();
-            ViewBag.masterClass = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "masterklass").ToList();
-            ViewBag.expert = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "ekspert").ToList();
-            ViewBag.club = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "klub").ToList();
-            ViewBag.federation = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "federasiya").ToList();
-            ViewBag.report = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "reportaj").ToList();
-            ViewBag.exclusive = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "ekskluziv").ToList();
-            ViewBag.person = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "persona").ToList();
-            ViewBag.interview = _context.News.Where(x => x.SportCategoryId == id && x.NewsType.NewsTypeName == "intervyu").ToList();
+            var melumats = _context.Melumat.Where(x => x.SportCategoryId == id).ToList();
+            var news = _context.News.Include(c => c.NewsType).Where(x => x.SportCategory.SportCategoryId == id).ToList();
+            var magazines = _context.Magazine.Where(x => x.SportCategoryId == id).ToList();
 
-            return View(Vm());
+            return View(Tuple.Create(news, melumats, magazines));
         }
 
         public IActionResult News(int? id)
         {
-            var newsWithPhotos = (from news in _context.News
-                                  join photos in _context.Photos
-                                  on news.NewsId equals photos.NewsId
-                                  select new NewsWithPhotos
-                                  {
-                                      NewsBigTitle = news.NewsBigTitle,
-                                      NewsId = news.NewsId,
-                                      NewsName = news.NewsName,
-                                      NewsTitle = news.NewsTitle,
-                                      NewsTxt = news.NewsTxt,
-                                      NewsFirstVideoPath = news.NewsFirstVideoPath,
-                                      NewsViews = news.NewsViews,
-                                      PhotoPath = photos.PhotoPath
-                                  }).ToList();
-
-            ViewBag.newsWithPhotos = newsWithPhotos.Where(x => x.NewsId == id).ToList();
-            ViewBag.News = _context.News.ToList();
-
             var count = 0;
 
             while (count == 0)
@@ -113,7 +80,12 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
 
             Vm();
-            return View(_context.News.Where(x => x.NewsId == id).ToList());
+
+            var news = _context.News.Where(x => x.NewsId == id).ToList();
+            var photos = _context.Photos.Where(x => x.News.NewsId == id).ToList();
+            var newsAll = _context.News.ToList();
+
+            return View(Tuple.Create(photos,news,newsAll));
         }
 
         public IActionResult ClubAndFederation(int? id)

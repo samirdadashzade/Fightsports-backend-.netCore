@@ -11,9 +11,10 @@ using WebApplication1.Data;
 namespace WebApplication1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181106000913_eg")]
+    partial class eg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -247,10 +248,6 @@ namespace WebApplication1.Data.Migrations
 
                     b.Property<string>("LivePath")
                         .HasColumnName("live_path");
-
-                    b.Property<string>("LivePhotoPath")
-                        .IsRequired()
-                        .HasColumnName("live_photo_path");
 
                     b.Property<string>("LiveTitle")
                         .HasColumnName("live_title")

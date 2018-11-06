@@ -25,26 +25,32 @@
                 <th>
                     @Html.DisplayNameFor(model => model.LiveTitle)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LivePhotoPath)
+                </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.LivePath)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LiveTitle)
-    </td>
-    <td>
-        <a asp-action="Edit" asp-route-id="@item.LiveTvId" class="btn btn-primary">Edit</a> 
-        <a asp-action="Details" asp-route-id="@item.LiveTvId" class="btn btn-success">Details</a> 
-        <a asp-action="Delete" asp-route-id="@item.LiveTvId" class="btn btn-danger">Delete</a>
-    </td>
-</tr>
-}
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LivePath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LiveTitle)
+                </td>
+                <td>
+                    <img src="@item.LivePhotoPath" style="max-width:300px;" alt="Alternate Text" />
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LiveTvId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.LiveTvId" class="btn btn-success">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.LiveTvId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
         </tbody>
     </table>
 </body>

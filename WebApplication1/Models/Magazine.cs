@@ -14,7 +14,7 @@ namespace WebApplication1.Models
         public string MagazineLongitude { get; set; }
         public string MagazineLatitude { get; set; }
         public string ProductTxt { get; set; }
-        public int? ProductPrice { get; set; }
+        public string ProductPrice { get; set; }
         public string ProductTitle { get; set; }
         public int SportCategoryId { get; set; }
         public string MagazineFirstPhotoPath { get; set; }

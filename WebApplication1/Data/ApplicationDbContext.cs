@@ -107,6 +107,8 @@ namespace WebApplication1.Data
 
                 entity.Property(e => e.LivePath).HasColumnName("live_path");
 
+                entity.Property(e => e.LivePhotoPath).HasColumnName("live_photo_path").IsRequired();
+
                 entity.Property(e => e.LiveTitle)
                     .HasColumnName("live_title")
                     .HasMaxLength(50);

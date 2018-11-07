@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="sports_page_main_container">
-                                                <div class="modal fade" id="modal02" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal fade cleanContent" id="modal02" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog02 modal-dialog-centered" role="document">
                                                         <div class="modal-content modal-content02">
                                                             <div class="map_container animated fadeIn">
@@ -1057,21 +1057,22 @@
     </script>
 
     <script type="text/javascript">
-        $.fn.hasAttr = function(name) {
-           return this.attr(name) !== undefined;
-        };
-
         function checkSrc (){
              var magazinePhoto = $('.magazine_photo_by_id')
+             var maskCheck = $('.maskCheck')
+
+             maskCheck.each(function(){
+                if($(this).height() <= 24){
+                    $(this).remove()
+                }
+             })
              magazinePhoto.each(function(){
-                if($(this).attr('src','null')){
-                    $(this).parent('div').remove()
-                    console.log("thifff")
+                if($(this).height() <= 16){
+                    $(this).remove()
                 }
              })
         }
-        checkSrc()
-
+        
         $(function () {
             accordion.init({
                 id: 'accordion'
@@ -1086,36 +1087,38 @@
         $('.myBtn02').click(function(){
             var magazineId = $(this).find($('.magazineId')).text()
             $('#modal02').find($('.pana-accordion')).attr('id','accordion')
-
+            
             $.ajax({
                 url: "/Magazines/GetMagazines/" + magazineId,
                 type: "GET",
                 dataType: "json",
                 success: function(data){
                     $.each(data ,function(index,val){
+                       
                         var mapLong = '<div class="magazineLong">' + val.magazineLongitude + '</div>'
                         var mapLat = '<div class="magazineLat">' + val.magazineLatitude + '</div>'
                         var title = '<span>' + val.productTitle + '</span>'
                         var quickNewsCon = '<div class="quick_news_review_con">' + val.productTxt + '</div>'
+
                         var accordionSet = '<div class="pana-accordion-item" style="width:300px;z-index:1;">' +
-                                                '<img width="300" class="img-fluid magazine_photo_by_id" src="' + val.magazineFirstPhotoPath + '" />' +
+                                                '<img width="300" class="img-fluid" src="' + val.magazineFirstPhotoPath + '" />' +
                                                 '<div class="pana-accordion-mask"></div>' +
                                            '</div>' + 
                                            '<div class="pana-accordion-item" style="width:300px;z-index:1;">' +
                                                 '<img width="300" class="img-fluid magazine_photo_by_id" src="' + val.magazineSecondPhotoPath + '" />' +
-                                                '<div class="pana-accordion-mask"></div>' +
+                                                '<div class="pana-accordion-mask maskCheck"></div>' +
                                            '</div>' +
                                            '<div class="pana-accordion-item" style="width:300px;z-index:1;">' +
                                                 '<img width="300" class="img-fluid magazine_photo_by_id" src="' + val.magazineThirdPhotoPath + '" />' +
-                                                '<div class="pana-accordion-mask"></div>' +
+                                                '<div class="pana-accordion-mask maskCheck"></div>' +
                                            '</div>' +
                                            '<div class="pana-accordion-item" style="width:300px;z-index:1;">' +
                                                 '<img width="300" class="img-fluid magazine_photo_by_id" src="' + val.magazineFourthPhotoPath + '" />' +
-                                                '<div class="pana-accordion-mask"></div>' +
+                                                '<div class="pana-accordion-mask maskCheck"></div>' +
                                            '</div>' +
                                            '<div class="pana-accordion-item" style="width:300px;z-index:1;">' +
                                                 '<img width="300" class="img-fluid magazine_photo_by_id" src="' + val.magazineFifthPhotoPath + '" />' +
-                                                '<div class="pana-accordion-mask"></div>' +
+                                                '<div class="pana-accordion-mask maskCheck"></div>' +
                                            '</div>'
                         
                         mapSets.append(mapLong)
@@ -1125,17 +1128,20 @@
                         accordionCon.append(accordionSet)
                     })
                     initMap()
+                    setTimeout(function(){
+                        checkSrc()
+                    },500)
                 }
-            }) 
+            })   
         })
 
-        $('#modal02').click(function(){
+        $('#modal02').on('hidden.bs.modal', function(){
             newsCon.empty()
             mainNewsCon.empty()
             accordionCon.empty()
             mapSets.empty()
         })
-
+        
     </script>
     <script type="text/javascript">
         $(document).ready(function(){

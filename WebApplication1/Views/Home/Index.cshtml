@@ -67,7 +67,7 @@
         <div class="main_news_feed_container">
             <div class="container">
                 <div id="owl-one" class="owl-carousel owl-theme">
-                    @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName != "federasiya" && x.NewsType.NewsTypeName != "klub").Take(5))
+                    @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName != "federasiya" && x.NewsType.NewsTypeName != "klub").TakeLast(5))
                     {
                         <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
                             <a class="main_link" href="/Home/News/@item.NewsId">
@@ -107,10 +107,10 @@
                     <div class="module_item_title">spotlight</div>
                     <div class="news_tab_container wow fadeIn">
                         <div id="owl-eight" class="owl-carousel owl-theme">
-                            @for (var i = 0; i < Model.News.ToList().Count / 3.0; i++)
+                            @for (var i = 0; i < Model.News.Where(x=>x.NewsType.NewsTypeName == "infolent").ToList().Count / 3.0; i++)
                             {
                                 <div class="item">
-                                    @foreach (var item in Model.News.Skip(i * 3).Take(3))
+                                    @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "infolent").Skip(i * 3).Take(3))
                                     {
                                         <a href="/Home/News/@item.NewsId">
                                             <div class="news_tab_container_items">
@@ -169,13 +169,13 @@
             <div class="container">
                 <div class="module_item_title">spotlight</div>
                 <div id="owl-two" class="owl-carousel owl-theme">
-                    @for (int i = 0; i < Model.News.ToList().Count / 8.0; i++)
+                    @for (int i = 0; i < Model.News.Where(x => x.NewsType.NewsTypeName == "tibb").ToList().Count / 8.0; i++) 
                     {
                         <div class="item" data-dot="<div class='owl-dot'><span></span></div>">
                             <div class="container no_padding">
                                 <div class="main_row_container">
                                     <div class="row first_row">
-                                        @foreach (var item in Model.News.Skip(i * 8).Take(8))
+                                        @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "tibb").Skip(i * 8).Take(8))
                                         {
                                             <div class="col-md-3 col-sm-3 col-3 for_hover">
                                                 <a href="/Home/News/@item.NewsId">
@@ -232,10 +232,10 @@
                         <div class="small_news_module_row_container wow fadeIn">
                             <div class="module_item_title">spotlight</div>
                             <div id="owl-three" class="owl-carousel owl-theme">
-                                @for (int i = 0; i < Model.News.ToList().Count / 3.0; i++)
+                                @for (int i = 0; i < Model.News.Where(x => x.NewsType.NewsTypeName == "reportaj").ToList().Count / 3.0; i++)
                                 {
                                     <div class="item">
-                                        @foreach (var item in Model.News.Skip(i * 3).Take(3))
+                                        @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "reportaj").Skip(i * 3).Take(3))
                                         {
                                             <div class="small_module_con_item">
                                                 <a href="/Home/News/@item.NewsId">
@@ -293,10 +293,10 @@
                         <div class="small_news_module_row_container wow fadeIn">
                             <div class="module_item_title">spotlight</div>
                             <div id="owl-four" class="owl-carousel owl-theme">
-                                @for (int i = 0; i < Model.News.ToList().Count / 3.0; i++)
+                                @for (int i = 0; i < Model.News.Where(x => x.NewsType.NewsTypeName == "ekskluziv").ToList().Count / 3.0; i++)
                                 {
                                     <div class="item">
-                                        @foreach (var item in Model.News.Skip(i * 3).Take(3))
+                                        @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "ekskluziv").Skip(i * 3).Take(3))
                                         {
                                             <div class="small_module_con_item">
                                                 <a href="/Home/News/@item.NewsId">
@@ -602,7 +602,7 @@
                             </div>
                             <div class="items_helper_con">
                                 <div class="items_container">
-                                    @foreach (var item in Model.News.TakeLast(10))
+                                    @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "ekspert").TakeLast(10))
                                     {
                                         <span class="con_item">
                                             <div class="main_img_example" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
@@ -637,7 +637,7 @@
                             <div class="module_item_title">spotlight</div>
                             <!--  <div class="big_module_item_title">spotlight</div> -->
                             <div id="owl-five" class="owl-carousel owl-theme">
-                                @foreach (var item in Model.News)
+                                @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "interview"))
                                 {
                                     <div class="item">
                                         <div class="big_small_module_con_item">
@@ -693,24 +693,25 @@
                             <div class="module_item_title">spotlight</div>
                             <!--  <div class="big_module_item_title">spotlight</div> -->
                             <div id="owl-six" class="owl-carousel owl-theme">
-                                @foreach (var item in Model.News)
+                                @foreach (var item in Model.Magazines)
                                 {
                                     <div class="item">
                                         <div class="big_small_module_con_item">
-                                            <a href="/Home/News/@item.NewsId">
+                                            <a href="/Home/SportsPage/2">
+                                                <div style="display:none">@item.SportCategoryId</div>
                                                 <div class="big_small_module_item_content_main no_border">
                                                     <div class="big_module_content_img_con">
-                                                        <div class="big_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
+                                                        <div class="big_module_content_img" style="background-image:url(@item.MagazineFirstPhotoPath)"></div>
                                                     </div>
                                                     <div class="big_small_module_item_content">
-                                                        <div class="big_small_module_content_title">@item.NewsTitle</div>
+                                                        <div class="big_small_module_content_title">@item.ProductTitle</div>
                                                         <div class="big_small_module_small_info">
-                                                            @item.NewsBigTitle
+                                                            @item.ProductTxt
                                                         </div>
                                                         <div class="big_small_module_post_date_and_seen_times">
-                                                            <div class="big_small_module_post_date">
-                                                                @item.NewsAddedDate
-                                                            </div>
+                                                            @*<div class="big_small_module_post_date">
+                                                                
+                                                            </div>*@
                                                             <div class="big_small_module_seen_times">
                                                                 <!--?xml version="1.0" encoding="iso-8859-1"?-->
                                                                 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -730,7 +731,7 @@
                                                                     </g>
                                                                 </g>
                                                                 </svg>
-                                                                @item.NewsViews
+                                                                @*@item.NewsViews*@
                                                             </div>
                                                             <div class="big_small_module_read_more_button">
                                                                 read more
@@ -750,7 +751,7 @@
                             <div class="module_item_title">spotlight</div>
                             <!--  <div class="big_module_item_title">spotlight</div> -->
                             <div id="owl-seven" class="owl-carousel owl-theme">
-                                @foreach (var item in Model.News)
+                                @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "persona"))
                                 {
                                     <div class="item">
                                         <div class="biggest_small_module_con_item">

@@ -17,7 +17,6 @@ C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\bin\Debug\n
 C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.pdb
 C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csprojAssemblyReference.cache
 C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csproj.CoreCompileInputs.cache
-C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfoInputs.cache
 C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfo.cs
 C:\Users\rustam\Desktop\Projects\FightSports-backend\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.dll

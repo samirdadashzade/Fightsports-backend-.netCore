@@ -17,7 +17,6 @@ FROM build AS publish
 RUN dotnet publish WebApplication1.csproj -c Release -o /app
 
 FROM base AS final
-ENV ASPNETCORE_URLS http://*:5000
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]

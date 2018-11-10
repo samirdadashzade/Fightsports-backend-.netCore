@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-WebApplication1-FD78285A-61EF-42E4-AD76-62C83B3175AA</UserSecretsId>
-    <DockerTargetOS>Windows</DockerTargetOS>
+    <DockerTargetOS>Linux</DockerTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 

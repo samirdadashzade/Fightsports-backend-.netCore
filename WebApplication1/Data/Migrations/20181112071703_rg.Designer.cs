@@ -11,9 +11,10 @@ using WebApplication1.Data;
 namespace WebApplication1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181112071703_rg")]
+    partial class rg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,8 +184,7 @@ namespace WebApplication1.Data.Migrations
                 {
                     b.Property<int>("BannerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("banner_id")
-                        .HasDefaultValue(null);
+                        .HasColumnName("banner_id");
 
                     b.Property<string>("BannerPath")
                         .IsRequired()

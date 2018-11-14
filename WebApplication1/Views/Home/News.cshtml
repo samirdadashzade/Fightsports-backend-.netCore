@@ -71,7 +71,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach (var item in sportCategories.Skip(12))
                         {
-                            <a class="dropdown-item" href="@item.SportCategoryId">@item.SportCategoryName</a>
+                            <a class="dropdown-item" href="/Home/SportsPage/@item.SportCategoryId">@item.SportCategoryName</a>
                         }
                     </div>
                 </div>

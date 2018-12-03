@@ -675,7 +675,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                @item.NewsViews
+                                                                @*@item.NewsViews*@
                                                             </div>
                                                             <div class="big_small_module_read_more_button">
                                                                 read more
@@ -694,25 +694,24 @@
                             <div class="module_item_title">spotlight</div>
                             <!--  <div class="big_module_item_title">spotlight</div> -->
                             <div id="owl-six" class="owl-carousel owl-theme">
-                                @foreach (var item in Model.Magazines)
+                                @foreach (var item in Model.News.Where(x => x.NewsType.NewsTypeName == "proyekt"))
                                 {
                                     <div class="item">
                                         <div class="big_small_module_con_item">
-                                            <a href="/Home/SportsPage/2">
-                                                <div style="display:none">@item.SportCategoryId</div>
+                                            <a href="/Home/News/@item.NewsId">
                                                 <div class="big_small_module_item_content_main no_border">
                                                     <div class="big_module_content_img_con">
-                                                        <div class="big_module_content_img" style="background-image:url(@item.MagazineFirstPhotoPath)"></div>
+                                                        <div class="big_module_content_img" style="background-image:url(@item.NewsFirstPhotoPath)"></div>
                                                     </div>
                                                     <div class="big_small_module_item_content">
-                                                        <div class="big_small_module_content_title">@item.ProductTitle</div>
+                                                        <div class="big_small_module_content_title">@item.NewsTitle</div>
                                                         <div class="big_small_module_small_info">
-                                                            @item.ProductTxt
+                                                            @item.NewsBigTitle
                                                         </div>
                                                         <div class="big_small_module_post_date_and_seen_times">
-                                                            @*<div class="big_small_module_post_date">
-                                                                
-                                                            </div>*@
+                                                            <div class="big_small_module_post_date">
+                                                                @item.NewsAddedDate
+                                                            </div>
                                                             <div class="big_small_module_seen_times">
                                                                 <!--?xml version="1.0" encoding="iso-8859-1"?-->
                                                                 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -789,7 +788,7 @@
                                                                 </g>
                                                             </g>
                                                             </svg>
-                                                                @item.NewsViews
+                                                                @*@item.NewsViews*@
                                                             </div>
                                                             <div class="biggest_small_module_read_more_button">
                                                                 read more

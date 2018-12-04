@@ -10,6 +10,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using WebApplication1.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 
 namespace WebApplication1.Controllers
 {
@@ -69,8 +70,8 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var date = DateTime.Now;
-                var newsDate = news.NewsAddedDate = date.ToString();
+                var date = DateTime.UtcNow;
+                var newsDate = news.NewsAddedDate = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));
                 news.NewsFirstPhotoPath = "/" + Path.GetFileName(news.FormFile.FileName);

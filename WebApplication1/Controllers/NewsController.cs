@@ -70,8 +70,8 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var date = DateTime.UtcNow;
-                var newsDate = news.NewsAddedDate = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
+                var date = DateTime.UtcNow.AddHours(4);
+                var newsDate = news.NewsAddedDate = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));
                 news.NewsFirstPhotoPath = "/" + Path.GetFileName(news.FormFile.FileName);
@@ -123,7 +123,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 var date = DateTime.UtcNow.AddHours(4);
-                var newsDate = news.NewsAddedDate = date.ToString();
+                var newsDate = news.NewsAddedDate = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));
                 news.NewsFirstPhotoPath = "/" + Path.GetFileName(news.FormFile.FileName);

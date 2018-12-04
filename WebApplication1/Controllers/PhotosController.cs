@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using WebApplication1.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 
 namespace WebApplication1.Controllers
 {
@@ -69,7 +70,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 var date = DateTime.UtcNow.AddHours(4);
-                var photoAddDate = photos.PhotoAddedData = date.ToString();
+                var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
                 photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
@@ -138,8 +139,8 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                var date = DateTime.UtcNow.AddHours(4);         
-                var photoAddDate = photos.PhotoAddedData = date.ToString();
+                var date = DateTime.UtcNow.AddHours(4);
+                var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
                 photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);

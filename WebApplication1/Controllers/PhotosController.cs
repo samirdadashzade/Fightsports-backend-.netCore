@@ -68,8 +68,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var date = DateTime.UtcNow;
-                //var currentDate = date.ToLocalTime();
+                var date = DateTime.UtcNow.AddHours(4);
                 var photoAddDate = photos.PhotoAddedData = date.ToString();
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
@@ -139,8 +138,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                var date = DateTime.UtcNow;
-                //var currentDate = date.ToLocalTime();
+                var date = DateTime.UtcNow.AddHours(4);         
                 var photoAddDate = photos.PhotoAddedData = date.ToString();
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));

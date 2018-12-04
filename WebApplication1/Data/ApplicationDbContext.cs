@@ -30,7 +30,7 @@ namespace WebApplication1.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\rustam\\Documents\\fight.mdf;Integrated Security=True;Connect Timeout=30");
+                optionsBuilder.UseSqlServer("DefaultConnection");
             }
         }
 

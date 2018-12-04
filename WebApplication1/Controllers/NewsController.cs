@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var date = DateTime.Now.AddHours(4);
+                var date = DateTime.Now;
                 var newsDate = news.NewsAddedDate = date.ToString();
 
                 var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(news.FormFile.FileName));

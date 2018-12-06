@@ -18,7 +18,7 @@ namespace WebApplication1.Models
 
         [NotMapped]
         [Required]
-        public IFormFile FormFile { get; set; }
+        public List<IFormFile> formFiles { get; set; }
         public News News { get; set; }
     }
 }

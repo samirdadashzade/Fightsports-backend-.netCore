@@ -11,6 +11,8 @@ using System.IO;
 using WebApplication1.Data;
 using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
 
 namespace WebApplication1.Controllers
 {
@@ -65,48 +67,76 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Photos photos)
+        public IActionResult Create(Photos photos, List<IFormFile> formFiles)
         {
             if (ModelState.IsValid)
             {
                 var date = DateTime.UtcNow.AddHours(4);
                 var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
-                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
-                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+                //foreach (IFormFile item in formFiles)
+                //{
+                //    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(item.FileName));
+                //    //photos.PhotoPath += "/" + Path.GetFileName(item.FileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                //    using (var stream = new FileStream(filePath, FileMode.Create))
+                //    {
+                //        item.CopyTo(stream);
+                //    }
+                //}
+
+                if (formFiles != null && formFiles.Count > 0)
                 {
-                    await photos.FormFile.CopyToAsync(stream);
+                    string folderName = "Upload";
+                    string webRootPath = _hostingEnvironment.WebRootPath;
+                    string newPath = Path.Combine(webRootPath, folderName);
+                    if (!Directory.Exists(newPath))
+                    {
+                        Directory.CreateDirectory(newPath);
+                    }
+                    foreach (IFormFile item in formFiles)
+                    {
+                        if (item.Length > 0)
+                        {
+                            string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
+                            string fullPath = Path.Combine(newPath, fileName);
+                            photos.PhotoPath = "/" + Path.GetFileName(item.FileName);
+                            using (var stream = new FileStream(fullPath, FileMode.Create))
+                            {
+                                item.CopyTo(stream);
+                            }
+                        }
+                    }
+                    _context.Add(photos);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
                 }
 
-                _context.Add(photos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
             }
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);
         }
         [HttpPost]       
-        public async Task<IActionResult> Creates([FromBody] Photos photos)
-        {
-            if (ModelState.IsValid)
-            {
-                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
-                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+        //public async Task<IActionResult> Creates([FromBody] Photos photos)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+        //        photos.PhotoPath = "/" + Path.GetFileName(item.FormFile.FileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await photos.FormFile.CopyToAsync(stream);
-                }
+        //        using (var stream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            await photos.FormFile.CopyToAsync(stream);
+        //        }
 
-                _context.Add(photos);
-                await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
-            }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
-            return Json(photos);
-        }
+        //        _context.Add(photos);
+        //        await _context.SaveChangesAsync();
+        //        //return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
+        //    return Json(photos);
+        //}
 
         // GET: Photos/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -130,47 +160,47 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Photos photos)
-        {
-            if (id != photos.PhotoId)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int id, Photos photos)
+        //{
+        //    if (id != photos.PhotoId)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                var date = DateTime.UtcNow.AddHours(4);
-                var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
+        //    if (ModelState.IsValid)
+        //    {
+        //        var date = DateTime.UtcNow.AddHours(4);
+        //        var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
-                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
-                photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+        //        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+        //        photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await photos.FormFile.CopyToAsync(stream);
-                }
+        //        using (var stream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            await photos.FormFile.CopyToAsync(stream);
+        //        }
 
-                try
-                {
-                    _context.Update(photos);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PhotosExists(photos.PhotoId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
-            return View(photos);
-        }
+        //        try
+        //        {
+        //            _context.Update(photos);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!PhotosExists(photos.PhotoId))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
+        //    return View(photos);
+        //}
 
         // GET: Photos/Delete/5
         public async Task<IActionResult> Delete(int? id)

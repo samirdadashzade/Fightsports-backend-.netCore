@@ -67,52 +67,103 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Photos photos, List<IFormFile> formFiles)
+        public async Task<IActionResult> Create(Photos photos)
         {
             if (ModelState.IsValid)
             {
                 var date = DateTime.UtcNow.AddHours(4);
                 var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
+                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                foreach (var file in photos.FormFile)
+                {
+                    if (file != null && file.Length > 0)
+                    {
+                       
+                        var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+
+                        var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
+                        
+
+                        using (var transaction = _context.Database.BeginTransaction())
+                        {
+                            _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[photos] ON;");
+                            await file.CopyToAsync(s);
+                            photos.PhotoPath = fileName;
+                            _context.Photos.Add(photos);
+                            await _context.SaveChangesAsync();
+                            _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[photos] OFF;");
+                            transaction.Commit();
+                        }
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+
+
+
+                //var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+                //photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+
+                //using (var stream = new FileStream(filePath, FileMode.Create))
+                //{
+                //    photos.FormFile.CopyTo(stream);
+                //}
+                //_context.Add(photos);
+                //await _context.SaveChangesAsync();
+
+
+
+                //foreach (var item in files)
+                //{
+                //    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(item.FileName));
+                //    photos.PhotoPath = "/" + Path.GetFileName(item.FileName);
+
+                //    _context.Add(photos);
+                //    _context.SaveChanges();
+
+                //}
+
                 //foreach (IFormFile item in formFiles)
                 //{
                 //    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(item.FileName));
-                //    //photos.PhotoPath += "/" + Path.GetFileName(item.FileName);
+                //    photos.PhotoPath += "/" + Path.GetFileName(item.FileName);
 
                 //    using (var stream = new FileStream(filePath, FileMode.Create))
                 //    {
                 //        item.CopyTo(stream);
                 //    }
+
+                //    _context.Add(photos);
+                //    _context.SaveChanges();
                 //}
 
-                if (formFiles != null && formFiles.Count > 0)
-                {
-                    string folderName = "Upload";
-                    string webRootPath = _hostingEnvironment.WebRootPath;
-                    string newPath = Path.Combine(webRootPath, folderName);
-                    if (!Directory.Exists(newPath))
-                    {
-                        Directory.CreateDirectory(newPath);
-                    }
-                    foreach (IFormFile item in formFiles)
-                    {
-                        if (item.Length > 0)
-                        {
-                            string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
-                            string fullPath = Path.Combine(newPath, fileName);
-                            photos.PhotoPath = "/" + Path.GetFileName(item.FileName);
-                            using (var stream = new FileStream(fullPath, FileMode.Create))
-                            {
-                                item.CopyTo(stream);
-                            }
-                        }
-                    }
-                    _context.Add(photos);
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
-                }
+                //if (formFiles != null && formFiles.Count > 0)
+                //{
+                //    string folderName = "Upload";
+                //    string webRootPath = _hostingEnvironment.WebRootPath;
+                //    string newPath = Path.Combine(webRootPath, folderName);
+                //    if (!Directory.Exists(newPath))
+                //    {
+                //        Directory.CreateDirectory(newPath);
+                //    }
+                //    foreach (IFormFile item in formFiles)
+                //    {
+                //        if (item.Length > 0)
+                //        {
+                //            string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
+                //            string fullPath = Path.Combine(newPath, fileName);
+                //            photos.PhotoPath = "/" + Path.GetFileName(item.FileName);
+                //            using (var stream = new FileStream(fullPath, FileMode.Create))
+                //            {
+                //                item.CopyTo(stream);
+                //            }
+                //        }
+                //    }
 
-                
+
+                //}
+
+                //return RedirectToAction(nameof(Index));
             }
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);

@@ -22,26 +22,26 @@
                 <span asp-validation-for="PhotoTitle" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="PhotoViews" class="control-label"></label>
-                <input asp-for="PhotoViews" class="form-control" />
-                <span asp-validation-for="PhotoViews" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="PhotoViews" class="control-label"></label>
+                    <input asp-for="PhotoViews" class="form-control" />
+                    <span asp-validation-for="PhotoViews" class="text-danger"></span>
+                </div>*@
             @*<div class="form-group">
-                <label asp-for="PhotoAddedData" class="control-label"></label>
-                <input asp-for="PhotoAddedData" class="form-control" />
-                <span asp-validation-for="PhotoAddedData" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="PhotoAddedData" class="control-label"></label>
+                    <input asp-for="PhotoAddedData" class="form-control" />
+                    <span asp-validation-for="PhotoAddedData" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="NewsId" class="control-label">News Name</label>
                 <select asp-for="NewsId" class="form-control" asp-items="ViewBag.NewsId"></select>
             </div>
             <div class="form-group">
-                <input asp-for="formFiles" name="formFiles" class="form-control forFileSize" type="file" multiple/>
-                <span asp-validation-for="formFiles" required class="text-danger"></span>
+                <input asp-for="FormFile" name="FormFile" class="form-control forFileSize" type="file" multiple />
+                <span asp-validation-for="FormFile" required class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="formFiles" class="control-label">Photo</label>
-                <label class="btn btn-primary" for="formFiles">Choose File</label>
+                <label asp-for="FormFile" class="control-label">Photo</label>
+                <label class="btn btn-primary" for="FormFile">Choose File</label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success submitThis" />
@@ -54,21 +54,53 @@
     <a asp-action="Index" class="btn btn-info">Back to List</a>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-</script>
- 
-@*<script type="text/javascript">
-    $(function () {
-        $('.forFileSize').bind('change', function () {
-            // check if the file is larger than 2MB
-            if (this.files[0].size > 2 * 1024 * 1024) {
-                alert("file is larger than 2 Mb, please choose a smaller one.")
-                $('.submitThis').attr('disabled','disabled')
-            }
-            else {
-                $('.submitThis').removeAttr('disabled', 'disabled')
-            }
+
+
+<script type="text/javascript">
+    $(".submitThis").click(function (evt) {
+        evt.preventDefault();
+        var fileupload = $("#files").get(0);
+        var files = fileupload.files;
+        var data = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            data.append('files', files[i]);
+        }
+
+        // You can update the jquery selector to use a css class if you want
+        $("input[type='text'").each(function (x, y) {
+            data.append($(y).attr("name"), $(y).val());
         });
-    })
-</script>*@
+
+        $.ajax({
+            type: "post",
+            url: "/home/uploadfilesajax",
+            contentType: false,
+            processData: false,
+            data: data
+        }).done(function (res) {
+            if (res.status === "success") {
+                alert(res.message);
+            } else {
+                $.each(res.errors, function (a, b) {
+                    alert(b);
+                });
+            }
+        }).fail(function (xhr, b, error) {
+            alert(error);
+        });
+    });
+</script>
+@*<script type="text/javascript">
+        $(function () {
+            $('.forFileSize').bind('change', function () {
+                // check if the file is larger than 2MB
+                if (this.files[0].size > 2 * 1024 * 1024) {
+                    alert("file is larger than 2 Mb, please choose a smaller one.")
+                    $('.submitThis').attr('disabled','disabled')
+                }
+                else {
+                    $('.submitThis').removeAttr('disabled', 'disabled')
+                }
+            });
+        })
+    </script>*@

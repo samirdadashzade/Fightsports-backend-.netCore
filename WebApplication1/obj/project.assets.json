@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "jQuery.filedrop/1.0.1": {
+        "type": "package"
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5039,6 +5042,17 @@
     }
   },
   "libraries": {
+    "jQuery.filedrop/1.0.1": {
+      "sha512": "tZ+WwbyHYPV5gBD5fVTYLliEZLdkH+F/OKu5aY1iX31dHasIidsvpJTOk/itOKtf2lW8pdLxn4hEQyTcg43KOA==",
+      "type": "package",
+      "path": "jquery.filedrop/1.0.1",
+      "files": [
+        ".signature.p7s",
+        "content/Scripts/jquery.filedrop.js",
+        "jquery.filedrop.1.0.1.nupkg.sha512",
+        "jquery.filedrop.nuspec"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -13296,7 +13310,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.3",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.0.1916590",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.4"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.4",
+      "jQuery.filedrop >= 1.0.1"
     ]
   },
   "packageFolders": {
@@ -13362,6 +13377,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.4, )"
+          },
+          "jQuery.filedrop": {
+            "target": "Package",
+            "version": "[1.0.1, )"
           }
         },
         "imports": [

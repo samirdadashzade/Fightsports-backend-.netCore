@@ -6,8 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
+    
     public partial class Photos
     {
+      
         public int PhotoId { get; set; }
         public string PhotoName { get; set; }
         public string PhotoPath { get; set; }
@@ -18,7 +20,7 @@ namespace WebApplication1.Models
 
         [NotMapped]
         [Required]
-        public List<IFormFile> formFiles { get; set; }
+        public IEnumerable<IFormFile> FormFile { get; set; }
         public News News { get; set; }
     }
 }

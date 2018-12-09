@@ -9,7 +9,7 @@ namespace WebApplication1.Models
     
     public partial class Photos
     {
-      
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PhotoId { get; set; }
         public string PhotoName { get; set; }
         public string PhotoPath { get; set; }

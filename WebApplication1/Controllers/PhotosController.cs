@@ -75,28 +75,53 @@ namespace WebApplication1.Controllers
                 var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-                foreach (var file in photos.FormFile)
+
+
+                using (_context)
                 {
-                    if (file != null && file.Length > 0)
+                    foreach (var file in photos.FormFile)
                     {
-                       
+
                         var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
 
                         var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
-                        
+                        await file.CopyToAsync(s);
+                        photos.PhotoPath = fileName;
 
-                        using (var transaction = _context.Database.BeginTransaction())
-                        {
-                            _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[photos] ON;");
-                            await file.CopyToAsync(s);
-                            photos.PhotoPath = fileName;
-                            _context.Photos.Add(photos);
-                            await _context.SaveChangesAsync();
-                            _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[photos] OFF;");
-                            transaction.Commit();
-                        }
+                        _context.Photos.Add(photos);
+                       
+
+
+                        //if (file != null && file.Length > 0)
+                        //{
+                        //    var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+
+                        //    var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
+                        //    await file.CopyToAsync(s);
+                        //    photos.PhotoPath = fileName;
+
+                        //    _context.Photos.Add(photos);
+                        //    await _context.SaveChangesAsync();
+                        //}
                     }
+
+                    _context.Database.OpenConnection();
+                    try
+                    {
+                        _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.photos ON");
+                        await _context.SaveChangesAsync();
+                        _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.photos OFF");
+                    }
+                    finally
+                    {
+                        _context.Database.CloseConnection();
+                    }
+                    
                 }
+
+
+               
+
                 return RedirectToAction(nameof(Index));
 
 
@@ -168,7 +193,7 @@ namespace WebApplication1.Controllers
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);
         }
-        [HttpPost]       
+        //[HttpPost]       
         //public async Task<IActionResult> Creates([FromBody] Photos photos)
         //{
         //    if (ModelState.IsValid)
@@ -211,47 +236,47 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, Photos photos)
-        //{
-        //    if (id != photos.PhotoId)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Edit(int id, Photos photos)
+        {
+            if (id != photos.PhotoId)
+            {
+                return NotFound();
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var date = DateTime.UtcNow.AddHours(4);
-        //        var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
+            if (ModelState.IsValid)
+            {
+                var date = DateTime.UtcNow.AddHours(4);
+                var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
-        //        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
-        //        photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
+                //var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
+                //photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
 
-        //        using (var stream = new FileStream(filePath, FileMode.Create))
-        //        {
-        //            await photos.FormFile.CopyToAsync(stream);
-        //        }
+                //using (var stream = new FileStream(filePath, FileMode.Create))
+                //{
+                //    await photos.FormFile.CopyToAsync(stream);
+                //}
 
-        //        try
-        //        {
-        //            _context.Update(photos);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!PhotosExists(photos.PhotoId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
-        //    return View(photos);
-        //}
+                try
+                {
+                    _context.Update(photos);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PhotosExists(photos.PhotoId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
+            return View(photos);
+        }
 
         // GET: Photos/Delete/5
         public async Task<IActionResult> Delete(int? id)

@@ -15,6 +15,16 @@ namespace WebApplication1.Data
         {
         }
 
+
+        //var transaction = _context.Database.BeginTransaction();
+        //_context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[photos] ON;");
+        //_context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[photos] OFF;");
+        //transaction.Commit();
+
+
+
+
+
         public virtual DbSet<Banners> Banners { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<LiveTv> LiveTv { get; set; }

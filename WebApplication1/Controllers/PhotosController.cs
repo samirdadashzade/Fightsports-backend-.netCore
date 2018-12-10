@@ -76,15 +76,19 @@ namespace WebApplication1.Controllers
 
                 foreach (var file in photos.FormFile)
                 {
-                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(file.FileName));
-                    photos.PhotoPath = "/" + Path.GetFileName(file.FileName);
+                    Task addPhotoTask = Task.Run(() => {
+                        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(file.FileName));
+                        photos.PhotoPath = "/" + Path.GetFileName(file.FileName);
 
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                    _context.Add(photos);
-                    await _context.SaveChangesAsync();
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+                        _context.Add(photos);
+                        await _context.SaveChangesAsync();
+                    });
+                    
+                    await addPhotoTask;
                 }
 
                 return RedirectToAction(nameof(Index));

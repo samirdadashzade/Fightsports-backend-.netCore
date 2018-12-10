@@ -17,7 +17,7 @@ using System.Net.Http.Headers;
 namespace WebApplication1.Controllers
 {
     [Authorize]
-    [IgnoreAntiforgeryToken(Order = 1001)]
+    //[IgnoreAntiforgeryToken(Order = 1001)]
     public class PhotosController : Controller
     {
         public ApplicationDbContext _context;
@@ -74,121 +74,20 @@ namespace WebApplication1.Controllers
                 var date = DateTime.UtcNow.AddHours(4);
                 var photoAddDate = photos.PhotoAddedData = date.ToString("yyyy-MM-dd','HH:mm:ss", CultureInfo.InvariantCulture);
 
-                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-
-
-                using (_context)
+                foreach (var file in photos.FormFile)
                 {
-                    foreach (var file in photos.FormFile)
+                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(file.FileName));
+                    photos.PhotoPath = "/" + Path.GetFileName(file.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-
-                        var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-
-                        var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
-                        await file.CopyToAsync(s);
-                        photos.PhotoPath = fileName;
-
-                        _context.Photos.Add(photos);
-                       
-
-
-                        //if (file != null && file.Length > 0)
-                        //{
-                        //    var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-
-                        //    var s = new FileStream(Path.Combine(uploads, fileName), FileMode.Create);
-                        //    await file.CopyToAsync(s);
-                        //    photos.PhotoPath = fileName;
-
-                        //    _context.Photos.Add(photos);
-                        //    await _context.SaveChangesAsync();
-                        //}
+                        await file.CopyToAsync(stream);
                     }
-
-                    _context.Database.OpenConnection();
-                    try
-                    {
-                        _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.photos ON");
-                        await _context.SaveChangesAsync();
-                        _context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.photos OFF");
-                    }
-                    finally
-                    {
-                        _context.Database.CloseConnection();
-                    }
-                    
+                    _context.Add(photos);
+                    await _context.SaveChangesAsync();
                 }
 
-
-               
-
                 return RedirectToAction(nameof(Index));
-
-
-
-                //var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(photos.FormFile.FileName));
-                //photos.PhotoPath = "/" + Path.GetFileName(photos.FormFile.FileName);
-
-                //using (var stream = new FileStream(filePath, FileMode.Create))
-                //{
-                //    photos.FormFile.CopyTo(stream);
-                //}
-                //_context.Add(photos);
-                //await _context.SaveChangesAsync();
-
-
-
-                //foreach (var item in files)
-                //{
-                //    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(item.FileName));
-                //    photos.PhotoPath = "/" + Path.GetFileName(item.FileName);
-
-                //    _context.Add(photos);
-                //    _context.SaveChanges();
-
-                //}
-
-                //foreach (IFormFile item in formFiles)
-                //{
-                //    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(item.FileName));
-                //    photos.PhotoPath += "/" + Path.GetFileName(item.FileName);
-
-                //    using (var stream = new FileStream(filePath, FileMode.Create))
-                //    {
-                //        item.CopyTo(stream);
-                //    }
-
-                //    _context.Add(photos);
-                //    _context.SaveChanges();
-                //}
-
-                //if (formFiles != null && formFiles.Count > 0)
-                //{
-                //    string folderName = "Upload";
-                //    string webRootPath = _hostingEnvironment.WebRootPath;
-                //    string newPath = Path.Combine(webRootPath, folderName);
-                //    if (!Directory.Exists(newPath))
-                //    {
-                //        Directory.CreateDirectory(newPath);
-                //    }
-                //    foreach (IFormFile item in formFiles)
-                //    {
-                //        if (item.Length > 0)
-                //        {
-                //            string fileName = ContentDispositionHeaderValue.Parse(item.ContentDisposition).FileName.Trim('"');
-                //            string fullPath = Path.Combine(newPath, fileName);
-                //            photos.PhotoPath = "/" + Path.GetFileName(item.FileName);
-                //            using (var stream = new FileStream(fullPath, FileMode.Create))
-                //            {
-                //                item.CopyTo(stream);
-                //            }
-                //        }
-                //    }
-
-
-                //}
-
-                //return RedirectToAction(nameof(Index));
             }
             ViewData["NewsId"] = new SelectList(_context.News, "NewsId", "NewsName", photos.NewsId);
             return View(photos);

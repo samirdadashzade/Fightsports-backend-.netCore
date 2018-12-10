@@ -424,6 +424,7 @@ namespace WebApplication1.Data.Migrations
             modelBuilder.Entity("WebApplication1.Models.Photos", b =>
                 {
                     b.Property<int>("PhotoId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("photo_id");
 
                     b.Property<int?>("NewsId")

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace WebApplication1.Data.Migrations
 {
-    public partial class erhb : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -19,7 +19,7 @@ namespace WebApplication1.Data.Migrations
                 table: "photos",
                 nullable: false,
                 oldClrType: typeof(int))
-                .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .OldAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
         }
     }
 }
